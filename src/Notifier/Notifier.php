@@ -28,16 +28,6 @@ final class Notifier implements NotifierInterface
 
     public function notify(NotificationInterface $notification): void
     {
-        $stateMachine = $this->workflowRegistry->get($notification, 'notification'); // todo get the workflow name from constant
-        if (!$stateMachine->can($notification, 'process')) {
-            return; // todo throw exception instead?
-        }
-
-        $stateMachine->apply($notification, 'process');
-
-        $manager = $this->getManager($notification);
-        $manager->flush();
-
         $productVariant = $notification->getProductVariant();
         if (!$productVariant instanceof StockableInterface) {
             return;
@@ -71,6 +61,16 @@ final class Notifier implements NotifierInterface
         if (null === $email) {
             return;
         }
+
+        $stateMachine = $this->workflowRegistry->get($notification, 'notification'); // todo get the workflow name from constant
+        if (!$stateMachine->can($notification, 'process')) {
+            return; // todo throw exception instead?
+        }
+
+        $manager = $this->getManager($notification);
+        $manager->flush();
+
+        $stateMachine->apply($notification, 'process');
 
         // todo send notification
 
