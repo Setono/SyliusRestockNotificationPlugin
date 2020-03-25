@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: Setono\SyliusRestockNotificationPlugin
+        psr4_prefix: Setono\SyliusRestockNotificationPlugin
