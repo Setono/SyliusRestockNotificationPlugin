@@ -1,0 +1,28 @@
+# todo prepend this in the extension instead
+framework:
+    workflows:
+        notification:
+            type: 'state_machine'
+            marking_store:
+                type: 'method'
+                property: 'state'
+            supports:
+                - '%setono_sylius_restock_notification.model.notification.class%'
+            initial_marking: pending
+            places:
+                - pending
+                - sent
+                - error
+            transitions:
+                send:
+                    from: pending
+                    to: sent
+                error:
+                    from: pending
+                    to: error
+                resend:
+                    from: sent
+                    to: pending
+                retry:
+                    from: error
+                    to: pending
