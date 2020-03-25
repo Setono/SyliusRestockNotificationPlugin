@@ -11,14 +11,18 @@ framework:
             initial_marking: pending
             places:
                 - pending
+                - processing
                 - sent
                 - error
             transitions:
-                send:
+                process:
                     from: pending
+                    to: processing
+                send:
+                    from: processing
                     to: sent
                 error:
-                    from: pending
+                    from: processing
                     to: error
                 resend:
                     from: sent

@@ -15,6 +15,9 @@ class Notification implements NotificationInterface
     use TimestampableTrait;
 
     /** @var int */
+    protected $version = 1;
+
+    /** @var int */
     protected $id;
 
     /** @var ChannelInterface */
@@ -36,6 +39,7 @@ class Notification implements NotificationInterface
     {
         return [
             self::STATE_PENDING => self::STATE_PENDING,
+            self::STATE_PROCESSING => self::STATE_PROCESSING,
             self::STATE_SENT => self::STATE_SENT,
             self::STATE_ERROR => self::STATE_ERROR,
         ];

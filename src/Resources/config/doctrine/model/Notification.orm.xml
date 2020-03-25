@@ -11,6 +11,7 @@
             <generator strategy="AUTO"/>
         </id>
 
+        <field name="version" type="integer" version="true" />
         <field name="email"/>
 
         <field name="createdAt" column="created_at" type="datetime">

@@ -14,6 +14,8 @@ interface NotificationInterface extends ResourceInterface, TimestampableInterfac
 {
     public const STATE_PENDING = 'pending';
 
+    public const STATE_PROCESSING = 'processing';
+
     public const STATE_SENT = 'sent';
 
     public const STATE_ERROR = 'error';
