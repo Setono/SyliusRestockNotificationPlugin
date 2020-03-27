@@ -1,0 +1,3 @@
+setono_sylius_restock_notification_admin:
+    prefix: /admin
+    resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/routes/admin.yaml"

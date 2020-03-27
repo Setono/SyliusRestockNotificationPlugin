@@ -1,0 +1,17 @@
+<div class="ui two column grid">
+    <div class="column">
+        {{ form_row(form.channel) }}
+        {{ form_row(form.locale) }}
+        {{ form_row(form.productVariant) }}
+        {{ form_row(form.email) }}
+    </div>
+    <div class="column">
+        <div class="ui info message">
+            <div class="header">
+                {{ 'setono_sylius_restock_notification.form.notification.help.header'|trans }}
+            </div>
+            {{ 'setono_sylius_restock_notification.form.notification.help.content'|trans|raw }}
+        </div>
+    </div>
+</div>
+

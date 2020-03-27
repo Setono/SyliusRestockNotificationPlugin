@@ -1,5 +1,13 @@
-# todo prepend this in the extension instead
+imports:
+    - { resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/grids/restock_notification.yaml" }
+
 framework:
+    messenger:
+        buses:
+            setono_sylius_restock_notification.command_bus: ~
+            setono_sylius_restock_notification.event_bus:
+                default_middleware: allow_no_handlers
+    # todo prepend this in the extension instead
     workflows:
         notification:
             type: 'state_machine'

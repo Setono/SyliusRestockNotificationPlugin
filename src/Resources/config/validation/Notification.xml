@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<constraint-mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/services/constraint-mapping-1.0.xsd"
+>
+    <class name="Setono\SyliusRestockNotificationPlugin\Model\Notification">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">
+                <value>productVariant</value>
+                <value>email</value>
+            </option>
+            <option name="message">setono_sylius_restock_notification.notification.product_variant_email.unique</option>
+            <option name="groups">setono_sylius_restock_notification</option>
+        </constraint>
+        <property name="channel">
+            <constraint name="NotBlank">
+                <option name="message">setono_sylius_restock_notification.notification.channel.not_blank</option>
+                <option name="groups">setono_sylius_restock_notification</option>
+            </constraint>
+        </property>
+        <property name="productVariant">
+            <constraint name="NotBlank">
+                <option name="message">setono_sylius_restock_notification.notification.product_variant.not_blank</option>
+                <option name="groups">setono_sylius_restock_notification</option>
+            </constraint>
+        </property>
+        <property name="email">
+            <constraint name="NotBlank">
+                <option name="message">setono_sylius_restock_notification.notification.email.not_blank</option>
+                <option name="groups">setono_sylius_restock_notification</option>
+            </constraint>
+            <constraint name="Email">
+                <option name="message">setono_sylius_restock_notification.notification.email.valid</option>
+                <option name="groups">setono_sylius_restock_notification</option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>
