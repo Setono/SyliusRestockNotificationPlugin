@@ -40,7 +40,7 @@ final class OnHandChangedSubscriber implements EventSubscriber
             return;
         }
 
-        // if the old value isn't 0, we don't want to send a notification,
+        // if the old value isn't 0 or less, we don't want to send a notification,
         // because that should have been done when the old value was 0
         if ($eventArgs->getOldValue('onHand') > 0) {
             return;
