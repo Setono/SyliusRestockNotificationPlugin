@@ -16,7 +16,7 @@ setono_sylius_restock_notification:
         admin:
             main:
                 marketing:
-                    notifications: Restock notification
+                    notifications: Restock notifications
     ui:
         manage_notifications: Manage restock notifications
         new_notification: New restock notification
