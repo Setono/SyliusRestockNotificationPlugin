@@ -12,7 +12,7 @@ sylius_grid:
                     type: string
                     label: setono_sylius_restock_notification.ui.email
                 createdAt:
-                    type: string
+                    type: datetime
                     label: setono_sylius_restock_notification.ui.created_at
             filters:
                 search:

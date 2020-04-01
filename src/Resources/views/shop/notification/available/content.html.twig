@@ -10,5 +10,6 @@
     <button type="submit" class="ui blue labeled icon submit button">
         <i class="icon check"></i> {{ 'setono_sylius_restock_notification.ui.notify_me'|trans }}
     </button>
-    {{ form_end(form) }}
+    {{ form_row(form._token) }}
+    {{ form_end(form, {'render_rest': false}) }}
 </div>

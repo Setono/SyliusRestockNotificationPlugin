@@ -9,8 +9,18 @@
     </parameters>
 
     <services>
-        <service id="setono_sylius_restock_notification.form_type.available_notifications"
-                 class="Setono\SyliusRestockNotificationPlugin\Form\Type\AvailableNotificationsType">
+        <service id="setono_sylius_restock_notification.form_type.notification_admin"
+                 class="Setono\SyliusRestockNotificationPlugin\Form\Type\NotificationAdminType">
+            <argument>%setono_sylius_restock_notification.model.notification.class%</argument>
+            <argument>%setono_sylius_restock_notification.form_type.notification.validation_groups%</argument>
+
+            <tag name="form.type"/>
+        </service>
+
+        <service id="setono_sylius_restock_notification.form_type.notification_shop"
+                 class="Setono\SyliusRestockNotificationPlugin\Form\Type\NotificationShopType">
+            <argument type="service" id="sylius.context.channel"/>
+            <argument type="service" id="sylius.context.locale"/>
             <argument>%setono_sylius_restock_notification.model.notification.class%</argument>
             <argument>%setono_sylius_restock_notification.form_type.notification.validation_groups%</argument>
 

@@ -29,6 +29,10 @@ final class OutOfStockProductVariantChoiceType extends AbstractType
                 return $this->outOfStockResolver->getOutOfStockVariants($options['product']);
             })
             ->setDefault('choice_label', static function (ProductVariantInterface $productVariant): string {
+                if (method_exists($productVariant, '__toString')) {
+                    return (string) $productVariant;
+                }
+
                 $label = (string) $productVariant->getName();
 
                 $product = $productVariant->getProduct();
@@ -36,7 +40,7 @@ final class OutOfStockProductVariantChoiceType extends AbstractType
                     $label = $product->getName() . ' - ' . $label;
                 }
 
-                return $label; // todo add this to a service
+                return $label;
             })
             ->setDefault('choice_value', 'code')
             ->setRequired(['product'])

@@ -6,9 +6,7 @@ namespace Setono\SyliusRestockNotificationPlugin\Controller\Action;
 
 use InvalidArgumentException;
 use function Safe\sprintf;
-use Setono\SyliusRestockNotificationPlugin\Form\Type\AvailableNotificationsType;
-use Setono\SyliusRestockNotificationPlugin\Model\Notification;
-use Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface;
+use Setono\SyliusRestockNotificationPlugin\Form\Type\NotificationShopType;
 use Setono\SyliusRestockNotificationPlugin\Repository\NotificationRepositoryInterface;
 use Setono\SyliusRestockNotificationPlugin\Resolver\OutOfStockResolverInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
@@ -97,15 +95,7 @@ final class AvailableNotificationsForProduct
             return new Response('');
         }
 
-        $channel = $this->channelContext->getChannel();
-        $localeCode = $this->localeContext->getLocaleCode();
-
-        /** @var NotificationInterface $notification */
-        $notification = $this->notificationFactory->createNew();
-        $notification->setChannel($channel);
-        $notification->setLocale($this->getLocaleFromCode($localeCode));
-
-        $form = $this->formFactory->create(AvailableNotificationsType::class, $notification, [
+        $form = $this->formFactory->create(NotificationShopType::class, $this->notificationFactory->createNew(), [
             'product' => $product,
         ]);
 
