@@ -1,5 +1,8 @@
 setono_sylius_restock_notification:
     form:
+        available_notifications:
+            email: Email
+            product_variant: Product variant
         notification:
             channel: Channel
             email: Email
@@ -16,6 +19,11 @@ setono_sylius_restock_notification:
                 marketing:
                     notifications: Restock notifications
     ui:
+        available_notifications:
+            header: Available restock notifications
+            explanation: |
+                <p>Some of the variants on this product is not in stock. Here you can sign up to receive an email once the respective variant is in stock.</p>
         manage_notifications: Manage restock notifications
         new_notification: New restock notification
         notifications: Restock notifications
+        notify_me: Notify me

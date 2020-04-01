@@ -1,0 +1,14 @@
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+<div class="ui segment">
+    <h4 class="ui header">{{ 'setono_sylius_restock_notification.ui.available_notifications.header'|trans }}</h4>
+    {{ 'setono_sylius_restock_notification.ui.available_notifications.explanation'|trans|raw }}
+
+    {{ form_start(form, {'action': path('setono_sylius_restock_notification_shop_available_notifications_for_product', { 'code': product.code }), 'attr': {'class': 'ui loadable form', 'novalidate': 'novalidate'}}) }}
+    {% include '@SetonoSyliusRestockNotificationPlugin/shop/notification/available/_form.html.twig' %}
+
+    <button type="submit" class="ui blue labeled icon submit button">
+        <i class="icon check"></i> {{ 'setono_sylius_restock_notification.ui.notify_me'|trans }}
+    </button>
+    {{ form_end(form) }}
+</div>

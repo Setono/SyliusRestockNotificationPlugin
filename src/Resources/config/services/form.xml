@@ -9,6 +9,21 @@
     </parameters>
 
     <services>
+        <service id="setono_sylius_restock_notification.form_type.available_notifications"
+                 class="Setono\SyliusRestockNotificationPlugin\Form\Type\AvailableNotificationsType">
+            <argument>%setono_sylius_restock_notification.model.notification.class%</argument>
+            <argument>%setono_sylius_restock_notification.form_type.notification.validation_groups%</argument>
+
+            <tag name="form.type"/>
+        </service>
+
+        <service id="setono_sylius_restock_notification.form_type.out_of_stock_product_variant_choice"
+                 class="Setono\SyliusRestockNotificationPlugin\Form\Type\OutOfStockProductVariantChoiceType">
+
+            <argument type="service" id="setono_sylius_restock_notification.resolver.out_of_stock"/>
+            <tag name="form.type"/>
+        </service>
+
         <service id="setono_sylius_restock_notification.form_type.notification"
                  class="Setono\SyliusRestockNotificationPlugin\Form\Type\NotificationType">
             <argument>%setono_sylius_restock_notification.model.notification.class%</argument>

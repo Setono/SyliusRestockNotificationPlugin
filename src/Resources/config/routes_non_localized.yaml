@@ -1,8 +1,6 @@
+# Use this routing file if you don't have locales in your URLs
 setono_sylius_restock_notification_shop:
     resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/routes/shop.yaml"
-    prefix: /{_locale}
-    requirements:
-        _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
 
 setono_sylius_restock_notification_admin:
     prefix: /admin

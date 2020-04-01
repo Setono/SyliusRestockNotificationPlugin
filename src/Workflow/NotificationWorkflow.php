@@ -8,6 +8,8 @@ use Setono\SyliusRestockNotificationPlugin\Model\Notification;
 
 final class NotificationWorkflow
 {
+    public const NAME = 'restock_notification';
+
     public const TRANSITION_PROCESS = 'process';
 
     public const TRANSITION_SEND = 'send';
