@@ -8,7 +8,6 @@ use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
 use function Safe\sprintf;
 use Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface;
-use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Inventory\Model\StockableInterface;
 use Symfony\Component\Workflow\Registry;
 
@@ -45,16 +44,8 @@ final class Notifier implements NotifierInterface
 
         $locale = $notification->getLocale();
 
-        // the locale is null, so we get the default locale from the channel
         if (null === $locale) {
-            if (!$channel instanceof ChannelInterface) {
-                return;
-            }
-
-            $locale = $channel->getDefaultLocale();
-            if (null === $locale) {
-                return;
-            }
+            return;
         }
 
         $email = $notification->getEmail();

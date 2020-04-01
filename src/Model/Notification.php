@@ -23,7 +23,7 @@ class Notification implements NotificationInterface
     /** @var ChannelInterface */
     protected $channel;
 
-    /** @var LocaleInterface|null */
+    /** @var LocaleInterface */
     protected $locale;
 
     /** @var string */
@@ -72,7 +72,7 @@ class Notification implements NotificationInterface
         return $this->locale;
     }
 
-    public function setLocale(?LocaleInterface $locale): void
+    public function setLocale(LocaleInterface $locale): void
     {
         $this->locale = $locale;
     }

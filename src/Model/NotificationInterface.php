@@ -22,12 +22,9 @@ interface NotificationInterface extends ResourceInterface, TimestampableInterfac
 
     public function getId(): ?int;
 
-    /**
-     * If the locale is null, use the default locale on the channel
-     */
     public function getLocale(): ?LocaleInterface;
 
-    public function setLocale(?LocaleInterface $locale): void;
+    public function setLocale(LocaleInterface $locale): void;
 
     public function getState(): string;
 

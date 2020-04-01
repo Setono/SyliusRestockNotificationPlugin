@@ -21,7 +21,6 @@ final class NotificationType extends AbstractResourceType
             ])
             ->add('locale', LocaleChoiceType::class, [
                 'label' => 'setono_sylius_restock_notification.form.notification.locale',
-                'required' => false,
             ])
             // todo add product variant autocomplete
             ->add('productVariant', TextType::class, [

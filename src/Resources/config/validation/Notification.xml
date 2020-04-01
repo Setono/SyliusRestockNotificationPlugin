@@ -19,6 +19,12 @@
                 <option name="groups">setono_sylius_restock_notification</option>
             </constraint>
         </property>
+        <property name="locale">
+            <constraint name="NotBlank">
+                <option name="message">setono_sylius_restock_notification.notification.locale.not_blank</option>
+                <option name="groups">setono_sylius_restock_notification</option>
+            </constraint>
+        </property>
         <property name="productVariant">
             <constraint name="NotBlank">
                 <option name="message">setono_sylius_restock_notification.notification.product_variant.not_blank</option>
