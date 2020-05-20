@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\Model;
 
+use DateTimeInterface;
 use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Product\Model\ProductVariantInterface;
@@ -34,6 +35,9 @@ class Notification implements NotificationInterface
 
     /** @var string */
     protected $email;
+
+    /** @var DateTimeInterface|null */
+    protected $sentAt;
 
     public static function getStates(): array
     {
@@ -105,5 +109,15 @@ class Notification implements NotificationInterface
     public function setEmail(string $email): void
     {
         $this->email = $email;
+    }
+
+    public function sentAt(): ?DateTimeInterface
+    {
+        return $this->sentAt;
+    }
+
+    public function setSentAt(DateTimeInterface $sentAt): void
+    {
+        $this->sentAt = $sentAt;
     }
 }

@@ -30,12 +30,14 @@ setono_sylius_restock_notification:
             explanation: |
                 <p>Some of the variants on this product is not in stock. Here you can sign up to receive an email once the respective variant is in stock.</p>
         created_at: Created at
+        days_waited: Days waited
         edit_notification: Edit restock notification
         email: Email
         manage_notifications: Manage restock notifications
         new_notification: New restock notification
         notifications: Restock notifications
         notify_me: Notify me
+        sent_at: Sent at
         state: State
         states:
             error: Error

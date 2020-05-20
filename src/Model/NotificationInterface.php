@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\Model;
 
+use DateTimeInterface;
 use Sylius\Component\Channel\Model\ChannelAwareInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Product\Model\ProductVariantInterface;
@@ -37,4 +38,11 @@ interface NotificationInterface extends ResourceInterface, TimestampableInterfac
     public function getEmail(): ?string;
 
     public function setEmail(string $email): void;
+
+    /**
+     * Returns the date and time the notification was sent or null if it hasn't been sent yet
+     */
+    public function sentAt(): ?DateTimeInterface;
+
+    public function setSentAt(DateTimeInterface $sentAt): void;
 }

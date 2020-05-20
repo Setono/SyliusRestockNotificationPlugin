@@ -1,0 +1,2 @@
+{# @var \Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface data #}
+{{ data.createdAt|setono_restock_notification_diff_days(data.sentAt) }}

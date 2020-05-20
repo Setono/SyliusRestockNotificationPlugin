@@ -24,6 +24,15 @@ sylius_grid:
                 createdAt:
                     type: datetime
                     label: setono_sylius_restock_notification.ui.created_at
+                sentAt:
+                    type: datetime
+                    label: setono_sylius_restock_notification.ui.sent_at
+                daysWaited:
+                    type: twig
+                    path: .
+                    label: setono_sylius_restock_notification.ui.days_waited
+                    options:
+                        template: "@SetonoSyliusRestockNotificationPlugin/admin/grid/field/days_waited.html.twig"
             filters:
                 search:
                     type: string
