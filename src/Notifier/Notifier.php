@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
 use RuntimeException;
 use function Safe\sprintf;
+use Setono\SyliusRestockNotificationPlugin\EmailManager\RestockNotificationEmailManagerInterface;
 use Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface;
 use Setono\SyliusRestockNotificationPlugin\Workflow\NotificationWorkflow;
 use Sylius\Component\Inventory\Model\StockableInterface;
@@ -21,10 +22,17 @@ final class Notifier implements NotifierInterface
     /** @var ManagerRegistry */
     private $managerRegistry;
 
-    public function __construct(Registry $workflowRegistry, ManagerRegistry $managerRegistry)
-    {
+    /** @var RestockNotificationEmailManagerInterface */
+    private $restockNotificationEmailManager;
+
+    public function __construct(
+        Registry $workflowRegistry,
+        ManagerRegistry $managerRegistry,
+        RestockNotificationEmailManagerInterface $restockNotificationEmailManager
+    ) {
         $this->workflowRegistry = $workflowRegistry;
         $this->managerRegistry = $managerRegistry;
+        $this->restockNotificationEmailManager = $restockNotificationEmailManager;
     }
 
     public function notify(NotificationInterface $notification): void
@@ -65,7 +73,7 @@ final class Notifier implements NotifierInterface
         $stateMachine->apply($notification, NotificationWorkflow::TRANSITION_PROCESS);
         $manager->flush();
 
-        // todo send notification
+        $this->restockNotificationEmailManager->sendRestockNotificationEmail($notification);
 
         $stateMachine->apply($notification, NotificationWorkflow::TRANSITION_SEND);
         $manager->flush();
@@ -75,7 +83,9 @@ final class Notifier implements NotifierInterface
     {
         $manager = $this->managerRegistry->getManagerForClass(get_class($object));
         if (null === $manager) {
-            throw new RuntimeException(sprintf('The class %s does not have a manager associated with it', get_class($object)));
+            throw new RuntimeException(sprintf(
+                'The class %s does not have a manager associated with it', get_class($object)
+            ));
         }
 
         return $manager;

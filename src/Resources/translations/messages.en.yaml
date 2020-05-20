@@ -1,4 +1,13 @@
 setono_sylius_restock_notification:
+    email:
+        restock_notification:
+            anchor_text: Click here to see the product
+            intro: |
+                <p>Hi there</p>
+                <p>You signed up to receive an email when the product, %product%, was back in stock.</p>
+                <p>Well, I've got news for you! The product has just been restocked.</p>
+            regards: <p>Have a great day and enjoy your shopping ;)</p>
+            subject: Your long awaited product has just been restocked!
     form:
         notification:
             channel: Channel
@@ -28,3 +37,8 @@ setono_sylius_restock_notification:
         notifications: Restock notifications
         notify_me: Notify me
         state: State
+        states:
+            error: Error
+            pending: Pending
+            processing: Processing
+            sent: Sent
