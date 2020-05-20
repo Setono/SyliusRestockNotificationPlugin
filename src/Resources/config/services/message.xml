@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="setono_sylius_restock_notification.message_handler.notify"
+                 class="Setono\SyliusRestockNotificationPlugin\Message\Handler\NotifyHandler">
+            <argument type="service" id="setono_sylius_restock_notification.repository.notification"/>
+            <argument type="service" id="setono_sylius_restock_notification.notifier.default"/>
+
+            <tag name="messenger.message_handler"/>
+        </service>
+
+        <service id="setono_sylius_restock_notification.message_handler.product_variant_restocked"
+                 class="Setono\SyliusRestockNotificationPlugin\Message\Handler\ProductVariantRestockedHandler">
+            <argument type="service" id="sylius.repository.product_variant"/>
+            <argument type="service" id="setono_sylius_restock_notification.repository.notification"/>
+            <argument type="service" id="setono_sylius_restock_notification.command_bus"/>
+
+            <tag name="messenger.message_handler"/>
+        </service>
+    </services>
+</container>

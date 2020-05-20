@@ -11,6 +11,14 @@ sylius_grid:
                 email:
                     type: string
                     label: setono_sylius_restock_notification.ui.email
+                product_variant:
+                    type: twig
+                    label: sylius.ui.product
+                    options:
+                        template: "@SetonoSyliusRestockNotificationPlugin/admin/grid/field/product_variant.html.twig"
+                state:
+                    type: string
+                    label: setono_sylius_restock_notification.ui.state
                 createdAt:
                     type: datetime
                     label: setono_sylius_restock_notification.ui.created_at

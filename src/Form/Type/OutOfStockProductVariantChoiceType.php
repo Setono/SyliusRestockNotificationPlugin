@@ -29,18 +29,28 @@ final class OutOfStockProductVariantChoiceType extends AbstractType
                 return $this->outOfStockResolver->getOutOfStockVariants($options['product']);
             })
             ->setDefault('choice_label', static function (ProductVariantInterface $productVariant): string {
-                if (method_exists($productVariant, '__toString')) {
-                    return (string) $productVariant;
+                $str = '';
+
+                if (count($productVariant->getOptionValues()) > 0) {
+                    $optionValues = [];
+
+                    foreach ($productVariant->getOptionValues() as $optionValue) {
+                        $optionValues[] = $optionValue->getValue();
+                    }
+
+                    $str = implode(' | ', $optionValues);
                 }
 
-                $label = (string) $productVariant->getName();
+                if ('' === $str) {
+                    $str = (string) $productVariant->getName();
 
-                $product = $productVariant->getProduct();
-                if (null !== $product) {
-                    $label = $product->getName() . ' - ' . $label;
+                    $product = $productVariant->getProduct();
+                    if (null !== $product) {
+                        $str = $product->getName() . '(' . $str . ')';
+                    }
                 }
 
-                return $label;
+                return $str;
             })
             ->setDefault('choice_value', 'code')
             ->setRequired(['product'])

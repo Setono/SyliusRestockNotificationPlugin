@@ -57,7 +57,7 @@ final class Notifier implements NotifierInterface
 
         $manager = $this->getManager($notification);
 
-        $stateMachine = $this->workflowRegistry->get($notification, NotificationWorkflow::NAME); // todo get the workflow name from constant
+        $stateMachine = $this->workflowRegistry->get($notification, NotificationWorkflow::NAME);
         if (!$stateMachine->can($notification, NotificationWorkflow::TRANSITION_PROCESS)) {
             return; // todo throw exception instead?
         }

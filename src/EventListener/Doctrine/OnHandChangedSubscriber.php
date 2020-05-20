@@ -25,11 +25,11 @@ final class OnHandChangedSubscriber implements EventSubscriber
     public function getSubscribedEvents(): array
     {
         return [
-            Events::preUpdate => 'handleUpdate',
+            Events::preUpdate,
         ];
     }
 
-    public function handleUpdate(PreUpdateEventArgs $eventArgs): void
+    public function preUpdate(PreUpdateEventArgs $eventArgs): void
     {
         $productVariant = $eventArgs->getObject();
         if (!$productVariant instanceof ProductVariantInterface || !$productVariant instanceof StockableInterface) {

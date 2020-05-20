@@ -11,10 +11,8 @@ use Sylius\Component\Product\Model\ProductVariantInterface;
 
 class NotificationRepository extends EntityRepository implements NotificationRepositoryInterface
 {
-    public function findOneByIdInState(
-        int $id,
-        string $state = NotificationInterface::STATE_PENDING
-    ): ?NotificationInterface {
+    public function findOneByIdInState(int $id, string $state): ?NotificationInterface
+    {
         return $this->createQueryBuilder('o')
             ->andWhere('o.id = :id')
             ->andWhere('o.state = :state')

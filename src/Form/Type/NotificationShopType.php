@@ -38,7 +38,7 @@ final class NotificationShopType extends NotificationType
 
         $builder
             ->add('productVariant', OutOfStockProductVariantChoiceType::class, [
-                'label' => 'setono_sylius_restock_notification.form.available_notifications.product_variant',
+                'label' => 'setono_sylius_restock_notification.form.notification.product_variant',
                 'product' => $options['product'],
             ])
             ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event): void {

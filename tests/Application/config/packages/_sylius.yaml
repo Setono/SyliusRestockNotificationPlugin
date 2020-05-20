@@ -9,6 +9,12 @@ imports:
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
 
+sylius_product:
+    resources:
+        product_variant:
+            classes:
+                repository: Tests\Setono\SyliusRestockNotificationPlugin\Application\Repository\ProductVariantRepository
+
 sylius_shop:
     product_grid:
         include_all_descendants: true

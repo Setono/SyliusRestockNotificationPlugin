@@ -10,10 +10,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface NotificationRepositoryInterface extends RepositoryInterface
 {
-    public function findOneByIdInState(
-        int $id,
-        string $state = NotificationInterface::STATE_PENDING
-    ): ?NotificationInterface;
+    public function findOneByIdInState(int $id, string $state): ?NotificationInterface;
 
     /**
      * @return NotificationInterface[]

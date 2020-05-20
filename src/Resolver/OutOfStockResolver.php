@@ -9,9 +9,6 @@ use Sylius\Component\Product\Model\ProductInterface;
 
 final class OutOfStockResolver implements OutOfStockResolverInterface
 {
-    /**
-     * Returns true if one or more variants are tracked AND out of stock on the given product
-     */
     public function hasVariantsOutOfStock(ProductInterface $product): bool
     {
         return count($this->getOutOfStockVariants($product)) > 0;
