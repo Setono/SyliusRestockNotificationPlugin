@@ -80,6 +80,7 @@
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse -c phpstan.neon -l max src/",
         "check-style": "vendor/bin/ecs check src/ tests/ spec/",
+        "check-yaml": "vendor/bin/yaml-standards",
         "fix-style": "vendor/bin/ecs check src/ tests/ spec/ --fix",
         "phpspec": "vendor/bin/phpspec run",
         "phpunit": "vendor/bin/phpunit"
