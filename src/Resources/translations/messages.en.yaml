@@ -6,7 +6,7 @@ setono_sylius_restock_notification:
             help:
                 header: Help
                 content: |
-                    <p>When you create a restock notification, the channel and locale is used to determine the content 
+                    <p>When you create a restock notification, the channel and locale is used to determine the content
                     of the email being sent to customer, so make sure to select what the customer expects.</p>
             locale: Locale
             product_variant: Variant

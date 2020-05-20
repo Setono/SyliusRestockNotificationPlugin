@@ -7,7 +7,7 @@ setono_sylius_restock_notification_shop:
 setono_sylius_restock_notification_admin:
     prefix: /admin
     resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/routes/admin.yaml"
-    
+
 setono_sylius_restock_notification_admin_ajax:
     prefix: /admin/ajax
     resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/routes/admin_ajax.yaml"

@@ -6,5 +6,5 @@
     checkers:
         -   pathToChecker: YamlStandards\Model\YamlIndent\YamlIndentChecker
             parameters:
-              { indents: 4 }
+                { indents: 4 }
         -   pathToChecker: YamlStandards\Model\YamlEmptyLineAtEnd\YamlEmptyLineAtEndChecker
