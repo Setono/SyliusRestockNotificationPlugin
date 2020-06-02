@@ -1,0 +1,20 @@
+{# @var \Sylius\Component\Core\Model\ChannelInterface channel #}
+{# @var \Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface notification #}
+{% extends '@SyliusShop/Email/layout.html.twig' %}
+
+{% block subject %}
+    {{ 'setono_sylius_restock_notification.email.restock_notification.subject'|trans({}, null, localeCode) }}
+{% endblock %}
+
+{% block content %}
+    {% set productTranslation = notification.productVariant.product.translation(localeCode) %}
+    {% set slug = productTranslation.slug %}
+    {# todo if the variant link plugin is present we should use the direct url to the variant #}
+    {% set url = channel.hostname is not null ? 'http://' ~ channel.hostname ~ path('sylius_shop_product_show', {'slug': slug, '_locale': localeCode}) : url('sylius_shop_product_show', {'slug': slug, '_locale': localeCode}) %}
+
+    <div style="text-align: center;">
+        {{ 'setono_sylius_restock_notification.email.restock_notification.intro'|trans({'%product%': productTranslation.name}, null, localeCode)|raw }}
+        <a href="{{ url }}">{{ 'setono_sylius_restock_notification.email.restock_notification.anchor_text'|trans({}, null, localeCode) }}</a>
+        {{ 'setono_sylius_restock_notification.email.restock_notification.regards'|trans({}, null, localeCode)|raw }}
+    </div>
+{% endblock %}

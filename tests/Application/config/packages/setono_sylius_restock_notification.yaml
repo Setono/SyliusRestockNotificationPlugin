@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/app/config.yaml" }

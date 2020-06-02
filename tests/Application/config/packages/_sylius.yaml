@@ -9,6 +9,19 @@ imports:
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
 
+sylius_product:
+    resources:
+        product_variant:
+            classes:
+                repository: Tests\Setono\SyliusRestockNotificationPlugin\Application\Repository\ProductVariantRepository
+
 sylius_shop:
     product_grid:
         include_all_descendants: true
+
+sylius_ui:
+    events:
+        sylius.shop.product.show.right_sidebar:
+            blocks:
+                setono_sylius_restock_notification_available_notifications: "@SetonoSyliusRestockNotificationPlugin/shop/notification/available.html.twig"
+        

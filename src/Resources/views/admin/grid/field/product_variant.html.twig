@@ -1,0 +1,12 @@
+{# @var \Sylius\Component\Core\Model\ProductVariantInterface data #}
+{% set product = data.product %}
+<strong>{{ product.name }}</strong> [<a href="{{ path('sylius_shop_product_show', {'slug' : product.slug}) }}" target="_blank">{{ 'sylius.ui.show'|trans }}</a>]<br>
+{% if data.optionValues|length > 0 %}
+    <ul style="padding: 0; margin: 0; list-style-position: inside">
+        {% for option_value in data.optionValues %}
+            <li>{{ option_value.name }}: {{ option_value.value }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    {{ data.name }}
+{% endif %}

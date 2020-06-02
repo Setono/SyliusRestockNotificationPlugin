@@ -1,0 +1,20 @@
+<div class="ui two column grid">
+    <div class="column">
+        {{ form_row(form.channel) }}
+        {{ form_row(form.locale) }}
+        {{ form_row(form.productVariant, {
+            'remote_url': path('sylius_admin_ajax_product_by_name_phrase'),
+            'load_edit_url': path('sylius_admin_ajax_product_by_code')
+        })}}
+        {{ form_row(form.email) }}
+    </div>
+    <div class="column">
+        <div class="ui info message">
+            <div class="header">
+                {{ 'setono_sylius_restock_notification.form.notification.help.header'|trans }}
+            </div>
+            {{ 'setono_sylius_restock_notification.form.notification.help.content'|trans|raw }}
+        </div>
+    </div>
+</div>
+

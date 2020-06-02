@@ -1,0 +1,13 @@
+setono_sylius_restock_notification_admin:
+    prefix: /admin
+    resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/routes/admin.yaml"
+
+setono_sylius_restock_notification_admin_ajax:
+    prefix: /admin/ajax
+    resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/routes/admin_ajax.yaml"
+
+setono_sylius_restock_notification_shop:
+    resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/routes/shop.yaml"
+    prefix: /{_locale}
+    requirements:
+        _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$

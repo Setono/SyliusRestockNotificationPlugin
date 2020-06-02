@@ -1,0 +1,2 @@
+setono_sylius_restock_notification:
+    resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/routes.yaml"
