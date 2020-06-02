@@ -24,9 +24,11 @@ sylius_grid:
                 createdAt:
                     type: datetime
                     label: setono_sylius_restock_notification.ui.created_at
+                    sortable: ~
                 sentAt:
                     type: datetime
                     label: setono_sylius_restock_notification.ui.sent_at
+                    sortable: ~
                 daysWaited:
                     type: twig
                     path: .
