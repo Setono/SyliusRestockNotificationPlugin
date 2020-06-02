@@ -36,11 +36,20 @@ sylius_grid:
                     options:
                         template: "@SetonoSyliusRestockNotificationPlugin/admin/grid/field/days_waited.html.twig"
             filters:
-                search:
+                email:
                     type: string
-                    label: sylius.ui.search
+                    label: sylius.ui.email
                     options:
                         fields: [email]
+                state:
+                    type: select
+                    label: sylius.ui.state
+                    form_options:
+                        choices:
+                            setono_sylius_restock_notification.ui.states.error: !php/const Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface::STATE_ERROR
+                            setono_sylius_restock_notification.ui.states.pending: !php/const Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface::STATE_PENDING
+                            setono_sylius_restock_notification.ui.states.processing: !php/const Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface::STATE_PROCESSING
+                            setono_sylius_restock_notification.ui.states.sent: !php/const Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface::STATE_SENT
             actions:
                 main:
                     create:
