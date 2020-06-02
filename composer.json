@@ -33,6 +33,7 @@
         "webmozart/assert": "^1.0"
     },
     "require-dev": {
+        "doctrine/doctrine-bundle": "^1.11",
         "ergebnis/composer-normalize": "^2.5",
         "korbeil/phpstan-generic-rules": "^0.2.4",
         "phpspec/phpspec": "^6.1",
