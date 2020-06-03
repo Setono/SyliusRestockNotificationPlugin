@@ -1,5 +1,6 @@
 imports:
     - { resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/grids/restock_notification.yaml" }
+    - { resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/grids/restock_notification_grouped.yaml" }
 
 framework:
     messenger:

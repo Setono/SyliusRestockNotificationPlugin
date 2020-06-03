@@ -1,6 +1,7 @@
 setono_sylius_restock_notification_admin_notification:
     resource: |
         alias: setono_sylius_restock_notification.notification
+        path: restock-notifications
         section: admin
         templates: SyliusAdminBundle:Crud
         except: ['show']
@@ -15,3 +16,12 @@ setono_sylius_restock_notification_admin_notification:
             index:
                 icon: redo
     type: sylius.resource
+    
+setono_sylius_restock_notification_admin_notification_grouped:
+    path: /restock-notifications/grouped
+    methods: [GET]
+    defaults:
+        _controller: setono_sylius_restock_notification.controller.notification:indexAction
+        _sylius:
+            grid: setono_sylius_restock_notification_admin_notification_grouped
+            template: "@SyliusAdmin/Crud/index.html.twig"

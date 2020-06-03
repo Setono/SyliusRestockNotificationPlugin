@@ -1,0 +1,16 @@
+sylius_grid:
+    grids:
+        setono_sylius_restock_notification_admin_notification_grouped:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%setono_sylius_restock_notification.model.notification.class%"
+                    repository:
+                        method: createGroupByProductListQueryBuilder
+            fields:
+                product_variant:
+                    type: string
+                    label: sylius.ui.product
+                count:
+                    type: string
+                    label: setono_sylius_restock_notification.ui.count
