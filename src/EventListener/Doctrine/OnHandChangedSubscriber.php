@@ -36,18 +36,19 @@ final class OnHandChangedSubscriber implements EventSubscriber
             return;
         }
 
-        if (!$eventArgs->hasChangedField('onHand')) {
+        if (!$eventArgs->hasChangedField('onHand') && !$eventArgs->hasChangedField('onHold')) {
             return;
         }
 
-        // if the old value isn't 0 or less, we don't want to send a notification,
-        // because that should have been done when the old value was 0
-        if ($eventArgs->getOldValue('onHand') > 0) {
+        // if the old stock is greater than 0, then the product isn't restocked (it was in stock)
+        $oldStock = $eventArgs->getOldValue('onHand') - $eventArgs->getOldValue('onHold');
+        if ($oldStock > 0) {
             return;
         }
 
-        // if the new value isn't greater than 0 then there is no point in sending a restock notification obviously
-        if ($eventArgs->getNewValue('onHand') <= 0) {
+        // if the new stock isn't greater than 0 then it isn't restocked (obviously)
+        $newStock = $eventArgs->getNewValue('onHand') - $eventArgs->getNewValue('onHold');
+        if ($newStock <= 0) {
             return;
         }
 
