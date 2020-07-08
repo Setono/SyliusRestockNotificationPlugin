@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Setono\SyliusRestockNotificationPlugin\Resolver;
 
 use Sylius\Component\Product\Model\ProductInterface;
+use Sylius\Component\Product\Model\ProductVariantInterface;
 
 interface OutOfStockResolverInterface
 {
@@ -13,5 +14,8 @@ interface OutOfStockResolverInterface
      */
     public function hasVariantsOutOfStock(ProductInterface $product): bool;
 
+    /**
+     * @return ProductVariantInterface[]
+     */
     public function getOutOfStockVariants(ProductInterface $product): array;
 }

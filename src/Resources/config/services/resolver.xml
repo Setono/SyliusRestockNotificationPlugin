@@ -4,6 +4,8 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <service id="setono_sylius_restock_notification.resolver.out_of_stock"
-                 class="Setono\SyliusRestockNotificationPlugin\Resolver\OutOfStockResolver"/>
+                 class="Setono\SyliusRestockNotificationPlugin\Resolver\OutOfStockResolver">
+            <argument type="service" id="sylius.availability_checker"/>
+        </service>
     </services>
 </container>
