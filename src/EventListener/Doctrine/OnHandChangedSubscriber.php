@@ -41,13 +41,13 @@ final class OnHandChangedSubscriber implements EventSubscriber
         }
 
         $oldOnHand = $newOnHand = (int) $productVariant->getOnHand();
-        if($eventArgs->hasChangedField('onHand')) {
+        if ($eventArgs->hasChangedField('onHand')) {
             $oldOnHand = $eventArgs->getOldValue('onHand');
             $newOnHand = $eventArgs->getNewValue('onHand');
         }
 
         $oldOnHold = $newOnHold = (int) $productVariant->getOnHold();
-        if($eventArgs->hasChangedField('onHold')) {
+        if ($eventArgs->hasChangedField('onHold')) {
             $oldOnHold = $eventArgs->getOldValue('onHold');
             $newOnHold = $eventArgs->getNewValue('onHold');
         }
