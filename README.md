@@ -74,5 +74,18 @@ $ php bin/console doctrine:migrations:diff
 $ php bin/console doctrine:migrations:migrate
 ```
 
+### Step 6: Configure Symfony Messenger (optional, but recommended)
+This plugin uses Symfony messenger to notify the customer when products are restocked. This can be done asynchronously
+using this configuration:
+
+```yaml
+framework:
+    messenger:
+        routing:
+            # Route all command messages to the async transport
+            # This presumes that you have already set up an 'async' transport
+            'Setono\SyliusRestockNotificationPlugin\Message\Command\CommandInterface': async
+```
+
 [ico-github-actions]: https://github.com/Setono/SyliusRestockNotificationPlugin/workflows/build/badge.svg
 [link-github-actions]: https://github.com/Setono/SyliusRestockNotificationPlugin/actions
