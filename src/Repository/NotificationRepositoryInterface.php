@@ -16,4 +16,9 @@ interface NotificationRepositoryInterface extends RepositoryInterface
      * @return NotificationInterface[]
      */
     public function findByProductVariant(ProductVariantInterface $productVariant): array;
+
+    /**
+     * Will return true if a notification with the same email and product variant is present
+     */
+    public function hasNotification(NotificationInterface $notification): bool;
 }

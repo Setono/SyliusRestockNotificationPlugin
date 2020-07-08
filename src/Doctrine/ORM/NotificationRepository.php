@@ -36,4 +36,19 @@ class NotificationRepository extends EntityRepository implements NotificationRep
             ->getResult()
         ;
     }
+
+    public function hasNotification(NotificationInterface $notification): bool
+    {
+        return $this->createQueryBuilder('o')
+            ->select('COUNT(o)')
+            ->andWhere('o.productVariant = :variant')
+            ->andWhere('o.email = :email')
+            ->setParameters([
+                'variant' => $notification->getProductVariant(),
+                'email' => $notification->getEmail(),
+            ])
+            ->getQuery()
+            ->getSingleScalarResult() > 0
+        ;
+    }
 }
