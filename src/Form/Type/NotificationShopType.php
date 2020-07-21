@@ -53,6 +53,7 @@ final class NotificationShopType extends NotificationType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
+        parent::configureOptions($resolver);
         $resolver
             ->setRequired(['product'])
             ->setAllowedTypes('product', ProductInterface::class);

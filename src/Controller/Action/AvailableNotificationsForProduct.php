@@ -11,6 +11,7 @@ use Setono\SyliusRestockNotificationPlugin\Repository\NotificationRepositoryInte
 use Setono\SyliusRestockNotificationPlugin\Resolver\OutOfStockResolverInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -78,16 +79,30 @@ final class AvailableNotificationsForProduct
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var NotificationInterface $notification */
-            $notification = $form->getData();
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                /** @var NotificationInterface $notification */
+                $notification = $form->getData();
 
-            if (!$this->notificationRepository->hasNotification($notification)) {
-                $this->notificationRepository->add($notification);
+                if (!$this->notificationRepository->hasNotification($notification)) {
+                    $this->notificationRepository->add($notification);
+                }
+
+                $this->flashBag->add('success', 'setono_sylius_restock_notification.notification.subscribed');
+
+                return new RedirectResponse($request->headers->get('referer'));
             }
 
-            $this->flashBag->add('success', 'setono_sylius_restock_notification.notification.subscribed');
+            $formErrors = $form->getErrors(true, true);
+            $errorMessages = [];
+            /** @var FormError $formError */
+            foreach ($formErrors as $formError) {
+                $errorMessages[] = $formError->getMessage();
+            }
 
+            $this->flashBag->add('error', ['message' => 'setono_sylius_restock_notification.notification.error', 'parameters' => ['%errors%' => \implode(', ', $errorMessages)]]);
+
+            // Redirect user back to where he is coming from since this request can be a sub one
             return new RedirectResponse($request->headers->get('referer'));
         }
 
