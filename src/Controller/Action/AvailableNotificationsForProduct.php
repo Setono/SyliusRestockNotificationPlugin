@@ -100,7 +100,7 @@ final class AvailableNotificationsForProduct
                 $errorMessages[] = $formError->getMessage();
             }
 
-            $this->flashBag->add('error', ['message' => 'setono_sylius_restock_notification.notification.error', 'parameters' => ['{errors}' => \implode(', ', $errorMessages)]]);
+            $this->flashBag->add('error', ['message' => 'setono_sylius_restock_notification.notification.error', 'parameters' => ['%errors%' => \implode(', ', $errorMessages)]]);
 
             // Redirect user back to where he is coming from since this request can be a sub one
             return new RedirectResponse($request->headers->get('referer'));
