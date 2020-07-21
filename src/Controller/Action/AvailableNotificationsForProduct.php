@@ -11,6 +11,7 @@ use Setono\SyliusRestockNotificationPlugin\Repository\NotificationRepositoryInte
 use Setono\SyliusRestockNotificationPlugin\Resolver\OutOfStockResolverInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -92,9 +93,16 @@ final class AvailableNotificationsForProduct
                 return new RedirectResponse($request->headers->get('referer'));
             }
             if (Request::METHOD_POST === $request->getMethod()) {
-                // This is to allow to render form errors since this is loaded by subrender method
-                // In case of post request, we redirect user back to where he is coming from, and pass POST params as GET
-                return new RedirectResponse(sprintf('%s?%s', $request->headers->get('referer'), \http_build_query($request->request->all())));
+                $formErrors = $form->getErrors(true, true);
+                $errorMessages = [];
+                /** @var FormError $formError */
+                foreach ($formErrors as $formError) {
+                    $errorMessages[] = $formError->getMessage();
+                }
+
+                $this->flashBag->add('error', ['message' => 'setono_sylius_restock_notification.notification.error', 'parameters' => ['{errors}' => \implode(', ', $errorMessages)]]);
+                // Redirect user back to where he is coming from since this request can be a sub one
+                return new RedirectResponse($request->headers->get('referer'));
             }
         }
 
