@@ -1,1 +1,1 @@
-{{ render(path('setono_sylius_restock_notification_shop_available_notifications_for_product', { 'code': product.code })) }}
+{{ render(path('setono_sylius_restock_notification_shop_available_notifications_for_product', { 'code': product.code, 'notification_shop': app.request.query.get('notification_shop', []) })) }}

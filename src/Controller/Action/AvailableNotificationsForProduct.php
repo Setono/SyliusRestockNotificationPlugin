@@ -78,17 +78,24 @@ final class AvailableNotificationsForProduct
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var NotificationInterface $notification */
-            $notification = $form->getData();
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                /** @var NotificationInterface $notification */
+                $notification = $form->getData();
 
-            if (!$this->notificationRepository->hasNotification($notification)) {
-                $this->notificationRepository->add($notification);
+                if (!$this->notificationRepository->hasNotification($notification)) {
+                    $this->notificationRepository->add($notification);
+                }
+
+                $this->flashBag->add('success', 'setono_sylius_restock_notification.notification.subscribed');
+
+                return new RedirectResponse($request->headers->get('referer'));
             }
-
-            $this->flashBag->add('success', 'setono_sylius_restock_notification.notification.subscribed');
-
-            return new RedirectResponse($request->headers->get('referer'));
+            if (Request::METHOD_POST === $request->getMethod()) {
+                // This is to allow to render form errors since this is loaded by subrender method
+                // In case of post request, we redirect user back to where he is coming from, and pass POST params as GET
+                return new RedirectResponse(sprintf('%s?%s', $request->headers->get('referer'), \http_build_query($request->request->all())));
+            }
         }
 
         return new Response($this->twig->render(

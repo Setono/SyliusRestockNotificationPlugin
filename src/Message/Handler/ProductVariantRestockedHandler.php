@@ -11,6 +11,7 @@ use Sylius\Component\Product\Model\ProductVariantInterface;
 use Sylius\Component\Product\Repository\ProductVariantRepositoryInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Webmozart\Assert\Assert;
 
 final class ProductVariantRestockedHandler implements MessageHandlerInterface
 {
@@ -44,7 +45,9 @@ final class ProductVariantRestockedHandler implements MessageHandlerInterface
         $notifications = $this->notificationRepository->findByProductVariant($productVariant);
 
         foreach ($notifications as $notification) {
-            $this->commandBus->dispatch(new Notify($notification->getId()));
+            $notificationId = $notification->getId();
+            Assert::notNull($notificationId);
+            $this->commandBus->dispatch(new Notify($notificationId));
         }
     }
 }
