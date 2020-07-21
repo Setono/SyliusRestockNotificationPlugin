@@ -1,0 +1,47 @@
+setono_sylius_restock_notification:
+    email:
+        restock_notification:
+            anchor_text: Klik her for at se produktet
+            intro: |
+                <p>Hej</p>
+                <p>Du har bedt om at få en notifikation, når %product% var tilbage på lager.</p>
+                <p>Jeg har en god nyhed til dig. Produktet er lige blevet lagt på lager.</p>
+            regards: <p>Hav en rigtig god dag og nyd din shopping ;)</p>
+            subject: Dit længe ventede produkt er tilbage på lager!
+    form:
+        notification:
+            channel: Kanal
+            email: Email
+            help:
+                header: Hjælp
+                content: |
+                    <p>Når du opretter en lagernotifikation, bruges kanalen og sproget til at afgøre indholdet af
+                    emailen, som bliver sendt til kunden. Vælg derfor hvad kunden forventer.</p>
+            locale: Sprog
+            product_variant: Variant
+    menu:
+        admin:
+            main:
+                marketing:
+                    notifications: Lagernotifikationer
+    ui:
+        available_notifications:
+            header: Tilgængelige lagernotifikationer
+            explanation: |
+                <p>Nogle af varianterne på dette produkt er ikke på lager. Her kan du skrive dig op til at modtage en
+                email, når den respektive variant er tilbage på lager.</p>
+        created_at: Oprettet
+        days_waited: Dage ventet
+        edit_notification: Rediger lagernotifikation
+        email: Email
+        manage_notifications: Administrer lagernotifikationer
+        new_notification: Ny lagernotifikation
+        notifications: Lagernotifikationer
+        notify_me: Underret mig
+        sent_at: Sendt
+        state: Tilstand
+        states:
+            error: Fejl
+            pending: Afventer
+            processing: Processerer
+            sent: Sendt
