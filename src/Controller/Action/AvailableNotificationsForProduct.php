@@ -92,18 +92,18 @@ final class AvailableNotificationsForProduct
 
                 return new RedirectResponse($request->headers->get('referer'));
             }
-            if (Request::METHOD_POST === $request->getMethod()) {
-                $formErrors = $form->getErrors(true, true);
-                $errorMessages = [];
-                /** @var FormError $formError */
-                foreach ($formErrors as $formError) {
-                    $errorMessages[] = $formError->getMessage();
-                }
 
-                $this->flashBag->add('error', ['message' => 'setono_sylius_restock_notification.notification.error', 'parameters' => ['{errors}' => \implode(', ', $errorMessages)]]);
-                // Redirect user back to where he is coming from since this request can be a sub one
-                return new RedirectResponse($request->headers->get('referer'));
+            $formErrors = $form->getErrors(true, true);
+            $errorMessages = [];
+            /** @var FormError $formError */
+            foreach ($formErrors as $formError) {
+                $errorMessages[] = $formError->getMessage();
             }
+
+            $this->flashBag->add('error', ['message' => 'setono_sylius_restock_notification.notification.error', 'parameters' => ['{errors}' => \implode(', ', $errorMessages)]]);
+
+            // Redirect user back to where he is coming from since this request can be a sub one
+            return new RedirectResponse($request->headers->get('referer'));
         }
 
         return new Response($this->twig->render(
