@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\Doctrine\ORM;
 
-use Doctrine\ORM\QueryBuilder;
+use function assert;
+use Doctrine\ORM\EntityRepository;
 
+/**
+ * @mixin EntityRepository
+ */
 trait ProductVariantRepositoryTrait
 {
-    /**
-     * @return QueryBuilder
-     */
-    abstract public function createQueryBuilder($alias, $indexBy = null);
-
     public function findByPhrase(string $phrase, string $locale): array
     {
+        assert($this instanceof EntityRepository);
+
         return $this->createQueryBuilder('o')
             ->innerJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
             ->innerJoin('o.product', 'product')
