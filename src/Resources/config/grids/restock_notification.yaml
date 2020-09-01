@@ -13,7 +13,7 @@ sylius_grid:
                     label: setono_sylius_restock_notification.ui.email
                 product_variant:
                     type: twig
-                    label: sylius.ui.product_variant
+                    label: sylius.ui.variant
                     path: .
                     options:
                         template: "@SetonoSyliusRestockNotificationPlugin/admin/grid/field/product_variant.html.twig"
