@@ -14,6 +14,7 @@ sylius_grid:
                 product_variant:
                     type: twig
                     label: sylius.ui.product
+                    path: .
                     options:
                         template: "@SetonoSyliusRestockNotificationPlugin/admin/grid/field/product_variant.html.twig"
                 state:

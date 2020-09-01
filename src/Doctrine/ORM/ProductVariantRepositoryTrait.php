@@ -12,18 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 trait ProductVariantRepositoryTrait
 {
-    public function findByPhrase(string $phrase, string $locale): array
+    public function findByPhraseWithoutLocale(string $phrase): array
     {
         assert($this instanceof EntityRepository);
 
         return $this->createQueryBuilder('o')
-            ->innerJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
+            ->innerJoin('o.translations', 'translation')
             ->innerJoin('o.product', 'product')
             ->orWhere('product.code LIKE :phrase')
             ->orWhere('translation.name LIKE :phrase')
             ->orWhere('o.code LIKE :phrase')
             ->setParameter('phrase', '%' . $phrase . '%')
-            ->setParameter('locale', $locale)
             ->getQuery()
             ->getResult()
         ;

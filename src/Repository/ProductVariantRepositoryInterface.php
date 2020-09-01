@@ -14,5 +14,5 @@ interface ProductVariantRepositoryInterface extends BaseProductVariantRepository
      *
      * @return ProductVariantInterface[]
      */
-    public function findByPhrase(string $phrase, string $locale): array;
+    public function findByPhraseWithoutLocale(string $phrase): array;
 }

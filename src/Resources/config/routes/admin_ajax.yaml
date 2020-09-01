@@ -8,10 +8,9 @@ setono_sylius_restock_notification_admin_ajax_product_variant_by_phrase:
             serialization_groups: [Autocomplete]
             permission: true
             repository:
-                method: findByPhrase
+                method: findByPhraseWithoutLocale
                 arguments:
                     phrase: $phrase
-                    locale: expr:service('sylius.context.locale').getLocaleCode()
                     limit: 25
 
 setono_sylius_restock_notification_admin_ajax_product_variant_by_code:
