@@ -29,6 +29,7 @@ final class RestockNotificationEmailManager implements RestockNotificationEmailM
         $email = $notification->getEmail();
         Assert::notNull($email);
 
+        /** @psalm-suppress DeprecatedMethod */
         $this->sender->send(
             Emails::RESTOCK_NOTIFICATION,
             [$email],

@@ -7,9 +7,7 @@ namespace Setono\SyliusRestockNotificationPlugin\DependencyInjection;
 use Setono\SyliusRestockNotificationPlugin\Doctrine\ORM\NotificationRepository;
 use Setono\SyliusRestockNotificationPlugin\Form\Type\NotificationAdminType;
 use Setono\SyliusRestockNotificationPlugin\Model\Notification;
-use Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
-use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Sylius\Component\Resource\Factory\Factory;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -20,14 +18,9 @@ final class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('setono_sylius_restock_notification');
-        $rootNode = $treeBuilder->getRootNode();
 
-        $rootNode
-            ->addDefaultsIfNotSet()
-            ->children()
-                ->scalarNode('driver')->defaultValue(SyliusResourceBundle::DRIVER_DOCTRINE_ORM)->end()
-            ->end()
-        ;
+        /** @var ArrayNodeDefinition $rootNode */
+        $rootNode = $treeBuilder->getRootNode();
 
         $this->addResourcesSection($rootNode);
 
@@ -36,6 +29,7 @@ final class Configuration implements ConfigurationInterface
 
     private function addResourcesSection(ArrayNodeDefinition $node): void
     {
+        /** @psalm-suppress MixedMethodCall,PossiblyNullReference,UndefinedMethod */
         $node
             ->children()
             ->arrayNode('resources')
@@ -49,17 +43,10 @@ final class Configuration implements ConfigurationInterface
                                 ->addDefaultsIfNotSet()
                                 ->children()
                                     ->scalarNode('model')->defaultValue(Notification::class)->cannotBeEmpty()->end()
-                                    ->scalarNode('interface')->defaultValue(NotificationInterface::class)->cannotBeEmpty()->end()
                                     ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                     ->scalarNode('repository')->defaultValue(NotificationRepository::class)->cannotBeEmpty()->end()
                                     ->scalarNode('factory')->defaultValue(Factory::class)->end()
                                     ->scalarNode('form')->defaultValue(NotificationAdminType::class)->cannotBeEmpty()->end()
-                                ->end()
-                            ->end()
-                        ->end()
-                    ->end()
-                ->end()
-            ->end()
         ;
     }
 }

@@ -8,12 +8,13 @@ use Setono\SyliusRestockNotificationPlugin\Message\Command\Notify;
 use Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface;
 use Setono\SyliusRestockNotificationPlugin\Notifier\NotifierInterface;
 use Setono\SyliusRestockNotificationPlugin\Repository\NotificationRepositoryInterface;
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
-final class NotifyHandler implements MessageHandlerInterface
+final class NotifyHandler
 {
-    public function __construct(private readonly NotificationRepositoryInterface $notificationRepository, private readonly NotifierInterface $notifier)
-    {
+    public function __construct(
+        private readonly NotificationRepositoryInterface $notificationRepository,
+        private readonly NotifierInterface $notifier,
+    ) {
     }
 
     public function __invoke(Notify $message): void

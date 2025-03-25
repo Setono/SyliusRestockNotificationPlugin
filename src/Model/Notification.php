@@ -15,29 +15,21 @@ class Notification implements NotificationInterface
 {
     use TimestampableTrait;
 
-    /** @var int */
-    protected $version = 1;
+    protected int $version = 1;
 
-    /** @var int */
-    protected $id;
+    protected ?int $id = null;
 
-    /** @var ChannelInterface */
-    protected $channel;
+    protected ?ChannelInterface $channel = null;
 
-    /** @var LocaleInterface */
-    protected $locale;
+    protected ?LocaleInterface $locale = null;
 
-    /** @var string */
-    protected $state = self::STATE_PENDING;
+    protected string $state = self::STATE_PENDING;
 
-    /** @var ProductVariantInterface */
-    protected $productVariant;
+    protected ?ProductVariantInterface $productVariant = null;
 
-    /** @var string */
-    protected $email;
+    protected ?string $email = null;
 
-    /** @var DateTimeInterface|null */
-    protected $sentAt;
+    protected ?DateTimeInterface $sentAt = null;
 
     public static function getStates(): array
     {
@@ -52,11 +44,6 @@ class Notification implements NotificationInterface
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): void
-    {
-        $this->id = $id;
     }
 
     public function getChannel(): ?ChannelInterface

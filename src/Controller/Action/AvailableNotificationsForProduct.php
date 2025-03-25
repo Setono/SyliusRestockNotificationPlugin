@@ -20,8 +20,14 @@ use Twig\Environment;
 
 final class AvailableNotificationsForProduct
 {
-    public function __construct(private readonly Environment $twig, private readonly ProductRepositoryInterface $productRepository, private readonly FormFactoryInterface $formFactory, private readonly OutOfStockResolverInterface $outOfStockResolver, private readonly FactoryInterface $notificationFactory, private readonly NotificationRepositoryInterface $notificationRepository)
-    {
+    public function __construct(
+        private readonly Environment $twig,
+        private readonly ProductRepositoryInterface $productRepository,
+        private readonly FormFactoryInterface $formFactory,
+        private readonly OutOfStockResolverInterface $outOfStockResolver,
+        private readonly FactoryInterface $notificationFactory,
+        private readonly NotificationRepositoryInterface $notificationRepository,
+    ) {
     }
 
     public function __invoke(Request $request, string $code): Response
@@ -31,7 +37,7 @@ final class AvailableNotificationsForProduct
             throw new NotFoundHttpException(sprintf('The product with code "%s" does not exist', $code));
         }
 
-        // if none of the products variants is out of stock do not show anything
+        // if none of the product variants is out of stock, do not show anything
         if (!$this->outOfStockResolver->hasVariantsOutOfStock($product)) {
             return new Response('');
         }
@@ -51,7 +57,7 @@ final class AvailableNotificationsForProduct
                     $this->notificationRepository->add($notification);
                 }
 
-                $this->flashBag->add('success', 'setono_sylius_restock_notification.notification.subscribed');
+                //$this->flashBag->add('success', 'setono_sylius_restock_notification.notification.subscribed');
 
                 return new RedirectResponse($request->headers->get('referer'));
             }
@@ -63,7 +69,7 @@ final class AvailableNotificationsForProduct
                 $errorMessages[] = $formError->getMessage();
             }
 
-            $this->flashBag->add('error', ['message' => 'setono_sylius_restock_notification.notification.error', 'parameters' => ['%errors%' => \implode(', ', $errorMessages)]]);
+            //$this->flashBag->add('error', ['message' => 'setono_sylius_restock_notification.notification.error', 'parameters' => ['%errors%' => \implode(', ', $errorMessages)]]);
 
             // Redirect user back to where he is coming from since this request can be a sub one
             return new RedirectResponse($request->headers->get('referer'));
