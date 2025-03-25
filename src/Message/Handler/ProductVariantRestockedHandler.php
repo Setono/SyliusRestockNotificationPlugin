@@ -23,7 +23,7 @@ final class ProductVariantRestockedHandler
 
     public function __invoke(ProductVariantRestocked $message): void
     {
-        $productVariant = $this->productVariantRepository->find($message->getProductVariantId());
+        $productVariant = $this->productVariantRepository->find($message->productVariant);
 
         if (!$productVariant instanceof ProductVariantInterface) {
             return;

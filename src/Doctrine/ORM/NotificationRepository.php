@@ -8,12 +8,13 @@ use Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface;
 use Setono\SyliusRestockNotificationPlugin\Repository\NotificationRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Product\Model\ProductVariantInterface;
+use Webmozart\Assert\Assert;
 
 class NotificationRepository extends EntityRepository implements NotificationRepositoryInterface
 {
     public function findOneByIdInState(int $id, string $state): ?NotificationInterface
     {
-        return $this->createQueryBuilder('o')
+        $obj = $this->createQueryBuilder('o')
             ->andWhere('o.id = :id')
             ->andWhere('o.state = :state')
             ->setParameters([
@@ -23,11 +24,15 @@ class NotificationRepository extends EntityRepository implements NotificationRep
             ->getQuery()
             ->getOneOrNullResult()
         ;
+
+        Assert::nullOrIsInstanceOf($obj, NotificationInterface::class);
+
+        return $obj;
     }
 
     public function findByProductVariant(ProductVariantInterface $productVariant): array
     {
-        return $this->createQueryBuilder('o')
+        $objs = $this->createQueryBuilder('o')
             ->andWhere('o.productVariant = :variant')
             ->setParameters([
                 'variant' => $productVariant,
@@ -35,6 +40,11 @@ class NotificationRepository extends EntityRepository implements NotificationRep
             ->getQuery()
             ->getResult()
         ;
+
+        Assert::isArray($objs);
+        Assert::allIsInstanceOf($objs, NotificationInterface::class);
+
+        return $objs;
     }
 
     public function hasNotification(NotificationInterface $notification): bool

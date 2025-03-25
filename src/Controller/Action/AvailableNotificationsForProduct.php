@@ -59,7 +59,7 @@ final class AvailableNotificationsForProduct
 
                 //$this->flashBag->add('success', 'setono_sylius_restock_notification.notification.subscribed');
 
-                return new RedirectResponse($request->headers->get('referer'));
+                return new RedirectResponse((string) $request->headers->get('referer'));
             }
 
             $formErrors = $form->getErrors(true, true);
@@ -71,8 +71,8 @@ final class AvailableNotificationsForProduct
 
             //$this->flashBag->add('error', ['message' => 'setono_sylius_restock_notification.notification.error', 'parameters' => ['%errors%' => \implode(', ', $errorMessages)]]);
 
-            // Redirect user back to where he is coming from since this request can be a sub one
-            return new RedirectResponse($request->headers->get('referer'));
+            // Redirect the user back to where he is coming from since this request can be a sub one
+            return new RedirectResponse((string) $request->headers->get('referer'));
         }
 
         return new Response($this->twig->render(

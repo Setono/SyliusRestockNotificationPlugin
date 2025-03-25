@@ -40,7 +40,7 @@ final class OutOfStockProductVariantChoiceType extends AbstractType
 
                     $product = $productVariant->getProduct();
                     if (null !== $product) {
-                        $str = $product->getName() . '(' . $str . ')';
+                        $str = sprintf('%s (%s)', (string) $product->getName(), $str);
                     }
                 }
 

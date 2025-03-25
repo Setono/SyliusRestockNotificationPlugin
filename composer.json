@@ -45,6 +45,7 @@
         "matthiasnoback/symfony-dependency-injection-test": "^4.3 || ^5.1",
         "phpunit/phpunit": "^9.6.20",
         "psalm/plugin-phpunit": "^0.18.4",
+        "psalm/plugin-symfony": "^5.2",
         "setono/code-quality-pack": "^2.8.1",
         "shipmonk/composer-dependency-analyser": "^1.6",
         "sylius/sylius": "~1.12.19",

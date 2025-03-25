@@ -38,14 +38,14 @@ final class OnHandChangedSubscriber implements EventSubscriber
 
         $oldOnHand = $newOnHand = (int) $productVariant->getOnHand();
         if ($eventArgs->hasChangedField('onHand')) {
-            $oldOnHand = $eventArgs->getOldValue('onHand');
-            $newOnHand = $eventArgs->getNewValue('onHand');
+            $oldOnHand = (int) $eventArgs->getOldValue('onHand');
+            $newOnHand = (int) $eventArgs->getNewValue('onHand');
         }
 
         $oldOnHold = $newOnHold = (int) $productVariant->getOnHold();
         if ($eventArgs->hasChangedField('onHold')) {
-            $oldOnHold = $eventArgs->getOldValue('onHold');
-            $newOnHold = $eventArgs->getNewValue('onHold');
+            $oldOnHold = (int) $eventArgs->getOldValue('onHold');
+            $newOnHold = (int) $eventArgs->getNewValue('onHold');
         }
 
         // if the old stock is greater than 0, then the product isn't restocked (it was in stock)
