@@ -6,16 +6,11 @@ This plugin allows customers to sign up for notifications when a product is back
 
 ## Installation
 
-### Step 1: Download the plugin
-
-This is a private plugin, so you need to add a custom repository to your `composer.json`:
-
 ```bash
-$ composer config repositories.setono-sylius-restock-notification vcs git@github.com:Setono/SyliusRestockNotificationPlugin.git
-$ composer require setono/sylius-restock-notification-plugin
+composer require setono/sylius-restock-notification-plugin
 ```
 
-### Step 2: Enable the plugin
+### Enable the plugin
 
 Then, enable the plugin by adding it to the list of registered plugins/bundles
 in the `config/bundles.php` file of your project before (!) `SyliusGridBundle` and the `FrameworkBundle`:
@@ -33,7 +28,7 @@ return [
 ];
 ```
 
-### Step 3: Configure plugin
+### Configure plugin
 
 Add this file to your `config/packages` directory:
 ```yaml
@@ -49,7 +44,7 @@ setono_sylius_restock_notification:
     resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/routes.yaml"
 ```
 
-### Step 4: Add template
+### Add template
 If you use the new Sylius UI template event system, you can add the template like this:
 
 ```yaml
@@ -70,11 +65,11 @@ If you don't use the Sylius UI template event system, you can just include the t
 ### Step 5: Update your database schema
 
 ```bash
-$ php bin/console doctrine:migrations:diff
-$ php bin/console doctrine:migrations:migrate
+php bin/console doctrine:migrations:diff
+php bin/console doctrine:migrations:migrate
 ```
 
-### Step 6: Configure Symfony Messenger (optional, but recommended)
+### Configure Symfony Messenger (optional, but recommended)
 This plugin uses Symfony messenger to notify the customer when products are restocked. This can be done asynchronously
 using this configuration:
 
