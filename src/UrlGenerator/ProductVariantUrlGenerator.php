@@ -21,7 +21,7 @@ final class ProductVariantUrlGenerator implements ProductVariantUrlGeneratorInte
     public function generate(
         ProductVariantInterface $productVariant,
         array $parameters = [],
-        int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH
+        int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH,
     ): string {
         return $this->productVariantUrlGenerator->generate($productVariant, $parameters, $referenceType);
     }

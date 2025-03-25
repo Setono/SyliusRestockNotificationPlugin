@@ -24,7 +24,7 @@ final class NotificationShopType extends NotificationType
         ChannelContextInterface $channelContext,
         LocaleContextInterface $localeContext,
         string $dataClass,
-        array $validationGroups = []
+        array $validationGroups = [],
     ) {
         parent::__construct($dataClass, $validationGroups);
 

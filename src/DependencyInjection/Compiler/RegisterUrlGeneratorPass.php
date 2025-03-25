@@ -20,8 +20,8 @@ final class RegisterUrlGeneratorPass implements CompilerPassInterface
     public function process(ContainerBuilder $container): void
     {
         $bundles = $container->getParameter('kernel.bundles');
-        if (array_key_exists('SetonoSyliusVariantLinkPlugin', $bundles)
-            && $container->has('setono_sylius_variant_link.url_generator.product_variant.default')
+        if (array_key_exists('SetonoSyliusVariantLinkPlugin', $bundles) &&
+            $container->has('setono_sylius_variant_link.url_generator.product_variant.default')
         ) {
             $definition = $this->getProductVariantUrlGeneratorDefinition();
         } else {

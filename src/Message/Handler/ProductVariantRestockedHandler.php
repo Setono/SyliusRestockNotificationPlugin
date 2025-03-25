@@ -27,7 +27,7 @@ final class ProductVariantRestockedHandler implements MessageHandlerInterface
     public function __construct(
         ProductVariantRepositoryInterface $productVariantRepository,
         NotificationRepositoryInterface $notificationRepository,
-        MessageBusInterface $commandBus
+        MessageBusInterface $commandBus,
     ) {
         $this->productVariantRepository = $productVariantRepository;
         $this->notificationRepository = $notificationRepository;

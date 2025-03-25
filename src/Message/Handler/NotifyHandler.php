@@ -27,7 +27,8 @@ final class NotifyHandler implements MessageHandlerInterface
     public function __invoke(Notify $message): void
     {
         $notification = $this->notificationRepository->findOneByIdInState(
-            $message->getNotificationId(), NotificationInterface::STATE_PENDING
+            $message->getNotificationId(),
+            NotificationInterface::STATE_PENDING,
         );
 
         if (null === $notification) {

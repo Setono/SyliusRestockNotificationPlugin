@@ -16,7 +16,6 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Twig\Environment;
 
@@ -106,7 +105,7 @@ final class AvailableNotificationsForProduct
             [
                 'form' => $form->createView(),
                 'product' => $product,
-            ]
+            ],
         ));
     }
 }

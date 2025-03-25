@@ -28,7 +28,7 @@ final class Notifier implements NotifierInterface
     public function __construct(
         Registry $workflowRegistry,
         ManagerRegistry $managerRegistry,
-        RestockNotificationEmailManagerInterface $restockNotificationEmailManager
+        RestockNotificationEmailManagerInterface $restockNotificationEmailManager,
     ) {
         $this->workflowRegistry = $workflowRegistry;
         $this->managerRegistry = $managerRegistry;
@@ -84,7 +84,8 @@ final class Notifier implements NotifierInterface
         $manager = $this->managerRegistry->getManagerForClass(get_class($object));
         if (null === $manager) {
             throw new RuntimeException(sprintf(
-                'The class %s does not have a manager associated with it', get_class($object)
+                'The class %s does not have a manager associated with it',
+                get_class($object),
             ));
         }
 

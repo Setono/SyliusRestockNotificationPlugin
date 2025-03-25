@@ -16,6 +16,6 @@ interface ProductVariantUrlGeneratorInterface
     public function generate(
         ProductVariantInterface $productVariant,
         array $parameters = [],
-        int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH
+        int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH,
     ): string;
 }

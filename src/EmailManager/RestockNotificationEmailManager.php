@@ -40,7 +40,8 @@ final class RestockNotificationEmailManager implements RestockNotificationEmailM
                 'notification' => $notification,
                 'channel' => $channel,
                 'localeCode' => $localeCode,
-            ])
+            ],
+        )
         ;
     }
 }
