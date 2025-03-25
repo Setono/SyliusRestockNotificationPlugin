@@ -13,7 +13,6 @@
             <argument type="service" id="setono_sylius_restock_notification.resolver.out_of_stock"/>
             <argument type="service" id="setono_sylius_restock_notification.factory.notification"/>
             <argument type="service" id="setono_sylius_restock_notification.repository.notification"/>
-            <argument type="service" id="session.flash_bag"/>
         </service>
     </services>
 </container>

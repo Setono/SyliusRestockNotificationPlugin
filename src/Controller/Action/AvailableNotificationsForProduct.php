@@ -40,9 +40,6 @@ final class AvailableNotificationsForProduct
     /** @var NotificationRepositoryInterface */
     private $notificationRepository;
 
-    /** @var FlashBagInterface */
-    private $flashBag;
-
     public function __construct(
         Environment $twig,
         ProductRepositoryInterface $productRepository,
@@ -50,7 +47,6 @@ final class AvailableNotificationsForProduct
         OutOfStockResolverInterface $outOfStockResolver,
         FactoryInterface $notificationFactory,
         NotificationRepositoryInterface $notificationRepository,
-        FlashBagInterface $flashBag
     ) {
         $this->twig = $twig;
         $this->productRepository = $productRepository;
@@ -58,7 +54,6 @@ final class AvailableNotificationsForProduct
         $this->outOfStockResolver = $outOfStockResolver;
         $this->notificationFactory = $notificationFactory;
         $this->notificationRepository = $notificationRepository;
-        $this->flashBag = $flashBag;
     }
 
     public function __invoke(Request $request, string $code): Response

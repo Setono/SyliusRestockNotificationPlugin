@@ -1,10 +1,8 @@
 imports:
     - { resource: "@SyliusCoreBundle/Resources/config/app/config.yml" }
-
     - { resource: "@SyliusAdminBundle/Resources/config/app/config.yml" }
-    - { resource: "@SyliusAdminApiBundle/Resources/config/app/config.yml" }
-
     - { resource: "@SyliusShopBundle/Resources/config/app/config.yml" }
+    - { resource: "@SyliusApiBundle/Resources/config/app/config.yaml" }
 
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
@@ -13,7 +11,7 @@ sylius_product:
     resources:
         product_variant:
             classes:
-                repository: Tests\Setono\SyliusRestockNotificationPlugin\Application\Repository\ProductVariantRepository
+                repository: Setono\SyliusRestockNotificationPlugin\Tests\Application\Repository\ProductVariantRepository
 
 sylius_shop:
     product_grid:
@@ -24,4 +22,6 @@ sylius_ui:
         sylius.shop.product.show.right_sidebar:
             blocks:
                 setono_sylius_restock_notification_available_notifications: "@SetonoSyliusRestockNotificationPlugin/shop/notification/available.html.twig"
-        
+
+sylius_api:
+    enabled: true
