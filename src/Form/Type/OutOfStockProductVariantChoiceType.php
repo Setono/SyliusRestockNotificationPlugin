@@ -14,20 +14,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class OutOfStockProductVariantChoiceType extends AbstractType
 {
-    /** @var OutOfStockResolverInterface */
-    private $outOfStockResolver;
-
-    public function __construct(OutOfStockResolverInterface $outOfStockResolver)
+    public function __construct(private readonly OutOfStockResolverInterface $outOfStockResolver)
     {
-        $this->outOfStockResolver = $outOfStockResolver;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
-            ->setDefault('choices', function (Options $options): array {
-                return $this->outOfStockResolver->getOutOfStockVariants($options['product']);
-            })
+            ->setDefault('choices', fn (Options $options): array => $this->outOfStockResolver->getOutOfStockVariants($options['product']))
             ->setDefault('choice_label', static function (ProductVariantInterface $productVariant): string {
                 $str = '';
 

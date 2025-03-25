@@ -10,12 +10,8 @@ namespace Setono\SyliusRestockNotificationPlugin\Message\Event;
  */
 final class ProductVariantRestocked implements EventInterface
 {
-    /** @var int */
-    private $productVariantId;
-
-    public function __construct(int $productVariantId)
+    public function __construct(private readonly int $productVariantId)
     {
-        $this->productVariantId = $productVariantId;
     }
 
     public function getProductVariantId(): int

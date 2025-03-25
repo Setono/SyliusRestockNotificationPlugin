@@ -14,12 +14,8 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 final class OnHandChangedSubscriber implements EventSubscriber
 {
-    /** @var MessageBusInterface */
-    private $eventBus;
-
-    public function __construct(MessageBusInterface $eventBus)
+    public function __construct(private readonly MessageBusInterface $eventBus)
     {
-        $this->eventBus = $eventBus;
     }
 
     public function getSubscribedEvents(): array

@@ -21,38 +21,8 @@ use Twig\Environment;
 
 final class AvailableNotificationsForProduct
 {
-    /** @var Environment */
-    private $twig;
-
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
-
-    /** @var FormFactoryInterface */
-    private $formFactory;
-
-    /** @var OutOfStockResolverInterface */
-    private $outOfStockResolver;
-
-    /** @var FactoryInterface */
-    private $notificationFactory;
-
-    /** @var NotificationRepositoryInterface */
-    private $notificationRepository;
-
-    public function __construct(
-        Environment $twig,
-        ProductRepositoryInterface $productRepository,
-        FormFactoryInterface $formFactory,
-        OutOfStockResolverInterface $outOfStockResolver,
-        FactoryInterface $notificationFactory,
-        NotificationRepositoryInterface $notificationRepository,
-    ) {
-        $this->twig = $twig;
-        $this->productRepository = $productRepository;
-        $this->formFactory = $formFactory;
-        $this->outOfStockResolver = $outOfStockResolver;
-        $this->notificationFactory = $notificationFactory;
-        $this->notificationRepository = $notificationRepository;
+    public function __construct(private readonly Environment $twig, private readonly ProductRepositoryInterface $productRepository, private readonly FormFactoryInterface $formFactory, private readonly OutOfStockResolverInterface $outOfStockResolver, private readonly FactoryInterface $notificationFactory, private readonly NotificationRepositoryInterface $notificationRepository)
+    {
     }
 
     public function __invoke(Request $request, string $code): Response

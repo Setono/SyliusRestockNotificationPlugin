@@ -16,23 +16,8 @@ use Symfony\Component\Workflow\Registry;
 
 final class Notifier implements NotifierInterface
 {
-    /** @var Registry */
-    private $workflowRegistry;
-
-    /** @var ManagerRegistry */
-    private $managerRegistry;
-
-    /** @var RestockNotificationEmailManagerInterface */
-    private $restockNotificationEmailManager;
-
-    public function __construct(
-        Registry $workflowRegistry,
-        ManagerRegistry $managerRegistry,
-        RestockNotificationEmailManagerInterface $restockNotificationEmailManager,
-    ) {
-        $this->workflowRegistry = $workflowRegistry;
-        $this->managerRegistry = $managerRegistry;
-        $this->restockNotificationEmailManager = $restockNotificationEmailManager;
+    public function __construct(private readonly Registry $workflowRegistry, private readonly ManagerRegistry $managerRegistry, private readonly RestockNotificationEmailManagerInterface $restockNotificationEmailManager)
+    {
     }
 
     public function notify(NotificationInterface $notification): void
@@ -81,11 +66,11 @@ final class Notifier implements NotifierInterface
 
     private function getManager(object $object): ObjectManager
     {
-        $manager = $this->managerRegistry->getManagerForClass(get_class($object));
+        $manager = $this->managerRegistry->getManagerForClass($object::class);
         if (null === $manager) {
             throw new RuntimeException(sprintf(
                 'The class %s does not have a manager associated with it',
-                get_class($object),
+                $object::class,
             ));
         }
 

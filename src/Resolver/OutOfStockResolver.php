@@ -15,12 +15,8 @@ final class OutOfStockResolver implements OutOfStockResolverInterface
     /** @var ProductVariantInterface[][] */
     private $cache = [];
 
-    /** @var AvailabilityCheckerInterface */
-    private $availabilityChecker;
-
-    public function __construct(AvailabilityCheckerInterface $availabilityChecker)
+    public function __construct(private readonly AvailabilityCheckerInterface $availabilityChecker)
     {
-        $this->availabilityChecker = $availabilityChecker;
     }
 
     public function hasVariantsOutOfStock(ProductInterface $product): bool

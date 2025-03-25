@@ -17,12 +17,8 @@ use Webmozart\Assert\Assert;
  */
 final class ProductUrlGenerator implements ProductVariantUrlGeneratorInterface
 {
-    /** @var UrlGeneratorInterface */
-    private $urlGenerator;
-
-    public function __construct(UrlGeneratorInterface $urlGenerator)
+    public function __construct(private readonly UrlGeneratorInterface $urlGenerator)
     {
-        $this->urlGenerator = $urlGenerator;
     }
 
     public function generate(

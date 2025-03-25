@@ -14,22 +14,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class NotificationShopType extends NotificationType
 {
-    /** @var ChannelContextInterface */
-    private $channelContext;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
     public function __construct(
-        ChannelContextInterface $channelContext,
-        LocaleContextInterface $localeContext,
+        private readonly ChannelContextInterface $channelContext,
+        private readonly LocaleContextInterface $localeContext,
         string $dataClass,
         array $validationGroups = [],
     ) {
         parent::__construct($dataClass, $validationGroups);
-
-        $this->channelContext = $channelContext;
-        $this->localeContext = $localeContext;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void

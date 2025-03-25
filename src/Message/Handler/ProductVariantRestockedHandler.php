@@ -15,23 +15,8 @@ use Webmozart\Assert\Assert;
 
 final class ProductVariantRestockedHandler implements MessageHandlerInterface
 {
-    /** @var ProductVariantRepositoryInterface */
-    private $productVariantRepository;
-
-    /** @var NotificationRepositoryInterface */
-    private $notificationRepository;
-
-    /** @var MessageBusInterface */
-    private $commandBus;
-
-    public function __construct(
-        ProductVariantRepositoryInterface $productVariantRepository,
-        NotificationRepositoryInterface $notificationRepository,
-        MessageBusInterface $commandBus,
-    ) {
-        $this->productVariantRepository = $productVariantRepository;
-        $this->notificationRepository = $notificationRepository;
-        $this->commandBus = $commandBus;
+    public function __construct(private readonly ProductVariantRepositoryInterface $productVariantRepository, private readonly NotificationRepositoryInterface $notificationRepository, private readonly MessageBusInterface $commandBus)
+    {
     }
 
     public function __invoke(ProductVariantRestocked $message): void

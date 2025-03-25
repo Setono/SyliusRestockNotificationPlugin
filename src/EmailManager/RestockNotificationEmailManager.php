@@ -11,12 +11,8 @@ use Webmozart\Assert\Assert;
 
 final class RestockNotificationEmailManager implements RestockNotificationEmailManagerInterface
 {
-    /** @var SenderInterface */
-    private $sender;
-
-    public function __construct(SenderInterface $sender)
+    public function __construct(private readonly SenderInterface $sender)
     {
-        $this->sender = $sender;
     }
 
     public function sendRestockNotificationEmail(NotificationInterface $notification): void

@@ -10,12 +10,8 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class ProductVariantUrlGenerator implements ProductVariantUrlGeneratorInterface
 {
-    /** @var VariantLinkPluginProductVariantUrlGeneratorInterface */
-    private $productVariantUrlGenerator;
-
-    public function __construct(VariantLinkPluginProductVariantUrlGeneratorInterface $productVariantUrlGenerator)
+    public function __construct(private readonly VariantLinkPluginProductVariantUrlGeneratorInterface $productVariantUrlGenerator)
     {
-        $this->productVariantUrlGenerator = $productVariantUrlGenerator;
     }
 
     public function generate(

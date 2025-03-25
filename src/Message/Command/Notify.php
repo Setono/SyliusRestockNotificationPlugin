@@ -6,12 +6,8 @@ namespace Setono\SyliusRestockNotificationPlugin\Message\Command;
 
 final class Notify implements CommandInterface
 {
-    /** @var int */
-    private $notificationId;
-
-    public function __construct(int $notificationId)
+    public function __construct(private readonly int $notificationId)
     {
-        $this->notificationId = $notificationId;
     }
 
     public function getNotificationId(): int

@@ -14,7 +14,7 @@ final class DiffDaysExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('setono_restock_notification_diff_days', [$this, 'diffDays']),
+            new TwigFilter('setono_restock_notification_diff_days', $this->diffDays(...)),
         ];
     }
 

@@ -12,16 +12,8 @@ use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
 final class NotifyHandler implements MessageHandlerInterface
 {
-    /** @var NotificationRepositoryInterface */
-    private $notificationRepository;
-
-    /** @var NotifierInterface */
-    private $notifier;
-
-    public function __construct(NotificationRepositoryInterface $notificationRepository, NotifierInterface $notifier)
+    public function __construct(private readonly NotificationRepositoryInterface $notificationRepository, private readonly NotifierInterface $notifier)
     {
-        $this->notificationRepository = $notificationRepository;
-        $this->notifier = $notifier;
     }
 
     public function __invoke(Notify $message): void
