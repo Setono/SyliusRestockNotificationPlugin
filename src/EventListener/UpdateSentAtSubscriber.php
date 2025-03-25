@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\EventListener;
 
-use Safe\DateTime;
-use function Safe\sprintf;
 use Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface;
 use Setono\SyliusRestockNotificationPlugin\Workflow\NotificationWorkflow;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -27,6 +25,6 @@ final class UpdateSentAtSubscriber implements EventSubscriberInterface
         $notification = $event->getSubject();
         Assert::isInstanceOf($notification, NotificationInterface::class);
 
-        $notification->setSentAt(new DateTime());
+        $notification->setSentAt(new \DateTimeImmutable());
     }
 }

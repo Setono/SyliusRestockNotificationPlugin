@@ -7,7 +7,6 @@ namespace Setono\SyliusRestockNotificationPlugin\Notifier;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
 use RuntimeException;
-use function Safe\sprintf;
 use Setono\SyliusRestockNotificationPlugin\EmailManager\RestockNotificationEmailManagerInterface;
 use Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface;
 use Setono\SyliusRestockNotificationPlugin\Workflow\NotificationWorkflow;

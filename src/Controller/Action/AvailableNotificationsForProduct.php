@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\Controller\Action;
 
-use function Safe\sprintf;
 use Setono\SyliusRestockNotificationPlugin\Form\Type\NotificationShopType;
 use Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface;
 use Setono\SyliusRestockNotificationPlugin\Repository\NotificationRepositoryInterface;
