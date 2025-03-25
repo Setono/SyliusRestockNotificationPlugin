@@ -1,8 +1,8 @@
 {
     "name": "setono/sylius-restock-notification-plugin",
     "description": "Plugin that allows customer to sign up for notifications when a product is back in stock",
-    "type": "sylius-plugin",
     "license": "MIT",
+    "type": "sylius-plugin",
     "require": {
         "php": ">=8.1",
         "sylius/core-bundle": "^1.0",
