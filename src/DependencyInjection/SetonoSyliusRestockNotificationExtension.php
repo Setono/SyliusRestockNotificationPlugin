@@ -94,7 +94,10 @@ final class SetonoSyliusRestockNotificationExtension extends AbstractResourceExt
                             'type' => 'twig',
                             'label' => 'sylius.ui.state',
                             'options' => [
-                                'template' => '@SetonoSyliusRestockNotificationPlugin/admin/grid/field/state.html.twig',
+                                'template' => '@SyliusUi/Grid/Field/state.html.twig',
+                                'vars' => [
+                                    'labels' => '@SetonoSyliusRestockNotificationPlugin/admin/grid/field/state',
+                                ],
                             ],
                         ],
                         'createdAt' => [
