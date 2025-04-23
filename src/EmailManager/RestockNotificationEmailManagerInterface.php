@@ -8,5 +8,5 @@ use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInter
 
 interface RestockNotificationEmailManagerInterface
 {
-    public function sendRestockNotificationEmail(RestockNotificationRequestInterface $notification): void;
+    public function sendRestockNotificationEmail(RestockNotificationRequestInterface $restockNotificationRequest): void;
 }
