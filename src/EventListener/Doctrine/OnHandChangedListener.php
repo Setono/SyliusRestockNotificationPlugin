@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\EventListener\Doctrine;
 
-use Doctrine\ORM\Event\PostUpdateEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Setono\SyliusRestockNotificationPlugin\Message\Event\ProductVariantRestocked;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -61,7 +61,7 @@ final class OnHandChangedListener
         $this->candidates[(int) $productVariant->getId()] = true;
     }
 
-    public function postUpdate(PostUpdateEventArgs $eventArgs): void
+    public function postUpdate(LifecycleEventArgs $eventArgs): void
     {
         $productVariant = $eventArgs->getObject();
         if (!$productVariant instanceof ProductVariantInterface) {
