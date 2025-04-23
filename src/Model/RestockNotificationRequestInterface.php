@@ -11,7 +11,7 @@ use Sylius\Component\Product\Model\ProductVariantInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TimestampableInterface;
 
-interface NotificationInterface extends ResourceInterface, TimestampableInterface, ChannelAwareInterface
+interface RestockNotificationRequestInterface extends ResourceInterface, TimestampableInterface, ChannelAwareInterface
 {
     public const STATE_PENDING = 'pending';
 

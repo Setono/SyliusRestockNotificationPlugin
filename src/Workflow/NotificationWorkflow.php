@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\Workflow;
 
-use Setono\SyliusRestockNotificationPlugin\Model\Notification;
+use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequest;
 
 final class NotificationWorkflow
 {
@@ -22,6 +22,6 @@ final class NotificationWorkflow
 
     public static function getStates(): array
     {
-        return array_values(Notification::getStates());
+        return array_values(RestockNotificationRequest::getStates());
     }
 }

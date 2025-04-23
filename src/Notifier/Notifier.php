@@ -8,7 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
 use RuntimeException;
 use Setono\SyliusRestockNotificationPlugin\EmailManager\RestockNotificationEmailManagerInterface;
-use Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface;
+use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
 use Setono\SyliusRestockNotificationPlugin\Workflow\NotificationWorkflow;
 use Sylius\Component\Inventory\Model\StockableInterface;
 use Symfony\Component\Workflow\Registry;
@@ -19,7 +19,7 @@ final class Notifier implements NotifierInterface
     {
     }
 
-    public function notify(NotificationInterface $notification): void
+    public function notify(RestockNotificationRequestInterface $notification): void
     {
         $productVariant = $notification->getProductVariant();
         if (!$productVariant instanceof StockableInterface) {

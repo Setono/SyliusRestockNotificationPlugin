@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Setono\SyliusRestockNotificationPlugin\Controller\Action;
 
 use Setono\SyliusRestockNotificationPlugin\Form\Type\NotificationShopType;
-use Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface;
-use Setono\SyliusRestockNotificationPlugin\Repository\NotificationRepositoryInterface;
+use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
+use Setono\SyliusRestockNotificationPlugin\Repository\RestockNotificationRequestRepositoryInterface;
 use Setono\SyliusRestockNotificationPlugin\Resolver\OutOfStockResolverInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -26,7 +26,7 @@ final class AvailableNotificationsForProduct
         private readonly FormFactoryInterface $formFactory,
         private readonly OutOfStockResolverInterface $outOfStockResolver,
         private readonly FactoryInterface $notificationFactory,
-        private readonly NotificationRepositoryInterface $notificationRepository,
+        private readonly RestockNotificationRequestRepositoryInterface $notificationRepository,
     ) {
     }
 
@@ -50,10 +50,10 @@ final class AvailableNotificationsForProduct
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                /** @var NotificationInterface $notification */
+                /** @var RestockNotificationRequestInterface $notification */
                 $notification = $form->getData();
 
-                if (!$this->notificationRepository->hasNotification($notification)) {
+                if (!$this->notificationRepository->hasRestockNotificationRequest($notification)) {
                     $this->notificationRepository->add($notification);
                 }
 

@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Setono\SyliusRestockNotificationPlugin\Message\Handler;
 
 use Setono\SyliusRestockNotificationPlugin\Message\Command\Notify;
-use Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface;
+use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
 use Setono\SyliusRestockNotificationPlugin\Notifier\NotifierInterface;
-use Setono\SyliusRestockNotificationPlugin\Repository\NotificationRepositoryInterface;
+use Setono\SyliusRestockNotificationPlugin\Repository\RestockNotificationRequestRepositoryInterface;
 
 final class NotifyHandler
 {
     public function __construct(
-        private readonly NotificationRepositoryInterface $notificationRepository,
+        private readonly RestockNotificationRequestRepositoryInterface $notificationRepository,
         private readonly NotifierInterface $notifier,
     ) {
     }
@@ -21,7 +21,7 @@ final class NotifyHandler
     {
         $notification = $this->notificationRepository->findOneByIdInState(
             $message->getNotificationId(),
-            NotificationInterface::STATE_PENDING,
+            RestockNotificationRequestInterface::STATE_PENDING,
         );
 
         if (null === $notification) {

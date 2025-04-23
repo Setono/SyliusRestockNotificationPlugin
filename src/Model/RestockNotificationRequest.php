@@ -11,7 +11,7 @@ use Sylius\Component\Product\Model\ProductVariantInterface;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Webmozart\Assert\Assert;
 
-class Notification implements NotificationInterface
+class RestockNotificationRequest implements RestockNotificationRequestInterface
 {
     use TimestampableTrait;
 

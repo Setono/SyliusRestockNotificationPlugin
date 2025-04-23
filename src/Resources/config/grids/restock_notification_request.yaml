@@ -1,10 +1,10 @@
 sylius_grid:
     grids:
-        setono_sylius_restock_notification_admin_notification:
+        setono_sylius_restock_notification_admin_restock_notification_request:
             driver:
                 name: doctrine/orm
                 options:
-                    class: "%setono_sylius_restock_notification.model.notification.class%"
+                    class: "%setono_sylius_restock_notification.model.restock_notification_request.class%"
             sorting:
                 createdAt: desc
             fields:
@@ -47,10 +47,10 @@ sylius_grid:
                     label: sylius.ui.state
                     form_options:
                         choices:
-                            setono_sylius_restock_notification.ui.states.error: !php/const Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface::STATE_ERROR
-                            setono_sylius_restock_notification.ui.states.pending: !php/const Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface::STATE_PENDING
-                            setono_sylius_restock_notification.ui.states.processing: !php/const Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface::STATE_PROCESSING
-                            setono_sylius_restock_notification.ui.states.sent: !php/const Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface::STATE_SENT
+                            setono_sylius_restock_restock_notification_request.ui.states.error: !php/const Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface::STATE_ERROR
+                            setono_sylius_restock_restock_notification_request.ui.states.pending: !php/const Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface::STATE_PENDING
+                            setono_sylius_restock_restock_notification_request.ui.states.processing: !php/const Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface::STATE_PROCESSING
+                            setono_sylius_restock_restock_notification_request.ui.states.sent: !php/const Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface::STATE_SENT
             actions:
                 main:
                     create:

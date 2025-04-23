@@ -7,5 +7,16 @@
                  class="Setono\SyliusRestockNotificationPlugin\Twig\DiffDaysExtension">
             <tag name="twig.extension"/>
         </service>
+
+        <service id="Setono\SyliusRestockNotificationPlugin\Twig\Extension">
+            <tag name="twig.extension"/>
+        </service>
+
+        <service id="Setono\SyliusRestockNotificationPlugin\Twig\Runtime">
+            <argument type="service" id="sylius.availability_checker.default"/>
+            <argument>%kernel.debug%</argument>
+
+            <tag name="twig.runtime"/>
+        </service>
     </services>
 </container>

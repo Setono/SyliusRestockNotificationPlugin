@@ -1,5 +1,5 @@
 imports:
-    - { resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/grids/restock_notification.yaml" }
+    - { resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/grids/restock_notification_request.yaml" }
 
 framework:
     messenger:
@@ -14,7 +14,7 @@ framework:
                 type: 'method'
                 property: 'state'
             supports:
-                - '%setono_sylius_restock_notification.model.notification.class%'
+                - '%setono_sylius_restock_notification.model.restock_notification_request.class%'
             initial_marking: pending
             places:
                 - pending

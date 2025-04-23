@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Setono\SyliusRestockNotificationPlugin\EmailManager;
 
 use Setono\SyliusRestockNotificationPlugin\Mailer\Emails;
-use Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface;
+use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
 use Sylius\Component\Mailer\Sender\SenderInterface;
 use Webmozart\Assert\Assert;
 
@@ -15,7 +15,7 @@ final class RestockNotificationEmailManager implements RestockNotificationEmailM
     {
     }
 
-    public function sendRestockNotificationEmail(NotificationInterface $notification): void
+    public function sendRestockNotificationEmail(RestockNotificationRequestInterface $notification): void
     {
         $channel = $notification->getChannel();
         Assert::notNull($channel);

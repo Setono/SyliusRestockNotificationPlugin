@@ -6,7 +6,7 @@ namespace Setono\SyliusRestockNotificationPlugin\Message\Handler;
 
 use Setono\SyliusRestockNotificationPlugin\Message\Command\Notify;
 use Setono\SyliusRestockNotificationPlugin\Message\Event\ProductVariantRestocked;
-use Setono\SyliusRestockNotificationPlugin\Repository\NotificationRepositoryInterface;
+use Setono\SyliusRestockNotificationPlugin\Repository\RestockNotificationRequestRepositoryInterface;
 use Sylius\Component\Product\Model\ProductVariantInterface;
 use Sylius\Component\Product\Repository\ProductVariantRepositoryInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -16,7 +16,7 @@ final class ProductVariantRestockedHandler
 {
     public function __construct(
         private readonly ProductVariantRepositoryInterface $productVariantRepository,
-        private readonly NotificationRepositoryInterface $notificationRepository,
+        private readonly RestockNotificationRequestRepositoryInterface $notificationRepository,
         private readonly MessageBusInterface $commandBus,
     ) {
     }

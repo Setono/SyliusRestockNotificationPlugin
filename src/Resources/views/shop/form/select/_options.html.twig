@@ -1,0 +1,6 @@
+{# @var choices \Symfony\Component\Form\ChoiceList\View\ChoiceView[] #}
+<div class="ssrn-options">
+    {% for choice in choices %}
+        {{ include('@SetonoSyliusRestockNotificationPlugin/shop/form/select/_option.html.twig') }}
+    {% endfor %}
+</div>

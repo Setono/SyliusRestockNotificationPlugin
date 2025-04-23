@@ -1,4 +1,0 @@
-setono_sylius_restock_notification:
-    notification:
-        error: 'Impossible de s''inscrire aux notifications : %errors%'
-        subscribed: Vous serez notifié dès que le produit sera de nouveau en stock !

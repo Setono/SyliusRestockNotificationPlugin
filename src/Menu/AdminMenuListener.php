@@ -20,10 +20,10 @@ final class AdminMenuListener
 
         $marketingSubmenu
             ->addChild('restock_notifications', [
-                'route' => 'setono_sylius_restock_notification_admin_notification_index',
+                'route' => 'setono_sylius_restock_notification_admin_restock_notification_request_index',
             ])
             ->setAttribute('type', 'link')
-            ->setLabel('setono_sylius_restock_notification.menu.admin.main.marketing.notifications')
+            ->setLabel('setono_sylius_restock_notification.menu.admin.main.marketing.restock_notification_requests')
             ->setLabelAttributes([
                 'icon' => 'redo',
             ])

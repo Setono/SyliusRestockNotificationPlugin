@@ -1,4 +1,0 @@
-setono_sylius_restock_notification:
-    notification:
-        error: 'Der skete en fejl under tilmeldingen til lagernotifikation: %errors%'
-        subscribed: Du får en notifikation, når produktet er tilbage på lager!

@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\Doctrine\ORM;
 
-use Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface;
-use Setono\SyliusRestockNotificationPlugin\Repository\NotificationRepositoryInterface;
+use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
+use Setono\SyliusRestockNotificationPlugin\Repository\RestockNotificationRequestRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Product\Model\ProductVariantInterface;
 use Webmozart\Assert\Assert;
 
-class NotificationRepository extends EntityRepository implements NotificationRepositoryInterface
+class RestockNotificationRequestRepository extends EntityRepository implements RestockNotificationRequestRepositoryInterface
 {
-    public function findOneByIdInState(int $id, string $state): ?NotificationInterface
+    public function findOneByIdInState(int $id, string $state): ?RestockNotificationRequestInterface
     {
         $obj = $this->createQueryBuilder('o')
             ->andWhere('o.id = :id')
@@ -25,7 +25,7 @@ class NotificationRepository extends EntityRepository implements NotificationRep
             ->getOneOrNullResult()
         ;
 
-        Assert::nullOrIsInstanceOf($obj, NotificationInterface::class);
+        Assert::nullOrIsInstanceOf($obj, RestockNotificationRequestInterface::class);
 
         return $obj;
     }
@@ -42,12 +42,12 @@ class NotificationRepository extends EntityRepository implements NotificationRep
         ;
 
         Assert::isArray($objs);
-        Assert::allIsInstanceOf($objs, NotificationInterface::class);
+        Assert::allIsInstanceOf($objs, RestockNotificationRequestInterface::class);
 
         return $objs;
     }
 
-    public function hasNotification(NotificationInterface $notification): bool
+    public function hasRestockNotificationRequest(RestockNotificationRequestInterface $notification): bool
     {
         return $this->createQueryBuilder('o')
             ->select('COUNT(o)')

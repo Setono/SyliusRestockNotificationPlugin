@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\DependencyInjection;
 
-use Setono\SyliusRestockNotificationPlugin\Doctrine\ORM\NotificationRepository;
+use Setono\SyliusRestockNotificationPlugin\Doctrine\ORM\RestockNotificationRequestRepository;
 use Setono\SyliusRestockNotificationPlugin\Form\Type\NotificationAdminType;
-use Setono\SyliusRestockNotificationPlugin\Model\Notification;
+use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequest;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\Factory\Factory;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -35,16 +35,16 @@ final class Configuration implements ConfigurationInterface
             ->arrayNode('resources')
                 ->addDefaultsIfNotSet()
                 ->children()
-                    ->arrayNode('notification')
+                    ->arrayNode('restock_notification_request')
                         ->addDefaultsIfNotSet()
                         ->children()
                             ->variableNode('options')->end()
                             ->arrayNode('classes')
                                 ->addDefaultsIfNotSet()
                                 ->children()
-                                    ->scalarNode('model')->defaultValue(Notification::class)->cannotBeEmpty()->end()
+                                    ->scalarNode('model')->defaultValue(RestockNotificationRequest::class)->cannotBeEmpty()->end()
                                     ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
-                                    ->scalarNode('repository')->defaultValue(NotificationRepository::class)->cannotBeEmpty()->end()
+                                    ->scalarNode('repository')->defaultValue(RestockNotificationRequestRepository::class)->cannotBeEmpty()->end()
                                     ->scalarNode('factory')->defaultValue(Factory::class)->end()
                                     ->scalarNode('form')->defaultValue(NotificationAdminType::class)->cannotBeEmpty()->end()
         ;
