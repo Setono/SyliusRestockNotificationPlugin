@@ -4,14 +4,18 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\Message\Command;
 
+use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
+
 final class Notify implements CommandInterface
 {
-    public function __construct(private readonly int $notificationId)
-    {
-    }
+    public readonly int $restockNotificationRequest;
 
-    public function getNotificationId(): int
+    public function __construct(RestockNotificationRequestInterface|int $restockNotificationRequest)
     {
-        return $this->notificationId;
+        if ($restockNotificationRequest instanceof RestockNotificationRequestInterface) {
+            $restockNotificationRequest = (int) $restockNotificationRequest->getId();
+        }
+
+        $this->restockNotificationRequest = $restockNotificationRequest;
     }
 }

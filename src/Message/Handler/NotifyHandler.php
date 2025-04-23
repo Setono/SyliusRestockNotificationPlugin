@@ -12,22 +12,22 @@ use Setono\SyliusRestockNotificationPlugin\Repository\RestockNotificationRequest
 final class NotifyHandler
 {
     public function __construct(
-        private readonly RestockNotificationRequestRepositoryInterface $notificationRepository,
+        private readonly RestockNotificationRequestRepositoryInterface $restockNotificationRequestRepository,
         private readonly NotifierInterface $notifier,
     ) {
     }
 
     public function __invoke(Notify $message): void
     {
-        $notification = $this->notificationRepository->findOneByIdInState(
-            $message->getNotificationId(),
+        $restockNotificationRequest = $this->restockNotificationRequestRepository->findOneByIdInState(
+            $message->restockNotificationRequest,
             RestockNotificationRequestInterface::STATE_PENDING,
         );
 
-        if (null === $notification) {
+        if (null === $restockNotificationRequest) {
             return;
         }
 
-        $this->notifier->notify($notification);
+        $this->notifier->notify($restockNotificationRequest);
     }
 }
