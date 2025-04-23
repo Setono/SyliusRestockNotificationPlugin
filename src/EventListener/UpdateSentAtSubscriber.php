@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Setono\SyliusRestockNotificationPlugin\EventListener;
 
 use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
-use Setono\SyliusRestockNotificationPlugin\Workflow\NotificationWorkflow;
+use Setono\SyliusRestockNotificationPlugin\Workflow\RestockNotificationRequestWorkflow;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Workflow\Event\CompletedEvent;
 use Webmozart\Assert\Assert;
@@ -15,7 +15,7 @@ final class UpdateSentAtSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            sprintf('workflow.%s.completed.%s', NotificationWorkflow::NAME, NotificationWorkflow::TRANSITION_SEND) => 'update',
+            sprintf('workflow.%s.completed.%s', RestockNotificationRequestWorkflow::NAME, RestockNotificationRequestWorkflow::TRANSITION_SEND) => 'update',
         ];
     }
 

@@ -7,36 +7,6 @@ framework:
             setono_sylius_restock_notification.command_bus: ~
             setono_sylius_restock_notification.event_bus:
                 default_middleware: allow_no_handlers
-    workflows:
-        restock_notification:
-            type: 'state_machine'
-            marking_store:
-                type: 'method'
-                property: 'state'
-            supports:
-                - '%setono_sylius_restock_notification.model.restock_notification_request.class%'
-            initial_marking: pending
-            places:
-                - pending
-                - processing
-                - sent
-                - error
-            transitions:
-                process:
-                    from: pending
-                    to: processing
-                send:
-                    from: processing
-                    to: sent
-                error:
-                    from: processing
-                    to: error
-                resend:
-                    from: sent
-                    to: pending
-                retry:
-                    from: error
-                    to: pending
 
 sylius_mailer:
     emails:

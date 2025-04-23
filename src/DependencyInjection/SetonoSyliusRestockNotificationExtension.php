@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\DependencyInjection;
 
+use Setono\SyliusRestockNotificationPlugin\Workflow\RestockNotificationRequestWorkflow;
 use Sylius\Bundle\ResourceBundle\DependencyInjection\Extension\AbstractResourceExtension;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Symfony\Component\Config\FileLocator;
@@ -30,6 +31,10 @@ final class SetonoSyliusRestockNotificationExtension extends AbstractResourceExt
 
     public function prepend(ContainerBuilder $container): void
     {
+        $container->prependExtensionConfig('framework', [
+            'workflows' => RestockNotificationRequestWorkflow::getConfig(),
+        ]);
+
         $container->prependExtensionConfig('twig', [
             'form_themes' => [
                 '@SetonoSyliusRestockNotificationPlugin/shop/form/theme.html.twig',

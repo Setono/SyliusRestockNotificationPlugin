@@ -19,7 +19,7 @@ interface RestockNotificationRequestInterface extends ResourceInterface, Timesta
 
     public const STATE_SENT = 'sent';
 
-    public const STATE_ERROR = 'error';
+    public const STATE_FAILED = 'failed';
 
     public function getId(): ?int;
 

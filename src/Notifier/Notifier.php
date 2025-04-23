@@ -8,16 +8,15 @@ use Doctrine\Persistence\ManagerRegistry;
 use Setono\Doctrine\ORMTrait;
 use Setono\SyliusRestockNotificationPlugin\EmailManager\RestockNotificationEmailManagerInterface;
 use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
-use Setono\SyliusRestockNotificationPlugin\Workflow\NotificationWorkflow;
-use Symfony\Component\Workflow\Registry;
+use Setono\SyliusRestockNotificationPlugin\Workflow\RestockNotificationRequestWorkflow;
+use Symfony\Component\Workflow\WorkflowInterface;
 
 final class Notifier implements NotifierInterface
 {
     use ORMTrait;
 
     public function __construct(
-        // todo inject workflow directly
-        private readonly Registry $workflowRegistry,
+        private readonly WorkflowInterface $restockNotificationRequestWorkflow,
         ManagerRegistry $managerRegistry,
         private readonly RestockNotificationEmailManagerInterface $restockNotificationEmailManager,
     ) {
@@ -31,19 +30,18 @@ final class Notifier implements NotifierInterface
             return;
         }
 
-        $stateMachine = $this->workflowRegistry->get($restockNotificationRequest, NotificationWorkflow::NAME);
-        if (!$stateMachine->can($restockNotificationRequest, NotificationWorkflow::TRANSITION_PROCESS)) {
+        if (!$this->restockNotificationRequestWorkflow->can($restockNotificationRequest, RestockNotificationRequestWorkflow::TRANSITION_PROCESS)) {
             return; // todo throw exception instead?
         }
 
-        $stateMachine->apply($restockNotificationRequest, NotificationWorkflow::TRANSITION_PROCESS);
+        $this->restockNotificationRequestWorkflow->apply($restockNotificationRequest, RestockNotificationRequestWorkflow::TRANSITION_PROCESS);
 
         $manager = $this->getManager($restockNotificationRequest);
         $manager->flush();
 
         $this->restockNotificationEmailManager->sendRestockNotificationEmail($restockNotificationRequest);
 
-        $stateMachine->apply($restockNotificationRequest, NotificationWorkflow::TRANSITION_SEND);
+        $this->restockNotificationRequestWorkflow->apply($restockNotificationRequest, RestockNotificationRequestWorkflow::TRANSITION_SEND);
         $manager->flush();
     }
 }

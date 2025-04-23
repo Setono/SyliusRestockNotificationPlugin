@@ -37,7 +37,7 @@ class RestockNotificationRequest implements RestockNotificationRequestInterface
             self::STATE_PENDING => self::STATE_PENDING,
             self::STATE_PROCESSING => self::STATE_PROCESSING,
             self::STATE_SENT => self::STATE_SENT,
-            self::STATE_ERROR => self::STATE_ERROR,
+            self::STATE_FAILED => self::STATE_FAILED,
         ];
     }
 

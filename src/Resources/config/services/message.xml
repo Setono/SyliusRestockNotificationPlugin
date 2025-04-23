@@ -5,7 +5,7 @@
     <services>
         <service id="Setono\SyliusRestockNotificationPlugin\Message\Handler\NotifyHandler">
             <argument type="service" id="setono_sylius_restock_notification.repository.restock_notification_request"/>
-            <argument type="service" id="setono_sylius_restock_notification.notifier.default"/>
+            <argument type="service" id="Setono\SyliusRestockNotificationPlugin\Notifier\NotifierInterface"/>
 
             <tag name="messenger.message_handler"/>
         </service>
