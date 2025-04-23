@@ -21,7 +21,7 @@ final class OutOfStockProductVariantChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
-            ->setDefault('choices', fn (Options $options): array => $this->outOfStockResolver->getOutOfStockVariants($options['product']))
+            ->setDefault('choices', fn (Options $options): array => /** @psalm-suppress MixedArgument */$this->outOfStockResolver->getOutOfStockVariants($options['product']))
             ->setDefault('choice_label', static function (ProductVariantInterface $productVariant): string {
                 $str = '';
 

@@ -29,4 +29,7 @@
         <function name="var_dump"/>
         <function name="print_r"/>
     </forbiddenFunctions>
+    <issueHandlers>
+        <MissingTemplateParam errorLevel="suppress"/>
+    </issueHandlers>
 </psalm>
