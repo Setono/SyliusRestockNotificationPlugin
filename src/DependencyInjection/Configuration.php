@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Setono\SyliusRestockNotificationPlugin\DependencyInjection;
 
 use Setono\SyliusRestockNotificationPlugin\Doctrine\ORM\RestockNotificationRequestRepository;
-use Setono\SyliusRestockNotificationPlugin\Form\Type\NotificationAdminType;
+use Setono\SyliusRestockNotificationPlugin\Form\Type\RestockNotificationAdminRequestType;
 use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequest;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\Factory\Factory;
@@ -46,7 +46,7 @@ final class Configuration implements ConfigurationInterface
                                     ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                     ->scalarNode('repository')->defaultValue(RestockNotificationRequestRepository::class)->cannotBeEmpty()->end()
                                     ->scalarNode('factory')->defaultValue(Factory::class)->end()
-                                    ->scalarNode('form')->defaultValue(NotificationAdminType::class)->cannotBeEmpty()->end()
+                                    ->scalarNode('form')->defaultValue(RestockNotificationAdminRequestType::class)->cannotBeEmpty()->end()
         ;
     }
 }

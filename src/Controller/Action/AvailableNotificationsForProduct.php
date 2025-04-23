@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\Controller\Action;
 
-use Setono\SyliusRestockNotificationPlugin\Form\Type\NotificationShopType;
+use Setono\SyliusRestockNotificationPlugin\Form\Type\RestockNotificationShopRequestType;
 use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
 use Setono\SyliusRestockNotificationPlugin\Repository\RestockNotificationRequestRepositoryInterface;
 use Setono\SyliusRestockNotificationPlugin\Resolver\OutOfStockResolverInterface;
@@ -42,7 +42,7 @@ final class AvailableNotificationsForProduct
             return new Response('');
         }
 
-        $form = $this->formFactory->create(NotificationShopType::class, $this->notificationFactory->createNew(), [
+        $form = $this->formFactory->create(RestockNotificationShopRequestType::class, $this->notificationFactory->createNew(), [
             'product' => $product,
         ]);
 

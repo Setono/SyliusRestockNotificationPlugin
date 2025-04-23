@@ -13,7 +13,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Webmozart\Assert\Assert;
 
-final class NotificationShopType extends NotificationType
+final class RestockNotificationShopRequestType extends RestockNotificationRequestType
 {
     /**
      * @param class-string $dataClass

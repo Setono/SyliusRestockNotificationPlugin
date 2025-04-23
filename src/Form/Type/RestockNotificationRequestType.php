@@ -10,19 +10,20 @@ use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-abstract class NotificationType extends AbstractResourceType
+abstract class RestockNotificationRequestType extends AbstractResourceType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('channel', ChannelChoiceType::class, [
-                'label' => 'setono_sylius_restock_notification.form.notification.channel',
+                'placeholder' => 'setono_sylius_restock_notification.form.restock_notification_request.channel_placeholder',
+                'label' => 'sylius.ui.channel',
             ])
             ->add('locale', LocaleChoiceType::class, [
-                'label' => 'setono_sylius_restock_notification.form.notification.locale',
+                'label' => 'sylius.ui.locale',
             ])
             ->add('email', EmailType::class, [
-                'label' => 'setono_sylius_restock_notification.form.notification.email',
+                'label' => 'sylius.ui.email',
             ])
         ;
     }

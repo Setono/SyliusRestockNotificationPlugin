@@ -5,8 +5,7 @@
     <services>
         <defaults public="true"/>
 
-        <service id="setono_sylius_restock_notification.controller.action.available_notifications_for_product"
-                 class="Setono\SyliusRestockNotificationPlugin\Controller\Action\AvailableNotificationsForProduct">
+        <service id="Setono\SyliusRestockNotificationPlugin\Controller\Action\AvailableNotificationsForProduct">
             <argument type="service" id="twig"/>
             <argument type="service" id="sylius.repository.product"/>
             <argument type="service" id="form.factory"/>

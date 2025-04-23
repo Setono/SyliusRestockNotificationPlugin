@@ -2,7 +2,7 @@ setono_sylius_restock_notification_admin_restock_notification_request:
     resource: |
         alias: setono_sylius_restock_notification.restock_notification_request
         section: admin
-        templates: SyliusAdminBundle:Crud
+        templates: "@SyliusAdmin\\Crud"
         except: ['show']
         redirect: update
         grid: setono_sylius_restock_notification_admin_restock_notification_request
@@ -11,7 +11,7 @@ setono_sylius_restock_notification_admin_restock_notification_request:
             all:
                 subheader: setono_sylius_restock_notification.ui.manage_restock_notification_requests
                 templates:
-                    form: "@SetonoSyliusRestockNotificationPlugin/admin/notification/_form.html.twig"
+                    form: "@SetonoSyliusRestockNotificationPlugin/admin/restock_notification_request/_form.html.twig"
             index:
                 icon: redo
     type: sylius.resource
