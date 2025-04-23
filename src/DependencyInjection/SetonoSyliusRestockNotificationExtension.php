@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\DependencyInjection;
 
+use Setono\SyliusRestockNotificationPlugin\Mailer\Emails;
 use Setono\SyliusRestockNotificationPlugin\Workflow\RestockNotificationRequestWorkflow;
 use Sylius\Bundle\ResourceBundle\DependencyInjection\Extension\AbstractResourceExtension;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
@@ -46,6 +47,15 @@ final class SetonoSyliusRestockNotificationExtension extends AbstractResourceExt
         $container->prependExtensionConfig('twig', [
             'form_themes' => [
                 '@SetonoSyliusRestockNotificationPlugin/shop/form/theme.html.twig',
+            ],
+        ]);
+
+        $container->prependExtensionConfig('sylius_mailer', [
+            'emails' => [
+                Emails::RESTOCK_NOTIFICATION_REQUEST => [
+                    'subject' => 'setono_sylius_restock_notification.emails.restock_notification_request.subject',
+                    'template' => '@SetonoSyliusRestockNotificationPlugin/email/restock_notification_request.html.twig',
+                ],
             ],
         ]);
     }
