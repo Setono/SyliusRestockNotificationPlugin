@@ -40,6 +40,6 @@ framework:
 
 sylius_mailer:
     emails:
-        restock_notification:
-            subject: setono_sylius_restock_notification.emails.restock_notification.subject
-            template: "@SetonoSyliusRestockNotificationPlugin/email/restock_notification.html.twig"
+        restock_notification_request:
+            subject: setono_sylius_restock_notification.emails.restock_notification_request.subject
+            template: "@SetonoSyliusRestockNotificationPlugin/email/restock_notification_request.html.twig"

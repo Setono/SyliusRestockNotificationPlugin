@@ -20,10 +20,7 @@ final class RestockNotificationEmailManager implements RestockNotificationEmailM
         $channel = $notification->getChannel();
         Assert::notNull($channel);
 
-        $locale = $notification->getLocale();
-        Assert::notNull($locale);
-
-        $localeCode = $locale->getCode();
+        $localeCode = $notification->getLocale()?->getCode();
         Assert::notNull($localeCode);
 
         $email = $notification->getEmail();
@@ -31,10 +28,10 @@ final class RestockNotificationEmailManager implements RestockNotificationEmailM
 
         /** @psalm-suppress DeprecatedMethod */
         $this->sender->send(
-            Emails::RESTOCK_NOTIFICATION,
+            Emails::RESTOCK_NOTIFICATION_REQUEST,
             [$email],
             [
-                'notification' => $notification,
+                'restockNotificationRequest' => $notification,
                 'channel' => $channel,
                 'localeCode' => $localeCode,
             ],

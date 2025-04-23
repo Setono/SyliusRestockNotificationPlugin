@@ -15,8 +15,11 @@ use Symfony\Component\Workflow\Registry;
 
 final class Notifier implements NotifierInterface
 {
-    public function __construct(private readonly Registry $workflowRegistry, private readonly ManagerRegistry $managerRegistry, private readonly RestockNotificationEmailManagerInterface $restockNotificationEmailManager)
-    {
+    public function __construct(
+        private readonly Registry $workflowRegistry,
+        private readonly ManagerRegistry $managerRegistry,
+        private readonly RestockNotificationEmailManagerInterface $restockNotificationEmailManager,
+    ) {
     }
 
     public function notify(RestockNotificationRequestInterface $notification): void
