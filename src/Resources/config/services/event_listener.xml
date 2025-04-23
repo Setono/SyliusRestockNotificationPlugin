@@ -3,16 +3,15 @@
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="setono_sylius_restock_notification.event_listener.update_sent_at"
-                 class="Setono\SyliusRestockNotificationPlugin\EventListener\UpdateSentAtSubscriber">
+        <service id="Setono\SyliusRestockNotificationPlugin\EventListener\UpdateSentAtSubscriber">
             <tag name="kernel.event_subscriber"/>
         </service>
 
-        <service id="setono_sylius_restock_notification.event_listener.doctrine.on_hand_changed"
-                 class="Setono\SyliusRestockNotificationPlugin\EventListener\Doctrine\OnHandChangedSubscriber">
+        <service id="Setono\SyliusRestockNotificationPlugin\EventListener\Doctrine\OnHandChangedListener">
             <argument type="service" id="setono_sylius_restock_notification.event_bus"/>
 
-            <tag name="doctrine.event_subscriber"/>
+            <tag name="doctrine.event_listener" event="preUpdate"/>
+            <tag name="doctrine.event_listener" event="postUpdate"/>
         </service>
     </services>
 </container>

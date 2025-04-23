@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\EventListener\Doctrine;
 
-use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\PostUpdateEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
-use Doctrine\ORM\Events;
 use Setono\SyliusRestockNotificationPlugin\Message\Event\ProductVariantRestocked;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-// todo change to listener
-final class OnHandChangedSubscriber implements EventSubscriber
+final class OnHandChangedListener
 {
     /**
      * The keys are product variant ids, and the values are just true to indicate that the product variant is set
@@ -24,13 +21,6 @@ final class OnHandChangedSubscriber implements EventSubscriber
 
     public function __construct(private readonly MessageBusInterface $eventBus)
     {
-    }
-
-    public function getSubscribedEvents(): array
-    {
-        return [
-            Events::preUpdate,
-        ];
     }
 
     public function preUpdate(PreUpdateEventArgs $eventArgs): void
