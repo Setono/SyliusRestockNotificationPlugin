@@ -9,8 +9,9 @@ use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Setono\SyliusRestockNotificationPlugin\Message\Event\ProductVariantRestocked;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Contracts\Service\ResetInterface;
 
-final class OnHandChangedListener
+final class OnHandChangedListener implements ResetInterface
 {
     /**
      * The keys are product variant ids, and the values are just true to indicate that the product variant is set
@@ -77,5 +78,10 @@ final class OnHandChangedListener
         unset($this->candidates[$id]);
 
         $this->eventBus->dispatch(new ProductVariantRestocked($id));
+    }
+
+    public function reset(): void
+    {
+        $this->candidates = [];
     }
 }
