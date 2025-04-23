@@ -33,6 +33,14 @@ final class SetonoSyliusRestockNotificationExtension extends AbstractResourceExt
     {
         $container->prependExtensionConfig('framework', [
             'workflows' => RestockNotificationRequestWorkflow::getConfig(),
+            'messenger' => [
+                'buses' => [
+                    'setono_sylius_restock_notification.command_bus' => null,
+                    'setono_sylius_restock_notification.event_bus' => [
+                        'default_middleware' => 'allow_no_handlers',
+                    ],
+                ],
+            ],
         ]);
 
         $container->prependExtensionConfig('twig', [

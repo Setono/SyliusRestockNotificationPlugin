@@ -1,13 +1,6 @@
 imports:
     - { resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/grids/restock_notification_request.yaml" }
 
-framework:
-    messenger:
-        buses:
-            setono_sylius_restock_notification.command_bus: ~
-            setono_sylius_restock_notification.event_bus:
-                default_middleware: allow_no_handlers
-
 sylius_mailer:
     emails:
         restock_notification_request:
