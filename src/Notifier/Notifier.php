@@ -5,77 +5,45 @@ declare(strict_types=1);
 namespace Setono\SyliusRestockNotificationPlugin\Notifier;
 
 use Doctrine\Persistence\ManagerRegistry;
-use Doctrine\Persistence\ObjectManager;
-use RuntimeException;
+use Setono\Doctrine\ORMTrait;
 use Setono\SyliusRestockNotificationPlugin\EmailManager\RestockNotificationEmailManagerInterface;
 use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
 use Setono\SyliusRestockNotificationPlugin\Workflow\NotificationWorkflow;
-use Sylius\Component\Inventory\Model\StockableInterface;
 use Symfony\Component\Workflow\Registry;
 
 final class Notifier implements NotifierInterface
 {
+    use ORMTrait;
+
     public function __construct(
+        // todo inject workflow directly
         private readonly Registry $workflowRegistry,
-        private readonly ManagerRegistry $managerRegistry,
+        ManagerRegistry $managerRegistry,
         private readonly RestockNotificationEmailManagerInterface $restockNotificationEmailManager,
     ) {
+        $this->managerRegistry = $managerRegistry;
     }
 
-    public function notify(RestockNotificationRequestInterface $notification): void
+    public function notify(RestockNotificationRequestInterface $restockNotificationRequest): void
     {
-        $productVariant = $notification->getProductVariant();
-        if (!$productVariant instanceof StockableInterface) {
+        $onHand = (int) $restockNotificationRequest->getProductVariant()?->getOnHand();
+        if ($onHand <= 0) {
             return;
         }
 
-        $onHand = $productVariant->getOnHand();
-        if ($onHand === null || $onHand <= 0) {
-            return;
-        }
-
-        $channel = $notification->getChannel();
-        if (null === $channel) {
-            return;
-        }
-
-        $locale = $notification->getLocale();
-
-        if (null === $locale) {
-            return;
-        }
-
-        $email = $notification->getEmail();
-        if (null === $email) {
-            return;
-        }
-
-        $manager = $this->getManager($notification);
-
-        $stateMachine = $this->workflowRegistry->get($notification, NotificationWorkflow::NAME);
-        if (!$stateMachine->can($notification, NotificationWorkflow::TRANSITION_PROCESS)) {
+        $stateMachine = $this->workflowRegistry->get($restockNotificationRequest, NotificationWorkflow::NAME);
+        if (!$stateMachine->can($restockNotificationRequest, NotificationWorkflow::TRANSITION_PROCESS)) {
             return; // todo throw exception instead?
         }
 
-        $stateMachine->apply($notification, NotificationWorkflow::TRANSITION_PROCESS);
+        $stateMachine->apply($restockNotificationRequest, NotificationWorkflow::TRANSITION_PROCESS);
+
+        $manager = $this->getManager($restockNotificationRequest);
         $manager->flush();
 
-        $this->restockNotificationEmailManager->sendRestockNotificationEmail($notification);
+        $this->restockNotificationEmailManager->sendRestockNotificationEmail($restockNotificationRequest);
 
-        $stateMachine->apply($notification, NotificationWorkflow::TRANSITION_SEND);
+        $stateMachine->apply($restockNotificationRequest, NotificationWorkflow::TRANSITION_SEND);
         $manager->flush();
-    }
-
-    private function getManager(object $object): ObjectManager
-    {
-        $manager = $this->managerRegistry->getManagerForClass($object::class);
-        if (null === $manager) {
-            throw new RuntimeException(sprintf(
-                'The class %s does not have a manager associated with it',
-                $object::class,
-            ));
-        }
-
-        return $manager;
     }
 }

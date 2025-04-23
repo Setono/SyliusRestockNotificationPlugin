@@ -6,8 +6,8 @@ namespace Setono\SyliusRestockNotificationPlugin\Model;
 
 use DateTimeInterface;
 use Sylius\Component\Channel\Model\ChannelInterface;
+use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
-use Sylius\Component\Product\Model\ProductVariantInterface;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Webmozart\Assert\Assert;
 
