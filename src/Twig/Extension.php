@@ -11,6 +11,7 @@ final class Extension extends AbstractExtension
 {
     public function getFunctions(): array
     {
+        /** @psalm-suppress InvalidArgument */
         return [
             new TwigFunction(
                 'ssrn_product_page',
