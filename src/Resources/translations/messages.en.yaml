@@ -28,16 +28,13 @@ setono_sylius_restock_notification:
             header: Available restock notifications
             explanation: |
                 <p>Some of the variants on this product is not in stock. Here you can sign up to receive an email once the respective variant is in stock.</p>
-        created_at: Created at
         days_waited: Days waited
         edit_restock_notification_request: Edit restock notification request
-        email: Email
         manage_restock_notification_requests: Manage restock notification requests
         new_restock_notification_request: New restock notification request
         restock_notification_requests: Restock notification requests
         notify_me: Notify me
         sent_at: Sent at
-        state: State
         states:
             error: Error
             pending: Pending
