@@ -72,9 +72,9 @@ export default class Select {
                     option.setSelected(option === event.option);
                 });
 
-                this.setOpen(false);
-
                 this.#valueHolder.setValue(event.option.getValue());
+
+                this.setOpen(false);
             }
         );
     }
