@@ -63,8 +63,8 @@ final class Runtime implements RuntimeExtensionInterface, LoggerAwareInterface
         }
 
         $ret = sprintf('<script type="application/json" id="ssrn-variants">%s</script>', json_encode($variants, $flags));
-        $ret .= $twig->render('@SetonoSyliusRestockNotificationPlugin/shop/product/styles.html.twig');
-        $ret .= $twig->render('@SetonoSyliusRestockNotificationPlugin/shop/product/scripts.html.twig');
+        $ret .= $twig->render('@SetonoSyliusRestockNotificationPlugin/shop/styles.html.twig');
+        $ret .= $twig->render('@SetonoSyliusRestockNotificationPlugin/shop/scripts.html.twig');
 
         return $ret;
     }
