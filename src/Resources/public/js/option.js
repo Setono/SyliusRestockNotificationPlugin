@@ -19,7 +19,11 @@ export default class Option {
         this.select = select;
         this.#element = option;
 
-        option.addEventListener('click', () => {
+        this.#element.addEventListener('click', () => {
+            if(!this.isAvailable()) {
+                return;
+            }
+
             this.#element.dispatchEvent(new OptionSelectedEvent(this));
         });
     }
@@ -57,5 +61,9 @@ export default class Option {
         if(!available && this.isSelected()) {
             this.select.reset();
         }
+    }
+
+    isAvailable() {
+        return !this.#element.classList.contains('unavailable');
     }
 }
