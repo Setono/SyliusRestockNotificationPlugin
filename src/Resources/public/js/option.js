@@ -47,6 +47,10 @@ export default class Option {
         this.#element.classList.toggle('out-of-stock', !inStock);
     }
 
+    isInStock() {
+        return !this.#element.classList.contains('out-of-stock');
+    }
+
     setAvailable(available = true) {
         this.#element.classList.toggle('unavailable', !available);
 
