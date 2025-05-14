@@ -1,5 +1,8 @@
 {% block _sylius_add_to_cart_cartItem_variant_entry_row %}
-    <input type="hidden" name="{{ full_name }}" id="{{ id }}">
+    <div style="display: none">
+        {# This renders the default <select> #}
+        {{ form_widget(form) }}
+    </div>
 
-    {{ include('@SetonoSyliusRestockNotificationPlugin/shop/form/_select.html.twig', {valueHolder: id}) }}
+    {{ include('@SetonoSyliusRestockNotificationPlugin/shop/form/_select.html.twig', { valueHolder: id }) }}
 {% endblock %}
