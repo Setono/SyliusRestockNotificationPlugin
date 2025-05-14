@@ -14,8 +14,8 @@ final class Extension extends AbstractExtension
         /** @psalm-suppress InvalidArgument */
         return [
             new TwigFunction(
-                'ssrn_product_page',
-                [Runtime::class, 'productPage'],
+                'ssrn_products',
+                [Runtime::class, 'products'],
                 ['needs_environment' => true, 'needs_context' => true, 'is_safe' => ['html']],
             ),
         ];

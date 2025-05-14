@@ -56,7 +56,6 @@ jobs:
 
             -   name: "Rector"
                 run: "vendor/bin/rector process --dry-run"
-                continue-on-error: true
 
             -   name: "Lint yaml files"
                 run: "(cd tests/Application && bin/console lint:yaml ../../src/Resources)"
@@ -74,6 +73,7 @@ jobs:
                 php-version:
                     - "8.1"
                     - "8.2"
+                    - "8.3"
 
                 dependencies:
                     - "lowest"
@@ -121,6 +121,7 @@ jobs:
                 php-version:
                     - "8.1"
                     - "8.2"
+                    - "8.3"
 
                 dependencies:
                     - "lowest"
@@ -165,6 +166,7 @@ jobs:
                 php-version:
                     - "8.1"
                     - "8.2"
+                    - "8.3"
                 
                 dependencies:
                     - "lowest"
@@ -206,6 +208,7 @@ jobs:
                 php-version:
                     - "8.1"
                     - "8.2"
+                    - "8.3"
 
                 dependencies:
                     - "lowest"
@@ -257,7 +260,7 @@ jobs:
         strategy:
             matrix:
                 php-version:
-                    - "8.2"
+                    - "8.3"
 
                 dependencies:
                     - "highest"
@@ -291,7 +294,7 @@ jobs:
         strategy:
             matrix:
                 php-version:
-                    - "8.2"
+                    - "8.3"
 
                 dependencies:
                     - "highest"

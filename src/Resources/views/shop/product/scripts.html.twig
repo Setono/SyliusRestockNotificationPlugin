@@ -1,0 +1,5 @@
+<script type="module">
+    import OptionManager from "{{ asset('bundles/setonosyliusrestocknotificationplugin/js/select-manager.js') }}";
+    import Repository from "{{ asset('bundles/setonosyliusrestocknotificationplugin/js/repository.js') }}";
+    new OptionManager(Repository.fromElement('#ssrn-variants'));
+</script>

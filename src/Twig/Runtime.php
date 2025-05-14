@@ -25,7 +25,7 @@ final class Runtime implements RuntimeExtensionInterface, LoggerAwareInterface
         $this->logger = new NullLogger();
     }
 
-    public function productPage(Environment $twig, array $context, ProductInterface $product = null): string
+    public function products(Environment $twig, array $context, ProductInterface $product = null): string
     {
         /** @var ProductInterface|mixed|null $product */
         $product = $product ?? $context['product'] ?? null;
@@ -36,7 +36,7 @@ final class Runtime implements RuntimeExtensionInterface, LoggerAwareInterface
             return '';
         }
 
-        $inventory = ['products' => []];
+        $variants = ['variants' => []];
 
         $optionReferences = [];
 
@@ -44,7 +44,7 @@ final class Runtime implements RuntimeExtensionInterface, LoggerAwareInterface
         foreach ($product->getEnabledVariants() as $variant) {
             $variantCode = (string) $variant->getCode();
 
-            $inventory['products'][$variantCode] = [
+            $variants['variants'][$variantCode] = [
                 'code' => $variantCode,
                 'inStock' => $this->availabilityChecker->isStockAvailable($variant),
             ];
@@ -55,16 +55,16 @@ final class Runtime implements RuntimeExtensionInterface, LoggerAwareInterface
             }
         }
 
-        $inventory['optionReferences'] = array_merge(...$optionReferences);
+        $variants['optionReferences'] = array_merge_recursive(...$optionReferences);
 
         $flags = \JSON_THROW_ON_ERROR | \JSON_FORCE_OBJECT;
         if ($this->debug) {
             $flags |= \JSON_PRETTY_PRINT;
         }
 
-        $ret = sprintf('<script type="application/json" class="ssrn-inventory">%s</script>', json_encode($inventory, $flags));
-        $ret .= $twig->render('@SetonoSyliusRestockNotificationPlugin/shop/form/css.html.twig');
-        $ret .= $twig->render('@SetonoSyliusRestockNotificationPlugin/shop/form/javascript.html.twig');
+        $ret = sprintf('<script type="application/json" id="ssrn-variants">%s</script>', json_encode($variants, $flags));
+        $ret .= $twig->render('@SetonoSyliusRestockNotificationPlugin/shop/product/styles.html.twig');
+        $ret .= $twig->render('@SetonoSyliusRestockNotificationPlugin/shop/product/scripts.html.twig');
 
         return $ret;
     }
