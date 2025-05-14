@@ -25,7 +25,7 @@ final class Runtime implements RuntimeExtensionInterface, LoggerAwareInterface
         $this->logger = new NullLogger();
     }
 
-    public function products(Environment $twig, array $context, ProductInterface $product = null): string
+    public function resources(Environment $twig, array $context, ProductInterface $product = null): string
     {
         /** @var ProductInterface|mixed|null $product */
         $product = $product ?? $context['product'] ?? null;
