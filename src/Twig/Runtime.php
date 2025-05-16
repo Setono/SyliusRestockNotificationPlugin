@@ -31,7 +31,7 @@ final class Runtime implements RuntimeExtensionInterface, LoggerAwareInterface
     public function resources(Environment $twig, array $context, ProductInterface $product = null): string
     {
         /** @var ProductInterface|mixed|null $product */
-        $product = $product ?? $context['product'] ?? null;
+        $product ??= $context['product'] ?? null;
 
         if (!$product instanceof ProductInterface) {
             $this->logger->error(sprintf('Either the product is not set or it is not an instance of %s', ProductInterface::class));

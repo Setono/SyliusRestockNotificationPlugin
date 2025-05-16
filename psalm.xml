@@ -31,5 +31,6 @@
     </forbiddenFunctions>
     <issueHandlers>
         <MissingTemplateParam errorLevel="suppress"/>
+        <MissingClassConstType errorLevel="suppress"/>
     </issueHandlers>
 </psalm>
