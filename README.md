@@ -32,14 +32,7 @@ return [
 ];
 ```
 
-### Configure plugin
-
-Add this file to your `config/packages` directory:
-```yaml
-# config/packages/setono_sylius_restock_notification.yaml
-imports:
-    - { resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/app/config.yaml" }
-```
+### Import routes
 
 Add this file to your `config/routes` directory:
 ```yaml
@@ -48,42 +41,11 @@ setono_sylius_restock_notification:
     resource: "@SetonoSyliusRestockNotificationPlugin/Resources/config/routes.yaml"
 ```
 
-### Add template
-If you use the new Sylius UI template event system, you can add the template like this:
-
-```yaml
-# config/packages/setono_sylius_restock_notification.yaml
-sylius_ui:
-    events:
-        sylius.shop.product.show.right_sidebar:
-            blocks:
-                setono_sylius_restock_notification_available_notifications: "@SetonoSyliusRestockNotificationPlugin/shop/notification/available.html.twig"
-```
-
-Notice that the event name that is used is `sylius.shop.product.show.right_sidebar`. If you want to add it to another
-event, you should replace that line with your event name.
-
-If you don't use the Sylius UI template event system, you can just include the template
-`@SetonoSyliusRestockNotificationPlugin/shop/notification/available.html.twig` as you normally would.
-
-### Step 5: Update your database schema
+### Update your database schema
 
 ```bash
 php bin/console doctrine:migrations:diff
 php bin/console doctrine:migrations:migrate
-```
-
-### Configure Symfony Messenger (optional, but recommended)
-This plugin uses Symfony messenger to notify the customer when products are restocked. This can be done asynchronously
-using this configuration:
-
-```yaml
-framework:
-    messenger:
-        routing:
-            # Route all command messages to the async transport
-            # This presumes that you have already set up an 'async' transport
-            'Setono\SyliusRestockNotificationPlugin\Message\Command\CommandInterface': async
 ```
 
 [ico-version]: https://poser.pugx.org/setono/sylius-restock-notification-plugin/v/stable
