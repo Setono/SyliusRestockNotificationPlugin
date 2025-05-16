@@ -10,7 +10,7 @@
     {% set productTranslation = restockNotificationRequest.productVariant.product.translation(localeCode) %}
     {% set slug = productTranslation.slug %}
     {# todo if the variant link plugin is present we should use the direct url to the variant #}
-    {% set url = channel.hostname is not null ? 'http://' ~ channel.hostname ~ path('sylius_shop_product_show', {'slug': slug, '_locale': localeCode}) : url('sylius_shop_product_show', {'slug': slug, '_locale': localeCode}) %}
+    {% set url = channel.hostname is not null ? 'https://' ~ channel.hostname ~ path('sylius_shop_product_show', {'slug': slug, '_locale': localeCode}) : url('sylius_shop_product_show', {'slug': slug, '_locale': localeCode}) %}
 
     <div style="text-align: center;">
         {{ 'setono_sylius_restock_notification.email.restock_notification_request.intro'|trans({'%product%': productTranslation.name}, null, localeCode)|raw }}
