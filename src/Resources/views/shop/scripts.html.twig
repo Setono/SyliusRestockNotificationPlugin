@@ -1,6 +1,7 @@
 <script type="module">
     import SelectManager from "{{ asset('bundles/setonosyliusrestocknotificationplugin/js/select-manager.js') }}";
     import Repository from "{{ asset('bundles/setonosyliusrestocknotificationplugin/js/repository.js') }}";
-    new SelectManager(Repository.fromElement('#ssrn-variants'));
+    import Dialog from "{{ asset('bundles/setonosyliusrestocknotificationplugin/js/dialog.js') }}";
+    new SelectManager(Repository.fromElement('#ssrn-variants'), new Dialog('#ssrn-dialog-template'));
 </script>
-{{ include('@SetonoSyliusRestockNotificationPlugin/shop/_modal.html.twig') }}
+{{ include('@SetonoSyliusRestockNotificationPlugin/shop/_dialog.html.twig') }}

@@ -14,6 +14,7 @@
 
         <service id="Setono\SyliusRestockNotificationPlugin\Twig\Runtime">
             <argument type="service" id="sylius.availability_checker.default"/>
+            <argument type="service" id="form.factory"/>
             <argument>%kernel.debug%</argument>
 
             <tag name="twig.runtime"/>

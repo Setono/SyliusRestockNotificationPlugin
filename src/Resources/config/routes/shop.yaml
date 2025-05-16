@@ -1,5 +1,5 @@
-setono_sylius_restock_notification_shop_available_notifications_for_product:
-    path: /restock-notifications/available/{code}
-    methods: [GET,POST]
+setono_sylius_restock_notification_shop_restock_notification_request:
+    path: /restock-notification-request
+    methods: [POST]
     defaults:
-        _controller: Setono\SyliusRestockNotificationPlugin\Controller\Action\AvailableNotificationsForProduct
+        _controller: Setono\SyliusRestockNotificationPlugin\Controller\RestockNotificationRequestAction

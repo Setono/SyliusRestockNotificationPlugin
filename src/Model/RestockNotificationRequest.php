@@ -7,7 +7,6 @@ namespace Setono\SyliusRestockNotificationPlugin\Model;
 use DateTimeInterface;
 use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
-use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Webmozart\Assert\Assert;
 
@@ -21,7 +20,7 @@ class RestockNotificationRequest implements RestockNotificationRequestInterface
 
     protected ?ChannelInterface $channel = null;
 
-    protected ?LocaleInterface $locale = null;
+    protected ?string $localeCode = null;
 
     protected string $state = self::STATE_PENDING;
 
@@ -58,14 +57,14 @@ class RestockNotificationRequest implements RestockNotificationRequestInterface
         $this->channel = $channel;
     }
 
-    public function getLocale(): ?LocaleInterface
+    public function getLocaleCode(): ?string
     {
-        return $this->locale;
+        return $this->localeCode;
     }
 
-    public function setLocale(LocaleInterface $locale): void
+    public function setLocaleCode(?string $localeCode): void
     {
-        $this->locale = $locale;
+        $this->localeCode = $localeCode;
     }
 
     public function getState(): string

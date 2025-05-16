@@ -17,16 +17,9 @@
         </service>
 
         <service id="Setono\SyliusRestockNotificationPlugin\Form\Type\RestockNotificationShopRequestType">
-            <argument type="service" id="sylius.context.channel"/>
-            <argument type="service" id="sylius.context.locale"/>
+            <argument type="service" id="sylius.repository.product_variant"/>
             <argument>%setono_sylius_restock_notification.model.restock_notification_request.class%</argument>
             <argument>%setono_sylius_restock_notification.form_type.restock_notification_request.validation_groups%</argument>
-
-            <tag name="form.type"/>
-        </service>
-
-        <service id="Setono\SyliusRestockNotificationPlugin\Form\Type\OutOfStockProductVariantChoiceType">
-            <argument type="service" id="setono_sylius_restock_notification.resolver.out_of_stock"/>
 
             <tag name="form.type"/>
         </service>

@@ -6,11 +6,11 @@
         <import resource="services/controller.xml"/>
         <import resource="services/email_manager.xml"/>
         <import resource="services/event_listener.xml"/>
+        <import resource="services/factory.xml"/>
         <import resource="services/form.xml"/>
         <import resource="services/menu.xml"/>
         <import resource="services/message.xml"/>
         <import resource="services/notifier.xml"/>
-        <import resource="services/resolver.xml"/>
         <import resource="services/twig.xml"/>
     </imports>
 </container>

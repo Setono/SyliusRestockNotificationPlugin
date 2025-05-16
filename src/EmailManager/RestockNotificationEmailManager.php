@@ -20,7 +20,7 @@ final class RestockNotificationEmailManager implements RestockNotificationEmailM
         $channel = $restockNotificationRequest->getChannel();
         Assert::notNull($channel);
 
-        $localeCode = $restockNotificationRequest->getLocale()?->getCode();
+        $localeCode = $restockNotificationRequest->getLocaleCode();
         Assert::notNull($localeCode);
 
         $email = $restockNotificationRequest->getEmail();

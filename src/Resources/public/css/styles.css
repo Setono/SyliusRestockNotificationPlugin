@@ -1,3 +1,12 @@
+/**
+ * Style the <dialog>
+ */
+dialog.ssrn-dialog {
+}
+
+/**
+ * Style our custom select
+ */
 .ssrn-select {
     position: relative;
     user-select: none;

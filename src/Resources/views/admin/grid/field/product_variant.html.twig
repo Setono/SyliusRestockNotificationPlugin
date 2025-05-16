@@ -1,7 +1,7 @@
-{# @var \Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface data #}
+{# @var data \Setono\SyliusRestockNotificationPlugin\Model\NotificationInterface #}
 {% set variant = data.productVariant %}
 {% set product = variant.product %}
-<strong>{{ product.name }}</strong> [<a href="{{ path('sylius_shop_product_show', {'slug' : product.slug, '_locale': data.locale.code}) }}" target="_blank">{{ 'sylius.ui.show'|trans }}</a>]<br>
+<strong>{{ product.name }}</strong> [<a href="{{ path('sylius_shop_product_show', {'slug' : product.slug, '_locale': data.localeCode}) }}" target="_blank">{{ 'sylius.ui.show'|trans }}</a>]<br>
 {% if variant.optionValues|length > 0 %}
     <ul style="padding: 0; margin: 0; list-style-position: inside">
         {% for option_value in variant.optionValues %}

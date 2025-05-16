@@ -7,10 +7,12 @@ namespace Setono\SyliusRestockNotificationPlugin\Twig;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
+use Setono\SyliusRestockNotificationPlugin\Form\Type\RestockNotificationShopRequestType;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Inventory\Checker\AvailabilityCheckerInterface;
 use Sylius\Component\Product\Model\ProductOptionValueInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Twig\Environment;
 use Twig\Extension\RuntimeExtensionInterface;
 
@@ -20,6 +22,7 @@ final class Runtime implements RuntimeExtensionInterface, LoggerAwareInterface
 
     public function __construct(
         private readonly AvailabilityCheckerInterface $availabilityChecker,
+        private readonly FormFactoryInterface $formFactory,
         private readonly bool $debug,
     ) {
         $this->logger = new NullLogger();
@@ -64,7 +67,9 @@ final class Runtime implements RuntimeExtensionInterface, LoggerAwareInterface
 
         $ret = sprintf('<script type="application/json" id="ssrn-variants">%s</script>', json_encode($variants, $flags));
         $ret .= $twig->render('@SetonoSyliusRestockNotificationPlugin/shop/styles.html.twig');
-        $ret .= $twig->render('@SetonoSyliusRestockNotificationPlugin/shop/scripts.html.twig');
+        $ret .= $twig->render('@SetonoSyliusRestockNotificationPlugin/shop/scripts.html.twig', [
+            'form' => $this->formFactory->create(RestockNotificationShopRequestType::class)->createView(),
+        ]);
 
         return $ret;
     }

@@ -17,7 +17,7 @@
                 <option name="groups">setono_sylius_restock_notification</option>
             </constraint>
         </property>
-        <property name="locale">
+        <property name="localeCode">
             <constraint name="NotBlank">
                 <option name="groups">setono_sylius_restock_notification</option>
             </constraint>

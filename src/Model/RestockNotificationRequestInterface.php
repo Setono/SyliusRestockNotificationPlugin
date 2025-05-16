@@ -7,7 +7,6 @@ namespace Setono\SyliusRestockNotificationPlugin\Model;
 use DateTimeInterface;
 use Sylius\Component\Channel\Model\ChannelAwareInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
-use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TimestampableInterface;
 
@@ -23,9 +22,9 @@ interface RestockNotificationRequestInterface extends ResourceInterface, Timesta
 
     public function getId(): ?int;
 
-    public function getLocale(): ?LocaleInterface;
+    public function getLocaleCode(): ?string;
 
-    public function setLocale(LocaleInterface $locale): void;
+    public function setLocaleCode(string $localeCode): void;
 
     public function getState(): string;
 

@@ -1,0 +1,10 @@
+<template id="ssrn-dialog-template">
+    <dialog class="ssrn-dialog">
+        <h4>Be notified when the product is back in stock</h4>
+        {{ form_start(form, { action: path('setono_sylius_restock_notification_shop_restock_notification_request') }) }}
+            {{ form_row(form.productVariant) }}
+            {{ form_row(form.email) }}
+            <button type="submit">Notify me</button>
+        {{ form_end(form) }}
+    </dialog>
+</template>

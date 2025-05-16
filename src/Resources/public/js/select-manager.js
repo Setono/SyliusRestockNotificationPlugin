@@ -1,4 +1,5 @@
 import Repository from './repository.js';
+import Dialog from './dialog.js';
 import Select from './select.js';
 import { OptionSelectedEvent } from './events.js';
 
@@ -13,6 +14,11 @@ export default class SelectManager {
     #repository;
 
     /**
+     * @type {Dialog}
+     */
+    #dialog;
+
+    /**
      * @type SelectManagerOptions
      */
     #options;
@@ -24,15 +30,19 @@ export default class SelectManager {
 
     /**
      * @param {Repository} repository
+     * @param {Dialog} dialog
      * @param {SelectManagerOptions} options
      */
-    constructor(repository, options = {}) {
+    constructor(repository, dialog, options = {}) {
         this.#repository = repository;
+        this.#dialog = dialog;
         this.#options = Object.assign({
                 selector: '.ssrn-select',
             },
             options
         );
+
+        this.#dialog.show('look_small');
 
         document.querySelectorAll(this.#options.selector).forEach(select => {
             this.#selects.push(new Select(select));
