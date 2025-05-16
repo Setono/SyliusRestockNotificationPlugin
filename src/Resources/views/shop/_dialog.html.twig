@@ -1,10 +1,19 @@
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
 <template id="ssrn-dialog-template">
     <dialog class="ssrn-dialog">
-        <h4>Be notified when the product is back in stock</h4>
-        {{ form_start(form, { action: path('setono_sylius_restock_notification_shop_restock_notification_request') }) }}
+        <button type="button" class="close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"/></svg>
+        </button>
+
+        <h4>{{ 'setono_sylius_restock_notification.ui.dialog.header'|trans }}</h4>
+        <p>{{ 'setono_sylius_restock_notification.ui.dialog.body'|trans }}</p>
+
+        {{ form_start(form, { action: path('setono_sylius_restock_notification_shop_restock_notification_request'), attr: { 'class': 'ui form' } }) }}
             {{ form_row(form.productVariant) }}
             {{ form_row(form.email) }}
-            <button type="submit">Notify me</button>
+
+            <button type="submit" class="ui huge primary icon labeled button"><i class="bell outline icon"></i> Notify me</button>
         {{ form_end(form) }}
     </dialog>
 </template>

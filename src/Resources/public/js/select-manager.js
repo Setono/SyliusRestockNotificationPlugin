@@ -1,5 +1,3 @@
-import Repository from './repository.js';
-import Dialog from './dialog.js';
 import Select from './select.js';
 import { OptionSelectedEvent } from './events.js';
 
@@ -42,8 +40,6 @@ export default class SelectManager {
             options
         );
 
-        this.#dialog.show('look_small');
-
         document.querySelectorAll(this.#options.selector).forEach(select => {
             this.#selects.push(new Select(select));
         });
@@ -60,6 +56,15 @@ export default class SelectManager {
                 this.#selects.filter((select, index) => index > lowerThreshold).forEach(select => {
                     this.updateSelect(select);
                 });
+
+                if(!event.option.isInStock()) {
+                    const variant = this.#repository.getVariantFromOptionCombination(this.#getSelectedOptionCombination());
+                    if (null !== variant) {
+                        this.#dialog.show(variant);
+
+                        event.option.select.reset();
+                    }
+                }
             }
         );
     }
@@ -82,5 +87,12 @@ export default class SelectManager {
             }
             option.setAvailable(this.#repository.hasOptionCombination(concreteOptionCombination));
         });
+    }
+
+    /**
+     * @returns {string[]}
+     */
+    #getSelectedOptionCombination() {
+        return this.#selects.filter(select => select.isSelected()).map(select => select.getSelectedValue());
     }
 }

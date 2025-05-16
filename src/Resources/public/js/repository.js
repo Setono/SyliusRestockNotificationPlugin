@@ -1,7 +1,5 @@
 /**
- * @typedef {Object} Product
- * @property {string} code
- * @property {boolean} inStock
+ * @typedef {import('./types.js').Product} Product
  */
 
 /**

@@ -1,5 +1,6 @@
-import Select from './select.js';
-import { OptionSelectedEvent } from './events.js';
+/**
+ * @typedef {import('./types.js').Product} Product
+ */
 
 export default class Dialog {
     /**
@@ -26,11 +27,11 @@ export default class Dialog {
     }
 
     /**
-     * @param {string} variantCode
+     * @param {Product} product
      */
-    show(variantCode) {
+    show(product) {
         const element = this.#getElement();
-        element.querySelector('.product-variant').value = variantCode;
+        element.querySelector('.product-variant').value = product.code;
         element.showModal();
     }
 
@@ -47,6 +48,9 @@ export default class Dialog {
             }
 
             this.#element = dialog;
+            this.#element.querySelector('.close').addEventListener('click', () => {
+                this.#element.close();
+            });
         }
 
         return this.#element;

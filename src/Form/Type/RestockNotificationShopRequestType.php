@@ -32,6 +32,9 @@ final class RestockNotificationShopRequestType extends AbstractResourceType
         $builder
             ->add('email', EmailType::class, [
                 'label' => 'sylius.ui.email',
+                'attr' => [
+                    'autofocus' => 'autofocus',
+                ],
             ])
             ->add('productVariant', HiddenType::class, [
                 'attr' => [
