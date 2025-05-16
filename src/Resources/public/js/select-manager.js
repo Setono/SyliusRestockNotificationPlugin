@@ -44,6 +44,10 @@ export default class SelectManager {
             this.#selects.push(new Select(select));
         });
 
+        if (this.#selects.length === 1) {
+            this.updateSelect(this.#selects[0]);
+        }
+
         document.addEventListener(
             OptionSelectedEvent.name,
             /**
