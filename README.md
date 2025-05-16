@@ -1,6 +1,10 @@
 # Sylius Restock Notification Plugin
 
+[![Latest Version][ico-version]][link-packagist]
+[![Software License][ico-license]](LICENSE)
 [![Build Status][ico-github-actions]][link-github-actions]
+[![Code Coverage][ico-code-coverage]][link-code-coverage]
+[![Mutation testing][ico-infection]][link-infection]
 
 This plugin allows customers to sign up for notifications when a product is back in stock.
 
@@ -82,5 +86,13 @@ framework:
             'Setono\SyliusRestockNotificationPlugin\Message\Command\CommandInterface': async
 ```
 
-[ico-github-actions]: https://github.com/Setono/SyliusRestockNotificationPlugin/workflows/build/badge.svg
-[link-github-actions]: https://github.com/Setono/SyliusRestockNotificationPlugin/actions
+[ico-version]: https://poser.pugx.org/setono/sylius-restock-notification-plugin/v/stable
+[ico-license]: https://poser.pugx.org/setono/sylius-restock-notification-plugin/license
+[ico-github-actions]: https://github.com/Setono/sylius-restock-notification-plugin/workflows/build/badge.svg
+[ico-code-coverage]: https://codecov.io/gh/Setono/sylius-restock-notification-plugin/branch/master/graph/badge.svg
+[ico-infection]: https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FSetono%2Fsylius-restock-notification-plugin%2Fmaster
+
+[link-packagist]: https://packagist.org/packages/setono/sylius-restock-notification-plugin
+[link-github-actions]: https://github.com/Setono/sylius-restock-notification-plugin/actions
+[link-code-coverage]: https://codecov.io/gh/Setono/sylius-restock-notification-plugin
+[link-infection]: https://dashboard.stryker-mutator.io/reports/github.com/Setono/sylius-restock-notification-plugin/master
