@@ -14,7 +14,7 @@ final class RestockNotificationAdminRequestType extends RestockNotificationReque
 
         $builder
             ->add('productVariant', ProductVariantAutocompleteChoiceType::class, [
-                'label' => 'setono_sylius_restock_notification.form.restock_notification_request.product_variant',
+                'label' => 'sylius.ui.variant',
             ])
         ;
     }
