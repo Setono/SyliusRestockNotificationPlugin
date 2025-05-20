@@ -1,5 +1,5 @@
 {{ form_start(form, { action: path('setono_sylius_restock_notification_shop_restock_notification_request'), attr: { 'class': 'ui form' } }) }}
     {{ form_row(form.productVariant) }}
     {{ form_row(form.email) }}
-    <button type="submit" class="ui huge primary icon labeled button"><i class="bell outline icon"></i> {{ 'setono_sylius_restock_notification.ui.notify_me'|trans }}</button>
+    {{ include('@SetonoSyliusRestockNotificationPlugin/shop/dialog/_submit_button.html.twig') }}
 {{ form_end(form) }}
