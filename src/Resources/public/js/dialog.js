@@ -31,6 +31,42 @@ export default class Dialog {
      */
     show(product) {
         const element = this.#getElement();
+
+        element.querySelector('form').addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            /** @type {HTMLFormElement} */
+            const form = event.target;
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: form.method || 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then((result) => {
+                    if(result.success) {
+                        element.classList.add('success');
+                    } else {
+                        element.classList.add('error');
+                        element.querySelector('.ssrn-error-message').innerHTML = result.errors.join('<br>');
+                    }
+                })
+                .catch((error) => {
+                    element.classList.add('error');
+                    console.error(error.message);
+                });
+        });
+
         element.querySelector('.product-variant').value = product.code;
         element.showModal();
     }

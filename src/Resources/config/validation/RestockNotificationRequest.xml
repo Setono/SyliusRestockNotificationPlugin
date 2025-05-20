@@ -11,6 +11,7 @@
                 <value>email</value>
             </option>
             <option name="groups">setono_sylius_restock_notification</option>
+            <option name="message">setono_sylius_restock_notification.restock_notification_request.unique</option>
         </constraint>
         <property name="channel">
             <constraint name="NotBlank">

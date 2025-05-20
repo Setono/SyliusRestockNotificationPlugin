@@ -1,0 +1,3 @@
+setono_sylius_restock_notification:
+    restock_notification_request:
+        unique: You already subscribed to get a notification when this product is back in stock.

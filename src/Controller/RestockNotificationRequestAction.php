@@ -10,6 +10,7 @@ use Setono\SyliusRestockNotificationPlugin\Factory\RestockNotificationRequestFac
 use Setono\SyliusRestockNotificationPlugin\Form\Type\RestockNotificationShopRequestType;
 use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -29,9 +30,12 @@ final class RestockNotificationRequestAction
         $this->managerRegistry = $managerRegistry;
     }
 
-    public function __invoke(Request $request): RedirectResponse
+    public function __invoke(Request $request): RedirectResponse|JsonResponse
     {
-        $form = $this->formFactory->create(RestockNotificationShopRequestType::class, $this->restockNotificationRequestFactory->createWithChannelAndLocaleContext());
+        $form = $this->formFactory->create(
+            RestockNotificationShopRequestType::class,
+            $this->restockNotificationRequestFactory->createWithChannelAndLocaleContext(),
+        );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -43,11 +47,29 @@ final class RestockNotificationRequestAction
             $manager->persist($data);
             $manager->flush();
 
+            if ($request->isXmlHttpRequest()) {
+                return new JsonResponse([
+                    'success' => true,
+                ]);
+            }
+
             self::addFlash($request, 'success', 'setono_sylius_restock_notification.restock_notification_request_created');
 
             return self::createRedirect($request, $this->urlGenerator->generate('sylius_shop_product_show', [
                 'slug' => $data->getProductVariant()?->getProduct()?->getSlug(),
             ]));
+        }
+
+        if ($request->isXmlHttpRequest()) {
+            $errors = [];
+            foreach ($form->getErrors(true) as $error) {
+                $errors[] = $error->getMessage();
+            }
+
+            return new JsonResponse([
+                'success' => false,
+                'errors' => $errors,
+            ]);
         }
 
         self::addFlash($request, 'error', 'setono_sylius_restock_notification.restock_notification_request_failed');
