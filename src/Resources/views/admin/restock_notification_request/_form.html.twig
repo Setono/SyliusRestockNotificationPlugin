@@ -1,7 +1,7 @@
 <div class="ui two column grid">
     <div class="ten wide column">
         {{ form_row(form.channel) }}
-        {{ form_row(form.locale) }}
+        {{ form_row(form.localeCode) }}
         {{ form_row(form.productVariant, {
             'remote_url': path('setono_sylius_restock_notification_admin_ajax_product_variant_by_phrase'),
             'load_edit_url': path('setono_sylius_restock_notification_admin_ajax_product_variant_by_code'),
