@@ -10,6 +10,7 @@
 
     <services>
         <service id="Setono\SyliusRestockNotificationPlugin\Form\Type\RestockNotificationAdminRequestType">
+            <argument type="service" id="sylius.repository.locale"/>
             <argument>%setono_sylius_restock_notification.model.restock_notification_request.class%</argument>
             <argument>%setono_sylius_restock_notification.form_type.restock_notification_request.validation_groups%</argument>
 
