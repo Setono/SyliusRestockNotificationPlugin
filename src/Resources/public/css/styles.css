@@ -151,7 +151,6 @@ dialog.ssrn-dialog h4 {
 }
 
 .ssrn-option.out-of-stock .ssrn-option-label {
-    text-decoration: line-through;
     opacity: 0.6;
 }
 
