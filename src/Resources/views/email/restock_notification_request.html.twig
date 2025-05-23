@@ -14,6 +14,11 @@
 
     <div style="text-align: center;">
         {{ 'setono_sylius_restock_notification.email.restock_notification_request.intro'|trans({'%product%': productTranslation.name}, null, localeCode)|raw }}
+        {% if imageUrl is not null %}
+            <div style="margin-bottom: 20px;">
+                <img src="{{ imageUrl }}" alt="{{ productTranslation.name }}" style="max-width: 200px; height: auto;" />
+            </div>
+        {% endif %}
         <a href="{{ url }}">{{ 'setono_sylius_restock_notification.email.restock_notification_request.anchor_text'|trans({}, null, localeCode) }}</a>
         {{ 'setono_sylius_restock_notification.email.restock_notification_request.regards'|trans({}, null, localeCode)|raw }}
     </div>
