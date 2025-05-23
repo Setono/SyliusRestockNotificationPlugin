@@ -32,5 +32,6 @@
     <issueHandlers>
         <MissingTemplateParam errorLevel="suppress"/>
         <MissingClassConstType errorLevel="suppress"/>
+        <PluginIssue name="QueryBuilderSetParameter" errorLevel="suppress"/>
     </issueHandlers>
 </psalm>

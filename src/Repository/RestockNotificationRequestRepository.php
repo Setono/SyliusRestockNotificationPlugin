@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Setono\SyliusRestockNotificationPlugin\Repository;
 
 use DateTimeInterface;
-use Doctrine\DBAL\Types\Types;
 use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Product\Model\ProductVariantInterface;
@@ -68,7 +67,7 @@ class RestockNotificationRequestRepository extends EntityRepository implements R
         return (int) $this->createQueryBuilder('o')
             ->delete()
             ->andWhere('o.createdAt < :date')
-            ->setParameter('date', $date, Types::DATETIME_MUTABLE)
+            ->setParameter('date', $date)
             ->getQuery()
             ->execute()
         ;
