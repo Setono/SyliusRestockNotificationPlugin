@@ -18,29 +18,21 @@ final class PruneRestockNotificationRequestsCommand extends Command
 
     protected static $defaultDescription = 'Remove restock notification requests older than the configured threshold';
 
-    private RestockNotificationRequestRepositoryInterface $restockNotificationRequestRepository;
-
-    private int $pruningThreshold;
-
     public function __construct(
-        RestockNotificationRequestRepositoryInterface $restockNotificationRequestRepository,
-        int $pruningThreshold,
+        private readonly RestockNotificationRequestRepositoryInterface $restockNotificationRequestRepository,
+        private readonly int $pruningThreshold,
     ) {
         parent::__construct();
-
-        $this->restockNotificationRequestRepository = $restockNotificationRequestRepository;
-        $this->pruningThreshold = $pruningThreshold;
     }
 
     protected function configure(): void
     {
         $this
             ->addOption(
-                'threshold-days',
-                't',
+                'pruning-threshold',
+                null,
                 InputOption::VALUE_REQUIRED,
                 'Override the configured threshold (in days)',
-                null,
             )
         ;
     }
@@ -49,8 +41,8 @@ final class PruneRestockNotificationRequestsCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $thresholdDays = (int) ($input->getOption('threshold-days') ?? $this->pruningThreshold);
-        $date = new DateTimeImmutable(sprintf('-%d days', $thresholdDays));
+        $pruningThreshold = (int) ($input->getOption('pruning-threshold') ?? $this->pruningThreshold);
+        $date = new DateTimeImmutable(sprintf('-%d days', $pruningThreshold));
 
         $count = $this->restockNotificationRequestRepository->removeOlderThan($date);
 

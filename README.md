@@ -25,9 +25,9 @@ in the `config/bundles.php` file of your project before (!) `SyliusGridBundle` a
 return [
     Setono\SyliusRestockNotificationPlugin\SetonoSyliusRestockNotificationPlugin::class => ['all' => true],
     Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
-    
+
     // ...
-    
+
     Sylius\Bundle\GridBundle\SyliusGridBundle::class => ['all' => true],
 ];
 ```
@@ -46,6 +46,28 @@ setono_sylius_restock_notification:
 ```bash
 php bin/console doctrine:migrations:diff
 php bin/console doctrine:migrations:migrate
+```
+
+## Maintenance
+
+### Pruning Old Notification Requests
+
+The plugin includes a command to remove old restock notification requests that are no longer needed. By default, it removes requests that are older than 90 days.
+
+```bash
+# Using the default threshold (90 days)
+php bin/console setono:sylius-restock-notification:prune-requests
+
+# Specifying a custom threshold (e.g., 30 days)
+php bin/console setono:sylius-restock-notification:prune-requests --pruning-threshold=30
+```
+
+You can configure the default threshold in your application's configuration:
+
+```yaml
+# config/packages/setono_sylius_restock_notification.yaml
+setono_sylius_restock_notification:
+    pruning_threshold: 60 # Set the threshold to 60 days
 ```
 
 [ico-version]: https://poser.pugx.org/setono/sylius-restock-notification-plugin/v/stable
