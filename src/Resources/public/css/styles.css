@@ -76,7 +76,6 @@ dialog.ssrn-dialog h4 {
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
 }
 
 .ssrn-select-trigger svg {
@@ -95,7 +94,7 @@ dialog.ssrn-dialog h4 {
 
 .ssrn-options {
     position: absolute;
-    display: block;
+    display: none;
     top: 100%;
     left: 0;
     right: 0;
@@ -105,11 +104,6 @@ dialog.ssrn-dialog h4 {
     border-bottom-left-radius: 4px;
     box-sizing: border-box;
     background: #fff;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(-15px);
-    transition: all 0.2s ease-in-out;
     z-index: 999;
     max-height: 200px;
     overflow-y: auto;
@@ -127,10 +121,7 @@ dialog.ssrn-dialog h4 {
 }
 
 .ssrn-select.opened .ssrn-options {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all;
-    transform: translateY(0);
+    display: block;
     border-top: 0;
 }
 
