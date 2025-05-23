@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\Doctrine\ORM;
 
+use DateTimeInterface;
 use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
 use Setono\SyliusRestockNotificationPlugin\Repository\RestockNotificationRequestRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
@@ -59,6 +60,17 @@ class RestockNotificationRequestRepository extends EntityRepository implements R
             ])
             ->getQuery()
             ->getSingleScalarResult() > 0
+        ;
+    }
+
+    public function removeOlderThan(DateTimeInterface $date): int
+    {
+        return $this->createQueryBuilder('o')
+            ->delete()
+            ->andWhere('o.createdAt < :date')
+            ->setParameter('date', $date)
+            ->getQuery()
+            ->execute()
         ;
     }
 }

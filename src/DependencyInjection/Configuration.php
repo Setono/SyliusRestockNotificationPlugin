@@ -22,6 +22,17 @@ final class Configuration implements ConfigurationInterface
         /** @var ArrayNodeDefinition $rootNode */
         $rootNode = $treeBuilder->getRootNode();
 
+        /** @psalm-suppress MixedMethodCall,PossiblyNullReference,UndefinedMethod */
+        $rootNode
+            ->children()
+                ->integerNode('pruning_threshold')
+                    ->info('The number of days after which restock notification requests will be removed')
+                    ->defaultValue(90)
+                    ->min(1)
+                ->end()
+            ->end()
+        ;
+
         $this->addResourcesSection($rootNode);
 
         return $treeBuilder;

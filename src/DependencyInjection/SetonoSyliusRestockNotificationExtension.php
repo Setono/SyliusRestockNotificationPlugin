@@ -21,7 +21,7 @@ final class SetonoSyliusRestockNotificationExtension extends AbstractResourceExt
         /**
          * @psalm-suppress PossiblyNullArgument
          *
-         * @var array{resources: array} $config
+         * @var array{resources: array, pruning_threshold: int} $config
          */
         $config = $this->processConfiguration($this->getConfiguration([], $container), $configs);
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
@@ -32,6 +32,8 @@ final class SetonoSyliusRestockNotificationExtension extends AbstractResourceExt
             $config['resources'],
             $container,
         );
+
+        $container->setParameter('setono_sylius_restock_notification.cleanup.pruning_threshold', $config['pruning_threshold']);
 
         $loader->load('services.xml');
     }

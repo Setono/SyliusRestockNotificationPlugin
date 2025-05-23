@@ -10,7 +10,7 @@ use Sylius\Component\Product\Model\ProductVariantInterface;
 interface ProductVariantRepositoryInterface extends BaseProductVariantRepositoryInterface
 {
     /**
-     * This method is used in the auto completion of product variants when adding a restock notification manually
+     * This method is used in the auto-completion of product variants when adding a restock notification manually
      *
      * @return ProductVariantInterface[]
      */
