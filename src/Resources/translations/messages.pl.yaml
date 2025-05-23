@@ -1,0 +1,39 @@
+setono_sylius_restock_notification:
+    email:
+        restock_notification_request:
+            anchor_text: Kliknij tutaj, aby zobaczyć produkt
+            intro: |
+                <p>Cześć</p>
+                <p>Zapisałeś się, aby otrzymać e-mail, gdy produkt, %product%, będzie ponownie dostępny.</p>
+                <p>Mam dla Ciebie wiadomość! Produkt został właśnie uzupełniony.</p>
+            regards: <p>Miłego dnia i udanych zakupów ;)</p>
+            subject: Twój długo oczekiwany produkt został właśnie uzupełniony!
+    form:
+        restock_notification_request:
+            help:
+                header: Pomoc
+                content: |
+                    <p>Podczas tworzenia prośby o powiadomienie o uzupełnieniu zapasów, kanał i język są używane do określenia treści
+                    e-maila wysyłanego do klienta, więc upewnij się, że wybierasz to, czego oczekuje klient.</p>
+            channel_placeholder: Wybierz kanał...
+    menu:
+        admin:
+            main:
+                marketing:
+                    restock_notification_requests: Prośby o powiadomienie o uzupełnieniu zapasów
+    ui:
+        dialog:
+            header: Brak w magazynie
+            body: Otrzymaj e-mail, gdy ten produkt będzie ponownie dostępny
+        days_waited: Dni oczekiwania
+        edit_restock_notification_request: Edytuj prośbę o powiadomienie o uzupełnieniu zapasów
+        manage_restock_notification_requests: Zarządzaj prośbami o powiadomienie o uzupełnieniu zapasów
+        new_restock_notification_request: Nowa prośba o powiadomienie o uzupełnieniu zapasów
+        restock_notification_requests: Prośby o powiadomienie o uzupełnieniu zapasów
+        notify_me: Powiadom mnie
+        sent_at: Wysłano dnia
+        states:
+            failed: Nieudane
+            pending: Oczekujące
+            processing: Przetwarzanie
+            sent: Wysłane

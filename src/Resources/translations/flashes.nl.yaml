@@ -1,0 +1,3 @@
+setono_sylius_restock_notification:
+    restock_notification_request_created: U ontvangt een e-mail wanneer het product weer op voorraad is
+    restock_notification_request_failed: Er is iets misgegaan. Probeer het opnieuw of neem contact op met de klantenservice

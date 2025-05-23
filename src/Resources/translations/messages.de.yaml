@@ -1,0 +1,39 @@
+setono_sylius_restock_notification:
+    email:
+        restock_notification_request:
+            anchor_text: Klicken Sie hier, um das Produkt zu sehen
+            intro: |
+                <p>Hallo</p>
+                <p>Sie haben sich angemeldet, um eine E-Mail zu erhalten, wenn das Produkt %product% wieder auf Lager ist.</p>
+                <p>Ich habe Neuigkeiten für Sie! Das Produkt wurde gerade wieder aufgefüllt.</p>
+            regards: <p>Haben Sie einen schönen Tag und viel Spaß beim Einkaufen ;)</p>
+            subject: Ihr lang erwartetes Produkt wurde gerade wieder aufgefüllt!
+    form:
+        restock_notification_request:
+            help:
+                header: Hilfe
+                content: |
+                    <p>Wenn Sie eine Benachrichtigung über die Wiederauffüllung erstellen, werden der Kanal und die Sprache verwendet, um den Inhalt
+                    der an den Kunden gesendeten E-Mail zu bestimmen. Stellen Sie daher sicher, dass Sie auswählen, was der Kunde erwartet.</p>
+            channel_placeholder: Kanal auswählen...
+    menu:
+        admin:
+            main:
+                marketing:
+                    restock_notification_requests: Benachrichtigungen über Wiederauffüllung
+    ui:
+        dialog:
+            header: Nicht auf Lager
+            body: Erhalten Sie eine E-Mail, wenn dieses Produkt wieder auf Lager ist
+        days_waited: Tage gewartet
+        edit_restock_notification_request: Benachrichtigung über Wiederauffüllung bearbeiten
+        manage_restock_notification_requests: Benachrichtigungen über Wiederauffüllung verwalten
+        new_restock_notification_request: Neue Benachrichtigung über Wiederauffüllung
+        restock_notification_requests: Benachrichtigungen über Wiederauffüllung
+        notify_me: Benachrichtigen Sie mich
+        sent_at: Gesendet am
+        states:
+            failed: Fehlgeschlagen
+            pending: Ausstehend
+            processing: In Bearbeitung
+            sent: Gesendet

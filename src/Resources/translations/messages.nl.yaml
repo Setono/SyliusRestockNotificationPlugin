@@ -1,0 +1,39 @@
+setono_sylius_restock_notification:
+    email:
+        restock_notification_request:
+            anchor_text: Klik hier om het product te bekijken
+            intro: |
+                <p>Hallo</p>
+                <p>U heeft zich aangemeld om een e-mail te ontvangen wanneer het product, %product%, weer op voorraad zou zijn.</p>
+                <p>Ik heb nieuws voor u! Het product is zojuist weer op voorraad gekomen.</p>
+            regards: <p>Fijne dag en veel plezier met winkelen ;)</p>
+            subject: Uw lang verwachte product is zojuist weer op voorraad gekomen!
+    form:
+        restock_notification_request:
+            help:
+                header: Help
+                content: |
+                    <p>Wanneer u een voorraadmelding aanmaakt, worden het kanaal en de taal gebruikt om de inhoud
+                    van de e-mail die naar de klant wordt gestuurd te bepalen, dus zorg ervoor dat u selecteert wat de klant verwacht.</p>
+            channel_placeholder: Selecteer kanaal...
+    menu:
+        admin:
+            main:
+                marketing:
+                    restock_notification_requests: Voorraadmeldingen
+    ui:
+        dialog:
+            header: Niet op voorraad
+            body: Ontvang een e-mail wanneer dit product weer op voorraad is
+        days_waited: Dagen gewacht
+        edit_restock_notification_request: Voorraadmelding bewerken
+        manage_restock_notification_requests: Voorraadmeldingen beheren
+        new_restock_notification_request: Nieuwe voorraadmelding
+        restock_notification_requests: Voorraadmeldingen
+        notify_me: Meld mij
+        sent_at: Verzonden op
+        states:
+            failed: Mislukt
+            pending: In afwachting
+            processing: Verwerken
+            sent: Verzonden

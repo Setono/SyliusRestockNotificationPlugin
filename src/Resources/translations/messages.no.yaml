@@ -1,0 +1,39 @@
+setono_sylius_restock_notification:
+    email:
+        restock_notification_request:
+            anchor_text: Klikk her for å se produktet
+            intro: |
+                <p>Hei</p>
+                <p>Du meldte deg på for å motta en e-post når produktet, %product%, var på lager igjen.</p>
+                <p>Jeg har nyheter til deg! Produktet har nettopp blitt fylt opp igjen.</p>
+            regards: <p>Ha en fin dag og nyt handelen din ;)</p>
+            subject: Ditt lenge etterlengtede produkt har nettopp blitt fylt opp igjen!
+    form:
+        restock_notification_request:
+            help:
+                header: Hjelp
+                content: |
+                    <p>Når du oppretter en forespørsel om lagervarsel, brukes kanalen og språket til å bestemme innholdet
+                    i e-posten som sendes til kunden, så sørg for å velge det kunden forventer.</p>
+            channel_placeholder: Velg kanal...
+    menu:
+        admin:
+            main:
+                marketing:
+                    restock_notification_requests: Forespørsler om lagervarsel
+    ui:
+        dialog:
+            header: Utsolgt
+            body: Motta en e-post når dette produktet er på lager igjen
+        days_waited: Dager ventet
+        edit_restock_notification_request: Rediger forespørsel om lagervarsel
+        manage_restock_notification_requests: Administrer forespørsler om lagervarsel
+        new_restock_notification_request: Ny forespørsel om lagervarsel
+        restock_notification_requests: Forespørsler om lagervarsel
+        notify_me: Varsle meg
+        sent_at: Sendt den
+        states:
+            failed: Mislyktes
+            pending: Venter
+            processing: Behandler
+            sent: Sendt

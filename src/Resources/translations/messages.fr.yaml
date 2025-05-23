@@ -1,0 +1,39 @@
+setono_sylius_restock_notification:
+    email:
+        restock_notification_request:
+            anchor_text: Cliquez ici pour voir le produit
+            intro: |
+                <p>Bonjour</p>
+                <p>Vous vous êtes inscrit pour recevoir un e-mail lorsque le produit, %product%, serait de nouveau en stock.</p>
+                <p>J'ai des nouvelles pour vous ! Le produit vient d'être réapprovisionné.</p>
+            regards: <p>Passez une bonne journée et profitez de votre shopping ;)</p>
+            subject: Votre produit tant attendu vient d'être réapprovisionné !
+    form:
+        restock_notification_request:
+            help:
+                header: Aide
+                content: |
+                    <p>Lorsque vous créez une demande de notification de réapprovisionnement, le canal et la locale sont utilisés pour déterminer le contenu
+                    de l'e-mail envoyé au client, alors assurez-vous de sélectionner ce que le client attend.</p>
+            channel_placeholder: Sélectionnez le canal...
+    menu:
+        admin:
+            main:
+                marketing:
+                    restock_notification_requests: Demandes de notification de réapprovisionnement
+    ui:
+        dialog:
+            header: Rupture de stock
+            body: Recevez un e-mail lorsque ce produit est de nouveau en stock
+        days_waited: Jours d'attente
+        edit_restock_notification_request: Modifier la demande de notification de réapprovisionnement
+        manage_restock_notification_requests: Gérer les demandes de notification de réapprovisionnement
+        new_restock_notification_request: Nouvelle demande de notification de réapprovisionnement
+        restock_notification_requests: Demandes de notification de réapprovisionnement
+        notify_me: Me notifier
+        sent_at: Envoyé le
+        states:
+            failed: Échoué
+            pending: En attente
+            processing: En cours de traitement
+            sent: Envoyé

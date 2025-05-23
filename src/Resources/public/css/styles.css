@@ -150,6 +150,10 @@ dialog.ssrn-dialog h4 {
     display: block !important;
 }
 
+.ssrn-option.out-of-stock .ssrn-option-label {
+    text-decoration: line-through;
+}
+
 .ssrn-option-remind-me {
     display: none;
 }

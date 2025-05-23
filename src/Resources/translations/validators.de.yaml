@@ -1,0 +1,3 @@
+setono_sylius_restock_notification:
+    restock_notification_request:
+        unique: Sie haben sich bereits angemeldet, um eine Benachrichtigung zu erhalten, wenn dieses Produkt wieder auf Lager ist.
