@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusRestockNotificationPlugin\Doctrine\ORM;
+namespace Setono\SyliusRestockNotificationPlugin\Repository;
 
-use function assert;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -14,8 +13,6 @@ trait ProductVariantRepositoryTrait
 {
     public function findByPhraseWithoutLocale(string $phrase): array
     {
-        assert($this instanceof EntityRepository);
-
         return $this->createQueryBuilder('o')
             ->innerJoin('o.translations', 'translation')
             ->innerJoin('o.product', 'product')

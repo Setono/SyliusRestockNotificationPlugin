@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusRestockNotificationPlugin\Doctrine\ORM;
+namespace Setono\SyliusRestockNotificationPlugin\Repository;
 
 use DateTimeInterface;
+use Doctrine\DBAL\Types\Types;
 use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
-use Setono\SyliusRestockNotificationPlugin\Repository\RestockNotificationRequestRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Product\Model\ProductVariantInterface;
 use Webmozart\Assert\Assert;
@@ -65,10 +65,10 @@ class RestockNotificationRequestRepository extends EntityRepository implements R
 
     public function removeOlderThan(DateTimeInterface $date): int
     {
-        return $this->createQueryBuilder('o')
+        return (int) $this->createQueryBuilder('o')
             ->delete()
             ->andWhere('o.createdAt < :date')
-            ->setParameter('date', $date)
+            ->setParameter('date', $date, Types::DATETIME_MUTABLE)
             ->getQuery()
             ->execute()
         ;

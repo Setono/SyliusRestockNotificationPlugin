@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Setono\SyliusRestockNotificationPlugin\DependencyInjection;
 
-use Setono\SyliusRestockNotificationPlugin\Doctrine\ORM\RestockNotificationRequestRepository;
 use Setono\SyliusRestockNotificationPlugin\Form\Type\RestockNotificationAdminRequestType;
 use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequest;
+use Setono\SyliusRestockNotificationPlugin\Repository\RestockNotificationRequestRepository;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\Factory\Factory;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
