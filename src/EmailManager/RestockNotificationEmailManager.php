@@ -6,13 +6,16 @@ namespace Setono\SyliusRestockNotificationPlugin\EmailManager;
 
 use Setono\SyliusRestockNotificationPlugin\Mailer\Emails;
 use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
+use Setono\SyliusRestockNotificationPlugin\Resolver\ImageUrlResolverInterface;
 use Sylius\Component\Mailer\Sender\SenderInterface;
 use Webmozart\Assert\Assert;
 
 final class RestockNotificationEmailManager implements RestockNotificationEmailManagerInterface
 {
-    public function __construct(private readonly SenderInterface $sender)
-    {
+    public function __construct(
+        private readonly SenderInterface $sender,
+        private readonly ImageUrlResolverInterface $imageUrlResolver,
+    ) {
     }
 
     public function sendRestockNotificationEmail(RestockNotificationRequestInterface $restockNotificationRequest): void
@@ -34,6 +37,7 @@ final class RestockNotificationEmailManager implements RestockNotificationEmailM
                 'restockNotificationRequest' => $restockNotificationRequest,
                 'channel' => $channel,
                 'localeCode' => $localeCode,
+                'imageUrl' => $this->imageUrlResolver->resolve($restockNotificationRequest),
             ],
         )
         ;

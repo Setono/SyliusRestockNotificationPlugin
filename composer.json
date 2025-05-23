@@ -8,6 +8,7 @@
         "doctrine/orm": "^2.0",
         "doctrine/persistence": "^2.0 || ^3.0",
         "knplabs/knp-menu": "^3.7",
+        "liip/imagine-bundle": "^2.0",
         "psr/log": "^1.0 || ^2.0 || ^3.0",
         "setono/doctrine-orm-trait": "^1.2",
         "sylius/channel": "^1.0",

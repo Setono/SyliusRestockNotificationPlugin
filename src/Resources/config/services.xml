@@ -12,6 +12,7 @@
         <import resource="services/menu.xml"/>
         <import resource="services/message.xml"/>
         <import resource="services/notifier.xml"/>
+        <import resource="services/resolver.xml"/>
         <import resource="services/twig.xml"/>
     </imports>
 </container>
