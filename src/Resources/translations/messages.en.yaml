@@ -32,6 +32,7 @@ setono_sylius_restock_notification:
         restock_notification_requests: Restock notification requests
         notify_me: Notify me
         sent_at: Sent at
+        remind_me: Remind me
         states:
             failed: Failed
             pending: Pending
