@@ -1,0 +1,40 @@
+setono_sylius_restock_notification:
+    email:
+        restock_notification_request:
+            anchor_text: Faceți clic aici pentru a vedea produsul
+            intro: |
+                <p>Bună</p>
+                <p>V-ați înscris pentru a primi un e-mail când produsul, %product%, va fi din nou în stoc.</p>
+                <p>Am vești pentru tine! Produsul tocmai a fost reaprovizionat.</p>
+            regards: <p>O zi bună și bucurați-vă de cumpărături ;)</p>
+            subject: Produsul tău mult așteptat tocmai a fost reaprovizionat!
+    form:
+        restock_notification_request:
+            help:
+                header: Ajutor
+                content: |
+                    <p>Când creați o cerere de notificare de reaprovizionare, canalul și limba sunt utilizate pentru a determina conținutul
+                    e-mailului trimis clientului, așa că asigurați-vă că selectați ceea ce se așteaptă clientul.</p>
+            channel_placeholder: Selectați canalul...
+    menu:
+        admin:
+            main:
+                marketing:
+                    restock_notification_requests: Cereri de notificare de reaprovizionare
+    ui:
+        dialog:
+            header: Stoc epuizat
+            body: Primiți un e-mail când acest produs este din nou în stoc
+        days_waited: Zile așteptate
+        edit_restock_notification_request: Editați cererea de notificare de reaprovizionare
+        manage_restock_notification_requests: Gestionați cererile de notificare de reaprovizionare
+        new_restock_notification_request: Cerere nouă de notificare de reaprovizionare
+        notify_me: Notifică-mă
+        remind_me: Amintește-mi
+        restock_notification_requests: Cereri de notificare de reaprovizionare
+        sent_at: Trimis la
+        states:
+            failed: Eșuat
+            pending: În așteptare
+            processing: Procesare
+            sent: Trimis

@@ -1,0 +1,3 @@
+setono_sylius_restock_notification:
+    restock_notification_request_created: Veți primi un e-mail când produsul va fi din nou în stoc
+    restock_notification_request_failed: Ceva nu a mers bine. Vă rugăm să încercați din nou sau să contactați serviciul clienți

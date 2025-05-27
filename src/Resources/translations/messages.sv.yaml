@@ -31,6 +31,7 @@ setono_sylius_restock_notification:
         new_restock_notification_request: Ny begäran om lagernotifiering
         restock_notification_requests: Begäran om lagernotifieringar
         notify_me: Meddela mig
+        remind_me: Påminn mig
         sent_at: Skickat den
         states:
             failed: Misslyckades

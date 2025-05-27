@@ -31,6 +31,7 @@ setono_sylius_restock_notification:
         new_restock_notification_request: Nouvelle demande de notification de réapprovisionnement
         restock_notification_requests: Demandes de notification de réapprovisionnement
         notify_me: Me notifier
+        remind_me: Rappelez-moi
         sent_at: Envoyé le
         states:
             failed: Échoué

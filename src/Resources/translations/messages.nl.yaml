@@ -31,6 +31,7 @@ setono_sylius_restock_notification:
         new_restock_notification_request: Nieuwe voorraadmelding
         restock_notification_requests: Voorraadmeldingen
         notify_me: Meld mij
+        remind_me: Herinner mij
         sent_at: Verzonden op
         states:
             failed: Mislukt
