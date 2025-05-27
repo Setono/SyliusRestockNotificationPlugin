@@ -27,12 +27,14 @@ setono_sylius_restock_notification:
             body: Ontvang een e-mail wanneer dit product weer op voorraad is
         days_waited: Dagen gewacht
         edit_restock_notification_request: Voorraadmelding bewerken
+        error_message: Er is iets misgegaan. Probeer het opnieuw.
         manage_restock_notification_requests: Voorraadmeldingen beheren
         new_restock_notification_request: Nieuwe voorraadmelding
         restock_notification_requests: Voorraadmeldingen
         notify_me: Meld mij
         remind_me: Herinner mij
         sent_at: Verzonden op
+        success_message: U ontvangt een e-mail wanneer het product weer op voorraad is
         states:
             failed: Mislukt
             pending: In afwachting

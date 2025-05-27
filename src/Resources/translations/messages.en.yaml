@@ -27,12 +27,14 @@ setono_sylius_restock_notification:
             body: Receive an email when this product is back in stock
         days_waited: Days waited
         edit_restock_notification_request: Edit restock notification request
+        error_message: Something went wrong. Please try again.
         manage_restock_notification_requests: Manage restock notification requests
         new_restock_notification_request: New restock notification request
         restock_notification_requests: Restock notification requests
         notify_me: Notify me
         remind_me: Remind me
         sent_at: Sent at
+        success_message: You will receive an email when the product is back in stock
         states:
             failed: Failed
             pending: Pending

@@ -27,12 +27,14 @@ setono_sylius_restock_notification:
             body: Recibe un correo electrónico cuando este producto vuelva a estar en stock
         days_waited: Días esperados
         edit_restock_notification_request: Editar solicitud de notificación de reabastecimiento
+        error_message: Algo salió mal. Por favor, inténtalo de nuevo.
         manage_restock_notification_requests: Gestionar solicitudes de notificación de reabastecimiento
         new_restock_notification_request: Nueva solicitud de notificación de reabastecimiento
         notify_me: Notifícame
         remind_me: Recuérdame
         restock_notification_requests: Solicitudes de notificación de reabastecimiento
         sent_at: Enviado el
+        success_message: Recibirás un correo electrónico cuando el producto vuelva a estar en stock
         states:
             failed: Fallido
             pending: Pendiente

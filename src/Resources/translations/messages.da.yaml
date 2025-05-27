@@ -27,12 +27,14 @@ setono_sylius_restock_notification:
             body: Modtag en e-mail, når dette produkt er på lager igen
         days_waited: Dage ventet
         edit_restock_notification_request: Rediger anmodning om lagernotifikation
+        error_message: Noget gik galt. Prøv igen.
         manage_restock_notification_requests: Administrer anmodninger om lagernotifikation
         new_restock_notification_request: Ny anmodning om lagernotifikation
         restock_notification_requests: Anmodninger om lagernotifikation
         notify_me: Giv mig besked
         remind_me: Påmind mig
         sent_at: Sendt den
+        success_message: Du vil modtage en e-mail, når produktet er på lager igen
         states:
             failed: Mislykkedes
             pending: Afventer

@@ -27,12 +27,14 @@ setono_sylius_restock_notification:
             body: Otrzymaj e-mail, gdy ten produkt będzie ponownie dostępny
         days_waited: Dni oczekiwania
         edit_restock_notification_request: Edytuj prośbę o powiadomienie o uzupełnieniu zapasów
+        error_message: Coś poszło nie tak. Proszę spróbować ponownie.
         manage_restock_notification_requests: Zarządzaj prośbami o powiadomienie o uzupełnieniu zapasów
         new_restock_notification_request: Nowa prośba o powiadomienie o uzupełnieniu zapasów
         restock_notification_requests: Prośby o powiadomienie o uzupełnieniu zapasów
         notify_me: Powiadom mnie
         remind_me: Przypomnij mi
         sent_at: Wysłano dnia
+        success_message: Otrzymasz e-mail, gdy produkt będzie ponownie dostępny
         states:
             failed: Nieudane
             pending: Oczekujące

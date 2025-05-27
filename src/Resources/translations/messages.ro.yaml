@@ -27,12 +27,14 @@ setono_sylius_restock_notification:
             body: Primiți un e-mail când acest produs este din nou în stoc
         days_waited: Zile așteptate
         edit_restock_notification_request: Editați cererea de notificare de reaprovizionare
+        error_message: Ceva n-a mers bine. Vă rugăm să încercați din nou.
         manage_restock_notification_requests: Gestionați cererile de notificare de reaprovizionare
         new_restock_notification_request: Cerere nouă de notificare de reaprovizionare
         notify_me: Notifică-mă
         remind_me: Amintește-mi
         restock_notification_requests: Cereri de notificare de reaprovizionare
         sent_at: Trimis la
+        success_message: Veți primi un e-mail când produsul va fi din nou în stoc
         states:
             failed: Eșuat
             pending: În așteptare

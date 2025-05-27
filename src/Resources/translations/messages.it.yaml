@@ -27,12 +27,14 @@ setono_sylius_restock_notification:
             body: Ricevi un'email quando questo prodotto torna disponibile
         days_waited: Giorni di attesa
         edit_restock_notification_request: Modifica richiesta di notifica di rifornimento
+        error_message: Qualcosa è andato storto. Per favore riprova.
         manage_restock_notification_requests: Gestisci richieste di notifica di rifornimento
         new_restock_notification_request: Nuova richiesta di notifica di rifornimento
         notify_me: Avvisami
         remind_me: Ricordami
         restock_notification_requests: Richieste di notifica di rifornimento
         sent_at: Inviato il
+        success_message: Riceverai un'email quando il prodotto sarà nuovamente disponibile
         states:
             failed: Fallito
             pending: In attesa
