@@ -73,7 +73,7 @@ final class PruneRestockNotificationRequestsCommandTest extends TestCase
         }))->willReturn(3)->shouldBeCalled();
 
         $exitCode = $commandTester->execute([
-            '--threshold-days' => 30,
+            '--pruning-threshold' => 30,
         ]);
 
         $this->assertEquals(0, $exitCode);
