@@ -38,11 +38,9 @@ export default class Dialog {
             /** @type {HTMLFormElement} */
             const form = event.target;
 
-            const formData = new FormData(form);
-
             fetch(form.action, {
                 method: form.method || 'POST',
-                body: formData,
+                body: new FormData(form),
                 headers: {
                     'X-Requested-With': 'XMLHttpRequest',
                 },
@@ -55,8 +53,10 @@ export default class Dialog {
                 })
                 .then((result) => {
                     if(result.success) {
+                        element.classList.remove('error');
                         element.classList.add('success');
                     } else {
+                        element.classList.remove('success');
                         element.classList.add('error');
                         element.querySelector('.ssrn-error-message').innerHTML = result.errors.join('<br>');
                     }
