@@ -1,3 +1,13 @@
+:root {
+    /* Dialog */
+    --ssrn-dialog-backdrop-color: rgba(0, 0, 0, 0.75);
+    --ssrn-dialog-success-color: #22b99a;
+    --ssrn-dialog-error-color: #ff4136;
+
+    /* Select */
+    --ssrn-select-remind-me-color: #22b99a;
+}
+
 /**
  * Style the <dialog>
  */
@@ -10,7 +20,7 @@
 }
 
 .ssrn-dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: var(--ssrn-dialog-backdrop-color);
 }
 
 .ssrn-dialog button.close {
@@ -39,12 +49,12 @@
 }
 
 .ssrn-success-message {
-    color: green;
+    color: var(--ssrn-dialog-success-color);
     display: none;
 }
 
 .ssrn-error-message {
-    color: red;
+    color: var(--ssrn-dialog-error-color);
     display: none;
 }
 
@@ -161,5 +171,5 @@ dialog.ssrn-dialog h4 {
 .ssrn-option-remind-me {
     font-weight: bold;
     display: none;
-    color: #22b99a;
+    color: var(--ssrn-select-remind-me-color);
 }
