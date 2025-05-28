@@ -58,7 +58,7 @@ final class Runtime implements RuntimeExtensionInterface, LoggerAwareInterface
             }
         }
 
-        $variants['optionReferences'] = array_merge_recursive(...$optionReferences);
+        $variants['optionReferences'] = self::merge(...$optionReferences);
 
         $flags = \JSON_THROW_ON_ERROR | \JSON_FORCE_OBJECT;
         if ($this->debug) {
@@ -101,5 +101,29 @@ final class Runtime implements RuntimeExtensionInterface, LoggerAwareInterface
         }
 
         return $result;
+    }
+
+    private static function merge(array ...$arrays): array
+    {
+        $merged = [];
+
+        foreach ($arrays as $array) {
+            /** @var mixed $value */
+            foreach ($array as $key => $value) {
+                // This is different from array_merge_recursive because integer keys are appended in that
+                if (isset($merged[$key])) {
+                    if (is_array($merged[$key]) && is_array($value)) {
+                        $merged[$key] = self::merge($merged[$key], $value);
+                    } else {
+                        $merged[$key] = [$merged[$key], $value];
+                    }
+                } else {
+                    /** @psalm-suppress MixedAssignment */
+                    $merged[$key] = $value;
+                }
+            }
+        }
+
+        return $merged;
     }
 }
