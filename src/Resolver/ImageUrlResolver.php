@@ -7,7 +7,6 @@ namespace Setono\SyliusRestockNotificationPlugin\Resolver;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Setono\SyliusRestockNotificationPlugin\Model\RestockNotificationRequestInterface;
 use Sylius\Component\Core\Model\ProductInterface;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class ImageUrlResolver implements ImageUrlResolverInterface
 {
@@ -34,16 +33,7 @@ final class ImageUrlResolver implements ImageUrlResolverInterface
             return null;
         }
 
-        $hostname = self::getChannelHostname($restockNotificationRequest);
-        if (null === $hostname) {
-            return $this->cacheManager->getBrowserPath($path, $this->filter);
-        }
-
-        return sprintf(
-            '%s%s',
-            $hostname,
-            $this->cacheManager->getBrowserPath(path: $path, filter: $this->filter, referenceType: UrlGeneratorInterface::ABSOLUTE_PATH),
-        );
+        return $this->cacheManager->getBrowserPath($path, $this->filter);
     }
 
     /**

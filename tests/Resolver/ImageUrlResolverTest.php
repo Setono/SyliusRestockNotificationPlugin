@@ -184,45 +184,4 @@ final class ImageUrlResolverTest extends TestCase
 
         $this->assertEquals($browserPath, $result);
     }
-
-    /**
-     * @test
-     */
-    public function it_returns_absolute_url_when_hostname_is_available(): void
-    {
-        $path = 'path/to/image.jpg';
-        $hostname = 'example.com';
-        $absolutePath = '/media/cache/resolve/sylius_shop_product_large_thumbnail/path/to/image.jpg';
-        $expectedUrl = 'https://example.com/media/cache/resolve/sylius_shop_product_large_thumbnail/path/to/image.jpg';
-
-        // Use Prophecy's argument matchers to match any call to getBrowserPath
-        $this->cacheManager->getBrowserPath(
-            \Prophecy\Argument::cetera(),
-        )->willReturn($absolutePath);
-
-        $resolver = new ImageUrlResolver($this->cacheManager->reveal(), $this->filter);
-
-        $image = $this->prophesize(ImageInterface::class);
-        $image->getPath()->willReturn($path);
-
-        $images = $this->prophesize(Collection::class);
-        $images->first()->willReturn($image->reveal());
-
-        $product = $this->prophesize(ProductInterface::class);
-        $product->getImages()->willReturn($images->reveal());
-
-        $productVariant = $this->prophesize(ProductVariantInterface::class);
-        $productVariant->getProduct()->willReturn($product->reveal());
-
-        $channel = $this->prophesize(ChannelInterface::class);
-        $channel->getHostname()->willReturn($hostname);
-
-        $request = $this->prophesize(RestockNotificationRequestInterface::class);
-        $request->getProductVariant()->willReturn($productVariant->reveal());
-        $request->getChannel()->willReturn($channel->reveal());
-
-        $result = $resolver->resolve($request->reveal());
-
-        $this->assertEquals($expectedUrl, $result);
-    }
 }
