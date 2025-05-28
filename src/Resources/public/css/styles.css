@@ -6,6 +6,7 @@
 
     /* Select */
     --ssrn-select-remind-me-color: #22b99a;
+    --ssrn-select-option-font-size: 13px;
 }
 
 /**
@@ -123,10 +124,10 @@ dialog.ssrn-dialog h4 {
     content: "";
     position: absolute;
     top: 0;
-    right: 20px;
-    left: 20px;
+    right: 0;
+    left: 0;
     height: 1px;
-    width: calc(100% - 40px);
+    width: 100%;
     background-color: #cccccc;
 }
 
@@ -140,7 +141,7 @@ dialog.ssrn-dialog h4 {
     display: flex;
     justify-content: space-between;
     padding: 12px 20px;
-    font-size: 16px;
+    font-size: var(--ssrn-select-option-font-size);
     font-weight: 400;
     color: #333;
     line-height: 20px;
