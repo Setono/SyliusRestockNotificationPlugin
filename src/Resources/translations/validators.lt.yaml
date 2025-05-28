@@ -1,0 +1,3 @@
+setono_sylius_restock_notification:
+    restock_notification_request:
+        unique: Jūs jau užsiprenumeravote pranešimą, kai šis produktas vėl bus sandėlyje.

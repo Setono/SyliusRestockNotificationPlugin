@@ -1,0 +1,42 @@
+setono_sylius_restock_notification:
+    email:
+        restock_notification_request:
+            anchor_text: Spauskite čia, kad pamatytumėte produktą
+            intro: |
+                <p>Sveiki</p>
+                <p>Jūs užsiregistravote gauti el. laišką, kai produktas %product% vėl bus sandėlyje.</p>
+                <p>Turiu jums naujienų! Produktas ką tik buvo papildytas.</p>
+            regards: <p>Geros dienos ir malonių apsipirkimų ;)</p>
+            subject: Jūsų ilgai lauktas produktas ką tik buvo papildytas!
+    form:
+        restock_notification_request:
+            help:
+                header: Pagalba
+                content: |
+                    <p>Kai sukuriate papildymo pranešimo užklausą, kanalas ir lokalė naudojami nustatyti
+                    el. laiško, siunčiamo klientui, turinį, todėl įsitikinkite, kad pasirinkote tai, ko tikisi klientas.</p>
+            channel_placeholder: Pasirinkite kanalą...
+    menu:
+        admin:
+            main:
+                marketing:
+                    restock_notification_requests: Papildymo pranešimų užklausos
+    ui:
+        dialog:
+            header: Nėra sandėlyje
+            body: Gaukite el. laišką, kai šis produktas vėl bus sandėlyje
+        days_waited: Laukta dienų
+        edit_restock_notification_request: Redaguoti papildymo pranešimo užklausą
+        error_message: Kažkas nepavyko. Bandykite dar kartą.
+        manage_restock_notification_requests: Valdyti papildymo pranešimų užklausas
+        new_restock_notification_request: Nauja papildymo pranešimo užklausa
+        restock_notification_requests: Papildymo pranešimų užklausos
+        notify_me: Pranešti man
+        remind_me: Priminti man
+        sent_at: Išsiųsta
+        success_message: Gausite el. laišką, kai produktas vėl bus sandėlyje
+        states:
+            failed: Nepavyko
+            pending: Laukiama
+            processing: Apdorojama
+            sent: Išsiųsta
