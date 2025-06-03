@@ -6,18 +6,19 @@ namespace Setono\SyliusRestockNotificationPlugin\Command;
 
 use DateTimeImmutable;
 use Setono\SyliusRestockNotificationPlugin\Repository\RestockNotificationRequestRepositoryInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+#[AsCommand(
+    name: 'setono:sylius-restock-notification:prune-requests',
+    description: 'Remove restock notification requests older than the configured threshold',
+)]
 final class PruneRestockNotificationRequestsCommand extends Command
 {
-    protected static $defaultName = 'setono:sylius-restock-notification:prune-requests';
-
-    protected static $defaultDescription = 'Remove restock notification requests older than the configured threshold';
-
     public function __construct(
         private readonly RestockNotificationRequestRepositoryInterface $restockNotificationRequestRepository,
         private readonly int $pruningThreshold,
