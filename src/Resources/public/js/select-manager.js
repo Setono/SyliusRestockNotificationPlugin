@@ -87,7 +87,7 @@ export default class SelectManager {
             const concreteOptionCombination = optionCombination.concat(option.getValue());
             const variant = this.#repository.getVariantFromOptionCombination(concreteOptionCombination);
             if(null !== variant) {
-                option.setInStock(variant.inStock);
+                option.setVariant(variant);
             }
             option.setAvailable(this.#repository.hasOptionCombination(concreteOptionCombination));
         });
